@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\chibi\\source\\repos\\DentalSys\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{441ED98D-58E5-4CD5-BB6B-6DA13E412E34}|ApplicationLogic\\ApplicationLogic.csproj|c:\\users\\chibi\\source\\repos\\dentalsys\\applicationlogic\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441ED98D-58E5-4CD5-BB6B-6DA13E412E34}|ApplicationLogic\\ApplicationLogic.csproj|solutionrelative:applicationlogic\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\chibi\\source\\repos\\dentalsys\\dataaccess\\connections\\sqlserverconnectionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\connections\\sqlserverconnectionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\chibi\\source\\repos\\dentalsys\\dataaccess\\connections\\mysqlconnectionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\connections\\mysqlconnectionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\chibi\\source\\repos\\dentalsys\\dataaccess\\connections\\iconnectionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\connections\\iconnectionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\chibi\\source\\repos\\dentalsys\\dataaccess\\connections\\connectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\connections\\connectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\chibi\\source\\repos\\dentalsys\\dataaccess\\check.connection\\connectionchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\check.connection\\connectionchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SqlServerConnectionProvider.cs",
+              "DocumentMoniker": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\SqlServerConnectionProvider.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Connections\\SqlServerConnectionProvider.cs",
+              "ToolTip": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\SqlServerConnectionProvider.cs",
+              "RelativeToolTip": "DataAccess\\Connections\\SqlServerConnectionProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T03:14:30.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MySqlConnectionProvider.cs",
+              "DocumentMoniker": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\MySqlConnectionProvider.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Connections\\MySqlConnectionProvider.cs",
+              "ToolTip": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\MySqlConnectionProvider.cs",
+              "RelativeToolTip": "DataAccess\\Connections\\MySqlConnectionProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T03:14:24.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IConnectionProvider.cs",
+              "DocumentMoniker": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\IConnectionProvider.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Connections\\IConnectionProvider.cs",
+              "ToolTip": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\IConnectionProvider.cs",
+              "RelativeToolTip": "DataAccess\\Connections\\IConnectionProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T03:14:17.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConnectionFactory.cs",
+              "DocumentMoniker": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\ConnectionFactory.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Connections\\ConnectionFactory.cs",
+              "ToolTip": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Connections\\ConnectionFactory.cs",
+              "RelativeToolTip": "DataAccess\\Connections\\ConnectionFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T03:14:08.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "C:\\Users\\chibi\\source\\repos\\DentalSys\\ApplicationLogic\\Services\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "ApplicationLogic\\Services\\DatabaseService.cs",
+              "ToolTip": "C:\\Users\\chibi\\source\\repos\\DentalSys\\ApplicationLogic\\Services\\DatabaseService.cs",
+              "RelativeToolTip": "ApplicationLogic\\Services\\DatabaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T03:05:49.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ConnectionChecker.cs",
+              "DocumentMoniker": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Check.Connection\\ConnectionChecker.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Check.Connection\\ConnectionChecker.cs",
+              "ToolTip": "C:\\Users\\chibi\\source\\repos\\DentalSys\\DataAccess\\Check.Connection\\ConnectionChecker.cs",
+              "RelativeToolTip": "DataAccess\\Check.Connection\\ConnectionChecker.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T03:00:39.773Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

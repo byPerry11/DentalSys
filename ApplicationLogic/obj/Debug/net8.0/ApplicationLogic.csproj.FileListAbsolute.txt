@@ -1,0 +1,15 @@
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.deps.json
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.dll
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.pdb
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\DataAccess.dll
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\DataAccess.pdb
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.csproj.AssemblyReference.cache
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.AssemblyInfoInputs.cache
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.AssemblyInfo.cs
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.csproj.CoreCompileInputs.cache
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\Applicat.EC504AD8.Up2Date
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.dll
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\refint\ApplicationLogic.dll
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.pdb
+C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ref\ApplicationLogic.dll
