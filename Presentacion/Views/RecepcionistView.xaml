@@ -6,70 +6,61 @@
         xmlns:local="clr-namespace:Presentacion.Views"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
-        <!-- Top Bar Recepción -->
-        <Border DockPanel.Dock="Top" Height="60" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1">
-            <Grid Margin="20,0">
-                <TextBlock Text="Recepción DentalSys" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#8E44AD"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Button Content="+ Nueva Cita" Background="#8E44AD" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
-                    <Button Content="+ Registrar Paciente" Background="#9B59B6" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
-                </StackPanel>
-            </Grid>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar Dentista (Color Azul Médico) -->
+        <Border Grid.Column="0" Background="#8E44AD">
+            <StackPanel Margin="10">
+                <TextBlock Text="Usuario" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,100,0,10" HorizontalAlignment="Center"/>
+                <TextBlock Text="Odontología General" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                <Button Content="Eliminar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Editar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+            </StackPanel>
         </Border>
 
-        <!-- Área de Trabajo -->
-        <Grid Margin="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+        <!-- Contenido Dentista -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <!-- Calendario / Agenda -->
-            <Border Grid.Column="0" Background="White" CornerRadius="5" Margin="0,0,10,0" Padding="10">
-                <Border.Effect>
-                    <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="0.1"/>
-                </Border.Effect>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Agenda General" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <Viewbox Grid.Row="1">
-                        <Calendar/>
-                        <!-- Placeholder para un control de Calendario real -->
-                    </Viewbox>
-                </Grid>
+            <Border DockPanel.Dock="Top" Height="60" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+                <!-- Top Bar Recepción -->
+                <Border DockPanel.Dock="Top" Height="60" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+                    <Grid Margin="20,0">
+                        <TextBlock Text="Recepción DentalSys" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#8E44AD"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button Content="+ Nueva Cita" Background="#8E44AD" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
+                            <Button Content="+ Registrar Paciente" Background="#9B59B6" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
             </Border>
 
-            <!-- Sala de Espera / Pagos -->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Sala de Espera -->
-                <Border Grid.Row="0" Background="White" CornerRadius="5" Margin="0,0,0,10" Padding="10">
-                    <StackPanel>
-                        <TextBlock Text="En Sala de Espera" FontWeight="Bold" Foreground="#D35400" Margin="0,0,0,5"/>
-                        <ListBox BorderThickness="0">
-                            <ListBoxItem Content="Juan Pérez (10:30 AM)"/>
-                            <ListBoxItem Content="Maria Lopez (10:45 AM)" Selected="ListBoxItem_Selected"/>
-                        </ListBox>
-                    </StackPanel>
-                </Border>
-
-                <!-- Caja Rápida -->
-                <Border Grid.Row="1" Background="White" CornerRadius="5" Margin="0,10,0,0" Padding="10">
-                    <StackPanel>
-                        <TextBlock Text="Cobro Rápido" FontWeight="Bold" Foreground="#27AE60" Margin="0,0,0,5"/>
-                        <TextBox Text="Buscar Paciente..." Padding="5" Margin="0,5" TextChanged="TextBox_TextChanged"/>
-                        <Button Content="Ir a Caja" Margin="0,10,0,0"/>
-                    </StackPanel>
-                </Border>
-            </Grid>
+            <!-- Lista de Citas -->
+            <!--DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" 
+                      Background="White" BorderThickness="1" BorderBrush="#EEE">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Hora" Width="80" Binding="{Binding Hora}"/>
+                    <DataGridTextColumn Header="Paciente" Width="*" Binding="{Binding NombrePaciente}"/>
+                    <DataGridTextColumn Header="Motivo" Width="150" Binding="{Binding Motivo}"/>
+                    <DataGridTextColumn Header="Estado" Width="100" Binding="{Binding Estado}"/>
+                    <DataGridTemplateColumn Header="Acción" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Atender" Background="#27AE60" Foreground="White" Padding="5,2"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid -->
         </Grid>
-    </DockPanel>
+    </Grid>
 </UserControl>

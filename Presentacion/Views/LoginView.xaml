@@ -62,6 +62,10 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                <Button
+                    >
+
+                </Button>
 
                 <Button Content="Salir" Background="Transparent" Foreground="Gray" Margin="0,15,0,0" BorderThickness="0" Click="CloseApp_Click"/>
             </StackPanel>

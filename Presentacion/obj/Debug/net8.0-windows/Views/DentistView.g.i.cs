@@ -53,7 +53,7 @@ namespace Presentacion.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Presentacion;V1.0.0.0;component/views/dentistview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Presentacion;component/views/dentistview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\DentistView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

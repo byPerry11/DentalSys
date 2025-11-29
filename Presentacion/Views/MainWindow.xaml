@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Presentacion.Views"
         mc:Ignorable="d"
         Title="DentalSys - Sistema de gestion" Height="450" Width="800"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     <ContentControl Name="MainContent"/>
 </Window>
