@@ -1,0 +1,70 @@
+﻿<Window x:Class="Presentacion.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Presentacion.Views" 
+        xmlns:viewmodels="clr-namespace:Presentacion.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
+        mc:Ignorable="d"
+        Title="DentalSys Login" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    
+
+
+    <!-- 1. ESTO ES CRUCIAL: Conecta la Vista con el ViewModel -->
+    
+
+    <Border CornerRadius="20" Background="White">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <!-- Imagen / Branding -->
+                <ColumnDefinition Width="*"/>
+                <!-- Formulario -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Lado Izquierdo: Branding -->
+            <Border Grid.Column="0" Background="#2980B9" CornerRadius="20,0,0,20">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="DentalSys" Foreground="White" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Gestión Clínica Integral" Foreground="#A9CCE3" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Lado Derecho: Formulario -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="40">
+                <TextBlock Text="Iniciar Sesión" FontSize="26" FontWeight="SemiBold" Foreground="#333" Margin="0,0,0,30" HorizontalAlignment="Center"/>
+
+                <!-- Usuario -->
+                <TextBlock Text="Usuario" Foreground="Gray" Margin="0,0,0,5"/>
+                <!-- El Binding a Username es fundamental -->
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="5" VerticalContentAlignment="Center" BorderBrush="#DDD"/>
+
+                <!-- Contraseña -->
+                <TextBlock Text="Contraseña" Foreground="Gray" Margin="0,15,0,5"/>
+                <!-- Nota el x:Name="txtPassword" -->
+                <PasswordBox x:Name="txtPassword" Height="35" Padding="5" VerticalContentAlignment="Center" BorderBrush="#DDD"/>
+
+                <!-- Botón Login -->
+                <!-- Nota: CommandParameter pasa el control PasswordBox completo al ViewModel -->
+                <Button Content="INGRESAR" Height="45" Margin="0,30,0,0" 
+                        Background="#2980B9" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"
+                        Command="{Binding LoginCommand}" 
+                        CommandParameter="{Binding ElementName=txtPassword}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button Content="Salir" Background="Transparent" Foreground="Gray" Margin="0,15,0,0" BorderThickness="0" Click="CloseApp_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

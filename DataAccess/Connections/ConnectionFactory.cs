@@ -2,9 +2,10 @@
 
 namespace DataAccess.Connections
 {
-    // Fabrica que elige el proveedor segun App.config
+    // Fábrica que crea el proveedor de conexión apropiado según la configuración en App.config
     public static class ConnectionFactory
     {
+        
         public static IConnectionProvider Create()
         {
             var active = ConfigurationManager.AppSettings["ActiveDb"] ?? "MySql";

@@ -13,3 +13,33 @@ C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\Applicat
 C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\refint\ApplicationLogic.dll
 C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.pdb
 C:\Users\chibi\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ref\ApplicationLogic.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.deps.json
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.pdb
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\bin\Debug\net8.0\DataAccess.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\bin\Debug\net8.0\DataAccess.pdb
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.csproj.AssemblyReference.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.AssemblyInfoInputs.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.AssemblyInfo.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.csproj.CoreCompileInputs.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\Applicat.EC504AD8.Up2Date
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\refint\ApplicationLogic.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.pdb
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\ApplicationLogic\obj\Debug\net8.0\ref\ApplicationLogic.dll
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.deps.json
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.dll
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\ApplicationLogic.pdb
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\DataAccess.dll
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\bin\Debug\net8.0\DataAccess.pdb
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.csproj.AssemblyReference.cache
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.AssemblyInfoInputs.cache
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.AssemblyInfo.cs
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.csproj.CoreCompileInputs.cache
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\Applicat.EC504AD8.Up2Date
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.dll
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\refint\ApplicationLogic.dll
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ApplicationLogic.pdb
+C:\Users\tagit\source\repos\DentalSys\ApplicationLogic\obj\Debug\net8.0\ref\ApplicationLogic.dll

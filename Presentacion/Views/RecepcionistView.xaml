@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Presentacion.Views.RecepcionistView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Presentacion.Views"
+        mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <!-- Top Bar Recepción -->
+        <Border DockPanel.Dock="Top" Height="60" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+            <Grid Margin="20,0">
+                <TextBlock Text="Recepción DentalSys" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#8E44AD"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Content="+ Nueva Cita" Background="#8E44AD" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
+                    <Button Content="+ Registrar Paciente" Background="#9B59B6" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Área de Trabajo -->
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Calendario / Agenda -->
+            <Border Grid.Column="0" Background="White" CornerRadius="5" Margin="0,0,10,0" Padding="10">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="0.1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Agenda General" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Viewbox Grid.Row="1">
+                        <Calendar/>
+                        <!-- Placeholder para un control de Calendario real -->
+                    </Viewbox>
+                </Grid>
+            </Border>
+
+            <!-- Sala de Espera / Pagos -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Sala de Espera -->
+                <Border Grid.Row="0" Background="White" CornerRadius="5" Margin="0,0,0,10" Padding="10">
+                    <StackPanel>
+                        <TextBlock Text="En Sala de Espera" FontWeight="Bold" Foreground="#D35400" Margin="0,0,0,5"/>
+                        <ListBox BorderThickness="0">
+                            <ListBoxItem Content="Juan Pérez (10:30 AM)"/>
+                            <ListBoxItem Content="Maria Lopez (10:45 AM)" Selected="ListBoxItem_Selected"/>
+                        </ListBox>
+                    </StackPanel>
+                </Border>
+
+                <!-- Caja Rápida -->
+                <Border Grid.Row="1" Background="White" CornerRadius="5" Margin="0,10,0,0" Padding="10">
+                    <StackPanel>
+                        <TextBlock Text="Cobro Rápido" FontWeight="Bold" Foreground="#27AE60" Margin="0,0,0,5"/>
+                        <TextBox Text="Buscar Paciente..." Padding="5" Margin="0,5" TextChanged="TextBox_TextChanged"/>
+                        <Button Content="Ir a Caja" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</UserControl>

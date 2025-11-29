@@ -4,12 +4,14 @@ using MySql.Data.MySqlClient;
 
 namespace DataAccess.Connections
 {
-    // Proveedor de conexion para MySQL
+    // Proveedor de conexión para MySQL
     public class MySqlConnectionProvider : IConnectionProvider
     {
         private readonly string _connectionString;
+
         public string ProviderName => "MySql.Data.MySqlClient";
 
+     
         public MySqlConnectionProvider()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["DentalSysMySql"]?.ConnectionString

@@ -76,3 +76,179 @@ C:\Users\chibi\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runt
 C:\Users\chibi\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\chibi\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\chibi\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.exe
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.dll.config
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.deps.json
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.runtimeconfig.json
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.pdb
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Azure.Core.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Azure.Identity.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\BCrypt.Net-Next.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Google.Protobuf.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\K4os.Compression.LZ4.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\K4os.Hash.xxHash.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\MySql.Data.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.ClientModel.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Diagnostics.EventLog.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Memory.Data.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\ZstdSharp.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\ApplicationLogic.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\DataAccess.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\ApplicationLogic.pdb
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\bin\Debug\net8.0-windows\DataAccess.pdb
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.csproj.AssemblyReference.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\AdminView.g.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\DentistView.g.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\LoginView.g.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\MainWindow.g.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\RecepcionistView.g.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion_MarkupCompile.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion_MarkupCompile.lref
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\AdminView.baml
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\DentistView.baml
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\LoginView.baml
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\MainWindow.baml
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\RecepcionistView.baml
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.g.resources
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.AssemblyInfoInputs.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.AssemblyInfo.cs
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presenta.BC77CD05.Up2Date
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\refint\Presentacion.dll
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.pdb
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.genruntimeconfig.cache
+C:\Users\tagit\Documents\Cesun\6to cuatrimestre\DentalSys\DentalSys\Presentacion\obj\Debug\net8.0-windows\ref\Presentacion.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.exe
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.dll.config
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.deps.json
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.runtimeconfig.json
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Presentacion.pdb
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Azure.Core.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Azure.Identity.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\BCrypt.Net-Next.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Google.Protobuf.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\K4os.Compression.LZ4.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\K4os.Hash.xxHash.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\MySql.Data.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.ClientModel.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Diagnostics.EventLog.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Memory.Data.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\ZstdSharp.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\ApplicationLogic.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\DataAccess.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\ApplicationLogic.pdb
+C:\Users\tagit\source\repos\DentalSys\Presentacion\bin\Debug\net8.0-windows\DataAccess.pdb
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.csproj.AssemblyReference.cache
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\AdminView.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\DentistView.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\LoginView.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\MainWindow.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\RecepcionistView.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion_MarkupCompile.cache
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion_MarkupCompile.lref
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\AdminView.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\DentistView.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\LoginView.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\MainWindow.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\RecepcionistView.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.g.resources
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.AssemblyInfoInputs.cache
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.AssemblyInfo.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presenta.BC77CD05.Up2Date
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\refint\Presentacion.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.pdb
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.genruntimeconfig.cache
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\ref\Presentacion.dll

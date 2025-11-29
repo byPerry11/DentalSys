@@ -47,6 +47,89 @@
           }
         }
       },
+      "BCrypt.Net-Next/4.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "BouncyCastle.Cryptography/2.6.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Google.Protobuf/3.32.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "K4os.Compression.LZ4/1.3.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/K4os.Compression.LZ4.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/K4os.Compression.LZ4.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "K4os.Compression.LZ4.Streams/1.3.8": {
+        "type": "package",
+        "dependencies": {
+          "K4os.Compression.LZ4": "1.3.8",
+          "K4os.Hash.xxHash": "1.0.8",
+          "System.IO.Pipelines": "6.0.3"
+        },
+        "compile": {
+          "lib/net6.0/K4os.Compression.LZ4.Streams.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/K4os.Compression.LZ4.Streams.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "K4os.Hash.xxHash/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/K4os.Hash.xxHash.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/K4os.Hash.xxHash.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -56,6 +139,15 @@
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Microsoft.CSharp/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "Microsoft.Data.SqlClient/5.2.2": {
@@ -278,6 +370,24 @@
           }
         }
       },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.NETCore.Targets/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "Microsoft.SqlServer.Server/1.0.0": {
         "type": "package",
         "compile": {
@@ -433,6 +543,22 @@
           }
         }
       },
+      "System.IO.Pipelines/6.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.IO.Pipelines.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.IO.Pipelines.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
       "System.Memory/4.5.4": {
         "type": "package",
         "compile": {
@@ -468,6 +594,43 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
+      "System.Runtime/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.Caching/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Runtime.Caching.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Runtime.Caching.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
@@ -484,6 +647,23 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "System.Security.Cryptography.Cng/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Security.Cryptography.ProtectedData/10.0.0": {
         "type": "package",
         "compile": {
@@ -498,6 +678,38 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "System.Security.Permissions/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Windows.Extensions": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Security.Permissions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Security.Permissions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Text.Encoding/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Text.Encoding.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Text.Encodings.Web/4.7.2": {
@@ -535,6 +747,25 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
+      "System.Windows.Extensions/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Windows.Extensions.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "ZstdSharp.Port/0.8.6": {
         "type": "package",
         "compile": {
@@ -548,6 +779,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "DataAccess": "1.0.0"
         },
         "compile": {
@@ -561,6 +793,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Microsoft.Data.SqlClient": "5.2.2",
           "MySql.Data": "9.5.0"
         },
@@ -612,6 +845,143 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
+    "BCrypt.Net-Next/4.0.3": {
+      "sha512": "W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
+      "type": "package",
+      "path": "bcrypt.net-next/4.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-next.4.0.3.nupkg.sha512",
+        "bcrypt.net-next.nuspec",
+        "ico.png",
+        "lib/net20/BCrypt.Net-Next.dll",
+        "lib/net20/BCrypt.Net-Next.xml",
+        "lib/net35/BCrypt.Net-Next.dll",
+        "lib/net35/BCrypt.Net-Next.xml",
+        "lib/net462/BCrypt.Net-Next.dll",
+        "lib/net462/BCrypt.Net-Next.xml",
+        "lib/net472/BCrypt.Net-Next.dll",
+        "lib/net472/BCrypt.Net-Next.xml",
+        "lib/net48/BCrypt.Net-Next.dll",
+        "lib/net48/BCrypt.Net-Next.xml",
+        "lib/net5.0/BCrypt.Net-Next.dll",
+        "lib/net5.0/BCrypt.Net-Next.xml",
+        "lib/net6.0/BCrypt.Net-Next.dll",
+        "lib/net6.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.0/BCrypt.Net-Next.dll",
+        "lib/netstandard2.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.1/BCrypt.Net-Next.dll",
+        "lib/netstandard2.1/BCrypt.Net-Next.xml",
+        "readme.md"
+      ]
+    },
+    "BouncyCastle.Cryptography/2.6.2": {
+      "sha512": "7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
+      "type": "package",
+      "path": "bouncycastle.cryptography/2.6.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "bouncycastle.cryptography.2.6.2.nupkg.sha512",
+        "bouncycastle.cryptography.nuspec",
+        "lib/net461/BouncyCastle.Cryptography.dll",
+        "lib/net461/BouncyCastle.Cryptography.xml",
+        "lib/net6.0/BouncyCastle.Cryptography.dll",
+        "lib/net6.0/BouncyCastle.Cryptography.xml",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
+        "packageIcon.png"
+      ]
+    },
+    "Google.Protobuf/3.32.0": {
+      "sha512": "fsKxV5bhcvXmZi+cUo5+IxzRMBHwHeFO8G5utNa9f+Mu37kmfy8JcUVvWPt4cX7EuQWAjjHUjZqVl7nGSTRHRg==",
+      "type": "package",
+      "path": "google.protobuf/3.32.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "google.protobuf.3.32.0.nupkg.sha512",
+        "google.protobuf.nuspec",
+        "lib/net45/Google.Protobuf.dll",
+        "lib/net45/Google.Protobuf.pdb",
+        "lib/net45/Google.Protobuf.xml",
+        "lib/net5.0/Google.Protobuf.dll",
+        "lib/net5.0/Google.Protobuf.pdb",
+        "lib/net5.0/Google.Protobuf.xml",
+        "lib/netstandard1.1/Google.Protobuf.dll",
+        "lib/netstandard1.1/Google.Protobuf.pdb",
+        "lib/netstandard1.1/Google.Protobuf.xml",
+        "lib/netstandard2.0/Google.Protobuf.dll",
+        "lib/netstandard2.0/Google.Protobuf.pdb",
+        "lib/netstandard2.0/Google.Protobuf.xml"
+      ]
+    },
+    "K4os.Compression.LZ4/1.3.8": {
+      "sha512": "LhwlPa7c1zs1OV2XadMtAWdImjLIsqFJPoRcIWAadSRn0Ri1DepK65UbWLPmt4riLqx2d40xjXRk0ogpqNtK7g==",
+      "type": "package",
+      "path": "k4os.compression.lz4/1.3.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "k4os.compression.lz4.1.3.8.nupkg.sha512",
+        "k4os.compression.lz4.nuspec",
+        "lib/net462/K4os.Compression.LZ4.dll",
+        "lib/net462/K4os.Compression.LZ4.xml",
+        "lib/net5.0/K4os.Compression.LZ4.dll",
+        "lib/net5.0/K4os.Compression.LZ4.xml",
+        "lib/net6.0/K4os.Compression.LZ4.dll",
+        "lib/net6.0/K4os.Compression.LZ4.xml",
+        "lib/netstandard2.0/K4os.Compression.LZ4.dll",
+        "lib/netstandard2.0/K4os.Compression.LZ4.xml",
+        "lib/netstandard2.1/K4os.Compression.LZ4.dll",
+        "lib/netstandard2.1/K4os.Compression.LZ4.xml"
+      ]
+    },
+    "K4os.Compression.LZ4.Streams/1.3.8": {
+      "sha512": "P15qr8dZAeo9GvYbUIPEYFQ0MEJ0i5iqr37wsYeRC3la2uCldOoeCa6to0CZ1taiwxIV+Mk8NGuZi+4iWivK9w==",
+      "type": "package",
+      "path": "k4os.compression.lz4.streams/1.3.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "k4os.compression.lz4.streams.1.3.8.nupkg.sha512",
+        "k4os.compression.lz4.streams.nuspec",
+        "lib/net462/K4os.Compression.LZ4.Streams.dll",
+        "lib/net462/K4os.Compression.LZ4.Streams.xml",
+        "lib/net5.0/K4os.Compression.LZ4.Streams.dll",
+        "lib/net5.0/K4os.Compression.LZ4.Streams.xml",
+        "lib/net6.0/K4os.Compression.LZ4.Streams.dll",
+        "lib/net6.0/K4os.Compression.LZ4.Streams.xml",
+        "lib/netstandard2.0/K4os.Compression.LZ4.Streams.dll",
+        "lib/netstandard2.0/K4os.Compression.LZ4.Streams.xml",
+        "lib/netstandard2.1/K4os.Compression.LZ4.Streams.dll",
+        "lib/netstandard2.1/K4os.Compression.LZ4.Streams.xml"
+      ]
+    },
+    "K4os.Hash.xxHash/1.0.8": {
+      "sha512": "Wp2F7BamQ2Q/7Hk834nV9vRQapgcr8kgv9Jvfm8J3D0IhDqZMMl+a2yxUq5ltJitvXvQfB8W6K4F4fCbw/P6YQ==",
+      "type": "package",
+      "path": "k4os.hash.xxhash/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "k4os.hash.xxhash.1.0.8.nupkg.sha512",
+        "k4os.hash.xxhash.nuspec",
+        "lib/net462/K4os.Hash.xxHash.dll",
+        "lib/net462/K4os.Hash.xxHash.xml",
+        "lib/net5.0/K4os.Hash.xxHash.dll",
+        "lib/net5.0/K4os.Hash.xxHash.xml",
+        "lib/net6.0/K4os.Hash.xxHash.dll",
+        "lib/net6.0/K4os.Hash.xxHash.xml",
+        "lib/netstandard2.0/K4os.Hash.xxHash.dll",
+        "lib/netstandard2.0/K4os.Hash.xxHash.xml",
+        "lib/netstandard2.1/K4os.Hash.xxHash.dll",
+        "lib/netstandard2.1/K4os.Hash.xxHash.xml"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "sha512": "yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
       "type": "package",
@@ -633,6 +1003,74 @@
         "ref/net461/Microsoft.Bcl.AsyncInterfaces.dll",
         "ref/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
         "ref/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.CSharp/4.5.0": {
+      "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "type": "package",
+      "path": "microsoft.csharp/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/Microsoft.CSharp.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.3/Microsoft.CSharp.dll",
+        "lib/netstandard2.0/Microsoft.CSharp.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/uap10.0.16299/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "microsoft.csharp.4.5.0.nupkg.sha512",
+        "microsoft.csharp.nuspec",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/Microsoft.CSharp.dll",
+        "ref/netcore50/Microsoft.CSharp.xml",
+        "ref/netcore50/de/Microsoft.CSharp.xml",
+        "ref/netcore50/es/Microsoft.CSharp.xml",
+        "ref/netcore50/fr/Microsoft.CSharp.xml",
+        "ref/netcore50/it/Microsoft.CSharp.xml",
+        "ref/netcore50/ja/Microsoft.CSharp.xml",
+        "ref/netcore50/ko/Microsoft.CSharp.xml",
+        "ref/netcore50/ru/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/Microsoft.CSharp.dll",
+        "ref/netstandard1.0/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/de/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/es/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/fr/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/it/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ja/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ko/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ru/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hans/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hant/Microsoft.CSharp.xml",
+        "ref/netstandard2.0/Microsoft.CSharp.dll",
+        "ref/netstandard2.0/Microsoft.CSharp.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/uap10.0.16299/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -920,6 +1358,36 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "sha512": "aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "type": "package",
+      "path": "microsoft.netcore.targets/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.targets.1.1.0.nupkg.sha512",
+        "microsoft.netcore.targets.nuspec",
+        "runtime.json"
+      ]
+    },
     "Microsoft.SqlServer.Server/1.0.0": {
       "sha512": "N4KeF3cpcm1PUHym1RmakkzfkEv3GRMyofVv40uXsQhCQeglr2OHNcUk2WOG51AKpGO8ynGpo9M/kFXSzghwug==",
       "type": "package",
@@ -1103,6 +1571,31 @@
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
+    "System.IO.Pipelines/6.0.3": {
+      "sha512": "ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ//Dpks6HdL/Txgw==",
+      "type": "package",
+      "path": "system.io.pipelines/6.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.IO.Pipelines.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.IO.Pipelines.dll",
+        "lib/net461/System.IO.Pipelines.xml",
+        "lib/net6.0/System.IO.Pipelines.dll",
+        "lib/net6.0/System.IO.Pipelines.xml",
+        "lib/netcoreapp3.1/System.IO.Pipelines.dll",
+        "lib/netcoreapp3.1/System.IO.Pipelines.xml",
+        "lib/netstandard2.0/System.IO.Pipelines.dll",
+        "lib/netstandard2.0/System.IO.Pipelines.xml",
+        "system.io.pipelines.6.0.3.nupkg.sha512",
+        "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Memory/4.5.4": {
       "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
       "type": "package",
@@ -1191,6 +1684,137 @@
         "version.txt"
       ]
     },
+    "System.Runtime/4.3.0": {
+      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "type": "package",
+      "path": "system.runtime/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net462/System.Runtime.dll",
+        "lib/portable-net45+win8+wp80+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net462/System.Runtime.dll",
+        "ref/netcore50/System.Runtime.dll",
+        "ref/netcore50/System.Runtime.xml",
+        "ref/netcore50/de/System.Runtime.xml",
+        "ref/netcore50/es/System.Runtime.xml",
+        "ref/netcore50/fr/System.Runtime.xml",
+        "ref/netcore50/it/System.Runtime.xml",
+        "ref/netcore50/ja/System.Runtime.xml",
+        "ref/netcore50/ko/System.Runtime.xml",
+        "ref/netcore50/ru/System.Runtime.xml",
+        "ref/netcore50/zh-hans/System.Runtime.xml",
+        "ref/netcore50/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.0/System.Runtime.dll",
+        "ref/netstandard1.0/System.Runtime.xml",
+        "ref/netstandard1.0/de/System.Runtime.xml",
+        "ref/netstandard1.0/es/System.Runtime.xml",
+        "ref/netstandard1.0/fr/System.Runtime.xml",
+        "ref/netstandard1.0/it/System.Runtime.xml",
+        "ref/netstandard1.0/ja/System.Runtime.xml",
+        "ref/netstandard1.0/ko/System.Runtime.xml",
+        "ref/netstandard1.0/ru/System.Runtime.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.2/System.Runtime.dll",
+        "ref/netstandard1.2/System.Runtime.xml",
+        "ref/netstandard1.2/de/System.Runtime.xml",
+        "ref/netstandard1.2/es/System.Runtime.xml",
+        "ref/netstandard1.2/fr/System.Runtime.xml",
+        "ref/netstandard1.2/it/System.Runtime.xml",
+        "ref/netstandard1.2/ja/System.Runtime.xml",
+        "ref/netstandard1.2/ko/System.Runtime.xml",
+        "ref/netstandard1.2/ru/System.Runtime.xml",
+        "ref/netstandard1.2/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.2/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.3/System.Runtime.dll",
+        "ref/netstandard1.3/System.Runtime.xml",
+        "ref/netstandard1.3/de/System.Runtime.xml",
+        "ref/netstandard1.3/es/System.Runtime.xml",
+        "ref/netstandard1.3/fr/System.Runtime.xml",
+        "ref/netstandard1.3/it/System.Runtime.xml",
+        "ref/netstandard1.3/ja/System.Runtime.xml",
+        "ref/netstandard1.3/ko/System.Runtime.xml",
+        "ref/netstandard1.3/ru/System.Runtime.xml",
+        "ref/netstandard1.3/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.3/zh-hant/System.Runtime.xml",
+        "ref/netstandard1.5/System.Runtime.dll",
+        "ref/netstandard1.5/System.Runtime.xml",
+        "ref/netstandard1.5/de/System.Runtime.xml",
+        "ref/netstandard1.5/es/System.Runtime.xml",
+        "ref/netstandard1.5/fr/System.Runtime.xml",
+        "ref/netstandard1.5/it/System.Runtime.xml",
+        "ref/netstandard1.5/ja/System.Runtime.xml",
+        "ref/netstandard1.5/ko/System.Runtime.xml",
+        "ref/netstandard1.5/ru/System.Runtime.xml",
+        "ref/netstandard1.5/zh-hans/System.Runtime.xml",
+        "ref/netstandard1.5/zh-hant/System.Runtime.xml",
+        "ref/portable-net45+win8+wp80+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.runtime.4.3.0.nupkg.sha512",
+        "system.runtime.nuspec"
+      ]
+    },
+    "System.Runtime.Caching/8.0.0": {
+      "sha512": "4TmlmvGp4kzZomm7J2HJn6IIx0UUrQyhBDyb5O1XiunZlQImXW+B8b7W/sTPcXhSf9rp5NR5aDtQllwbB5elOQ==",
+      "type": "package",
+      "path": "system.runtime.caching/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Runtime.Caching.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/_._",
+        "lib/net6.0/System.Runtime.Caching.dll",
+        "lib/net6.0/System.Runtime.Caching.xml",
+        "lib/net7.0/System.Runtime.Caching.dll",
+        "lib/net7.0/System.Runtime.Caching.xml",
+        "lib/net8.0/System.Runtime.Caching.dll",
+        "lib/net8.0/System.Runtime.Caching.xml",
+        "lib/netstandard2.0/System.Runtime.Caching.dll",
+        "lib/netstandard2.0/System.Runtime.Caching.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "runtimes/win/lib/net6.0/System.Runtime.Caching.dll",
+        "runtimes/win/lib/net6.0/System.Runtime.Caching.xml",
+        "runtimes/win/lib/net7.0/System.Runtime.Caching.dll",
+        "runtimes/win/lib/net7.0/System.Runtime.Caching.xml",
+        "runtimes/win/lib/net8.0/System.Runtime.Caching.dll",
+        "runtimes/win/lib/net8.0/System.Runtime.Caching.xml",
+        "system.runtime.caching.8.0.0.nupkg.sha512",
+        "system.runtime.caching.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "type": "package",
@@ -1214,6 +1838,69 @@
         "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Security.Cryptography.Cng/4.5.0": {
+      "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
+      "type": "package",
+      "path": "system.security.cryptography.cng/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Security.Cryptography.Cng.dll",
+        "lib/net461/System.Security.Cryptography.Cng.dll",
+        "lib/net462/System.Security.Cryptography.Cng.dll",
+        "lib/net47/System.Security.Cryptography.Cng.dll",
+        "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.3/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.Cng.dll",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Security.Cryptography.Cng.dll",
+        "ref/net461/System.Security.Cryptography.Cng.dll",
+        "ref/net461/System.Security.Cryptography.Cng.xml",
+        "ref/net462/System.Security.Cryptography.Cng.dll",
+        "ref/net462/System.Security.Cryptography.Cng.xml",
+        "ref/net47/System.Security.Cryptography.Cng.dll",
+        "ref/net47/System.Security.Cryptography.Cng.xml",
+        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
+        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.xml",
+        "ref/netstandard1.3/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard1.4/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Cng.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/win/lib/net46/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net461/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net462/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net47/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.cryptography.cng.4.5.0.nupkg.sha512",
+        "system.security.cryptography.cng.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Security.Cryptography.ProtectedData/10.0.0": {
@@ -1249,6 +1936,103 @@
         "system.security.cryptography.protecteddata.10.0.0.nupkg.sha512",
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Security.Permissions/8.0.0": {
+      "sha512": "v/BBylw7XevuAsHXoX9dDUUfmBIcUf7Lkz8K3ZXIKz3YRKpw8YftpSir4n4e/jDTKFoaK37AsC3xnk+GNFI1Ow==",
+      "type": "package",
+      "path": "system.security.permissions/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Security.Permissions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Security.Permissions.targets",
+        "lib/net462/System.Security.Permissions.dll",
+        "lib/net462/System.Security.Permissions.xml",
+        "lib/net6.0/System.Security.Permissions.dll",
+        "lib/net6.0/System.Security.Permissions.xml",
+        "lib/net7.0/System.Security.Permissions.dll",
+        "lib/net7.0/System.Security.Permissions.xml",
+        "lib/net8.0/System.Security.Permissions.dll",
+        "lib/net8.0/System.Security.Permissions.xml",
+        "lib/netstandard2.0/System.Security.Permissions.dll",
+        "lib/netstandard2.0/System.Security.Permissions.xml",
+        "system.security.permissions.8.0.0.nupkg.sha512",
+        "system.security.permissions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Encoding/4.3.0": {
+      "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
+      "type": "package",
+      "path": "system.text.encoding/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Text.Encoding.dll",
+        "ref/netcore50/System.Text.Encoding.xml",
+        "ref/netcore50/de/System.Text.Encoding.xml",
+        "ref/netcore50/es/System.Text.Encoding.xml",
+        "ref/netcore50/fr/System.Text.Encoding.xml",
+        "ref/netcore50/it/System.Text.Encoding.xml",
+        "ref/netcore50/ja/System.Text.Encoding.xml",
+        "ref/netcore50/ko/System.Text.Encoding.xml",
+        "ref/netcore50/ru/System.Text.Encoding.xml",
+        "ref/netcore50/zh-hans/System.Text.Encoding.xml",
+        "ref/netcore50/zh-hant/System.Text.Encoding.xml",
+        "ref/netstandard1.0/System.Text.Encoding.dll",
+        "ref/netstandard1.0/System.Text.Encoding.xml",
+        "ref/netstandard1.0/de/System.Text.Encoding.xml",
+        "ref/netstandard1.0/es/System.Text.Encoding.xml",
+        "ref/netstandard1.0/fr/System.Text.Encoding.xml",
+        "ref/netstandard1.0/it/System.Text.Encoding.xml",
+        "ref/netstandard1.0/ja/System.Text.Encoding.xml",
+        "ref/netstandard1.0/ko/System.Text.Encoding.xml",
+        "ref/netstandard1.0/ru/System.Text.Encoding.xml",
+        "ref/netstandard1.0/zh-hans/System.Text.Encoding.xml",
+        "ref/netstandard1.0/zh-hant/System.Text.Encoding.xml",
+        "ref/netstandard1.3/System.Text.Encoding.dll",
+        "ref/netstandard1.3/System.Text.Encoding.xml",
+        "ref/netstandard1.3/de/System.Text.Encoding.xml",
+        "ref/netstandard1.3/es/System.Text.Encoding.xml",
+        "ref/netstandard1.3/fr/System.Text.Encoding.xml",
+        "ref/netstandard1.3/it/System.Text.Encoding.xml",
+        "ref/netstandard1.3/ja/System.Text.Encoding.xml",
+        "ref/netstandard1.3/ko/System.Text.Encoding.xml",
+        "ref/netstandard1.3/ru/System.Text.Encoding.xml",
+        "ref/netstandard1.3/zh-hans/System.Text.Encoding.xml",
+        "ref/netstandard1.3/zh-hant/System.Text.Encoding.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.text.encoding.4.3.0.nupkg.sha512",
+        "system.text.encoding.nuspec"
       ]
     },
     "System.Text.Encodings.Web/4.7.2": {
@@ -1334,6 +2118,33 @@
         "version.txt"
       ]
     },
+    "System.Windows.Extensions/8.0.0": {
+      "sha512": "Obg3a90MkOw9mYKxrardLpY2u0axDMrSmy4JCdq2cYbelM2cUwmUir5Bomvd1yxmPL9h5LVHU1tuKBZpUjfASg==",
+      "type": "package",
+      "path": "system.windows.extensions/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net6.0/System.Windows.Extensions.dll",
+        "lib/net6.0/System.Windows.Extensions.xml",
+        "lib/net7.0/System.Windows.Extensions.dll",
+        "lib/net7.0/System.Windows.Extensions.xml",
+        "lib/net8.0/System.Windows.Extensions.dll",
+        "lib/net8.0/System.Windows.Extensions.xml",
+        "runtimes/win/lib/net6.0/System.Windows.Extensions.dll",
+        "runtimes/win/lib/net6.0/System.Windows.Extensions.xml",
+        "runtimes/win/lib/net7.0/System.Windows.Extensions.dll",
+        "runtimes/win/lib/net7.0/System.Windows.Extensions.xml",
+        "runtimes/win/lib/net8.0/System.Windows.Extensions.dll",
+        "runtimes/win/lib/net8.0/System.Windows.Extensions.xml",
+        "system.windows.extensions.8.0.0.nupkg.sha512",
+        "system.windows.extensions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "ZstdSharp.Port/0.8.6": {
       "sha512": "iP4jVLQoQmUjMU88g1WObiNr6YKZGvh4aOXn3yOJsHqZsflwRsxZPcIBvNXgjXO3vQKSLctXGLTpcBPLnWPS8A==",
       "type": "package",
@@ -1378,11 +2189,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tagit\\Documents\\Cesun\\6to cuatrimestre\\DentalSys\\DentalSys\\Presentacion\\Presentacion.csproj",
+      "projectUniqueName": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Presentacion.csproj",
       "projectName": "Presentacion",
-      "projectPath": "C:\\Users\\tagit\\Documents\\Cesun\\6to cuatrimestre\\DentalSys\\DentalSys\\Presentacion\\Presentacion.csproj",
+      "projectPath": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Presentacion.csproj",
       "packagesPath": "C:\\Users\\tagit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tagit\\Documents\\Cesun\\6to cuatrimestre\\DentalSys\\DentalSys\\Presentacion\\obj\\",
+      "outputPath": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1403,8 +2214,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\tagit\\Documents\\Cesun\\6to cuatrimestre\\DentalSys\\DentalSys\\ApplicationLogic\\ApplicationLogic.csproj": {
-              "projectPath": "C:\\Users\\tagit\\Documents\\Cesun\\6to cuatrimestre\\DentalSys\\DentalSys\\ApplicationLogic\\ApplicationLogic.csproj"
+            "C:\\Users\\tagit\\source\\repos\\DentalSys\\ApplicationLogic\\ApplicationLogic.csproj": {
+              "projectPath": "C:\\Users\\tagit\\source\\repos\\DentalSys\\ApplicationLogic\\ApplicationLogic.csproj"
             }
           }
         }
@@ -1452,79 +2263,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'System.Runtime.Caching (>= 8.0.0)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "System.Runtime.Caching",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'BouncyCastle.Cryptography (>= 2.6.2)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "BouncyCastle.Cryptography",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'Google.Protobuf (>= 3.32.0)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "Google.Protobuf",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'K4os.Compression.LZ4.Streams (>= 1.3.8)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "K4os.Compression.LZ4.Streams",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'System.Security.Permissions (>= 8.0.0)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "System.Security.Permissions",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'System.Text.Encoding (>= 4.3.0)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "System.Text.Encoding",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'Microsoft.CSharp (>= 4.5.0)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "Microsoft.CSharp",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Unable to resolve 'System.Security.Cryptography.Cng (>= 4.5.0)' for 'net8.0-windows7.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
-      "libraryId": "System.Security.Cryptography.Cng",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }
