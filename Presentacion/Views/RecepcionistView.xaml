@@ -13,14 +13,21 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar Dentista (Color Azul Médico) -->
-        <Border Grid.Column="0" Background="#8E44AD">
+        <Border Grid.Column="0" Background="#25AD98">
+            
             <StackPanel Margin="10">
-                <TextBlock Text="Usuario" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,100,0,10" HorizontalAlignment="Center"/>
+                <Button Width="30" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand"
+                             HorizontalAlignment="Right" Margin="0,10,0,0">
+                    <Image Source="pack://application:,,,/assets/icons/dashboard.png" Stretch="Uniform"/>
+                </Button>
+                <Image Source="pack://application:,,,/assets/icons/person.png" Width="60" Height="66" HorizontalAlignment="Center" Margin="0,20,0,10"/>
+                <TextBlock Text="Usuario" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,5,0,10" HorizontalAlignment="Center"/>
                 <TextBlock Text="Odontología General" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
-                <Button Content="Eliminar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
                 <Button Content="Editar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
-                <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+
+                <Button Content="Eliminar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Click="BtnCerrarSesion_Click" Background="Transparent" Foreground="White" BorderThickness="0"/>
             </StackPanel>
         </Border>
 
@@ -35,32 +42,16 @@
                 <!-- Top Bar Recepción -->
                 <Border DockPanel.Dock="Top" Height="60" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1">
                     <Grid Margin="20,0">
-                        <TextBlock Text="Recepción DentalSys" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#8E44AD"/>
+                        <TextBlock Text="Recepción DentalSys" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#25AD98"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <Button Content="+ Nueva Cita" Background="#8E44AD" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
-                            <Button Content="+ Registrar Paciente" Background="#9B59B6" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
+                            <Button Content="+ Nueva Cita" Background="#25AD98" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
+                            <Button Content="+ Registrar Paciente" Background="#25AD98" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
                         </StackPanel>
                     </Grid>
                 </Border>
             </Border>
 
-            <!-- Lista de Citas -->
-            <!--DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" 
-                      Background="White" BorderThickness="1" BorderBrush="#EEE">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Hora" Width="80" Binding="{Binding Hora}"/>
-                    <DataGridTextColumn Header="Paciente" Width="*" Binding="{Binding NombrePaciente}"/>
-                    <DataGridTextColumn Header="Motivo" Width="150" Binding="{Binding Motivo}"/>
-                    <DataGridTextColumn Header="Estado" Width="100" Binding="{Binding Estado}"/>
-                    <DataGridTemplateColumn Header="Acción" Width="100">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Atender" Background="#27AE60" Foreground="White" Padding="5,2"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid -->
+            
         </Grid>
     </Grid>
 </UserControl>

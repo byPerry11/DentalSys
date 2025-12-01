@@ -246,10 +246,10 @@ C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Pres
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.AssemblyInfoInputs.cache
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.AssemblyInfo.cs
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.sourcelink.json
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presenta.BC77CD05.Up2Date
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.dll
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\refint\Presentacion.dll
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.pdb
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.genruntimeconfig.cache
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\ref\Presentacion.dll
-C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.sourcelink.json

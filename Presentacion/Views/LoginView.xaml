@@ -3,41 +3,55 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Presentacion.Views" 
+        xmlns:local="clr-namespace:Presentacion.Views"
         xmlns:viewmodels="clr-namespace:Presentacion.ViewModels" 
         d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
         mc:Ignorable="d"
         Title="DentalSys Login" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
-    
 
 
-    <!-- 1. ESTO ES CRUCIAL: Conecta la Vista con el ViewModel -->
-    
 
-    <Border CornerRadius="20" Background="White">
+
+
+    <Border CornerRadius="20" Background="Transparent">
         <Border.Effect>
             <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
         </Border.Effect>
 
+
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="209*"/>
+                <RowDefinition Height="241*"/>
+            </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*"/>
-                <!-- Imagen / Branding -->
                 <ColumnDefinition Width="*"/>
                 <!-- Formulario -->
             </Grid.ColumnDefinitions>
 
+            <Image Source="pack://application:,,,/assets/diente.png" 
+                    Grid.ColumnSpan="2" Stretch="UniformToFill" Opacity="0.1" Margin="20" Grid.RowSpan="2"/>
             <!-- Lado Izquierdo: Branding -->
-            <Border Grid.Column="0" Background="#2980B9" CornerRadius="20,0,0,20">
+            <Border Grid.Column="0" Background="#2980B9" CornerRadius="20,0,0,20" Grid.RowSpan="2">
+
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="pack://application:,,,/assets/diente.png" Width="100" Height="107" RenderTransformOrigin="0.483,0.206"/>
                     <TextBlock Text="DentalSys" Foreground="White" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <TextBlock Text="Gestión Clínica Integral" Foreground="#A9CCE3" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                 </StackPanel>
             </Border>
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0">
+                <Button Width="30" Height="30" Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand"
+                        Click="CloseApp_Click">
+                    <Image Source="pack://application:,,,/assets/icons/circle-x.png" Stretch="UniformToFill"/>
+                </Button>
+            </StackPanel>
 
             <!-- Lado Derecho: Formulario -->
-            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="40">
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="40,74,40,0" Grid.RowSpan="2">
                 <TextBlock Text="Iniciar Sesión" FontSize="26" FontWeight="SemiBold" Foreground="#333" Margin="0,0,0,30" HorizontalAlignment="Center"/>
 
                 <!-- Usuario -->
@@ -62,12 +76,9 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button
-                    >
 
-                </Button>
 
-                <Button Content="Salir" Background="Transparent" Foreground="Gray" Margin="0,15,0,0" BorderThickness="0" Click="CloseApp_Click"/>
+                <Button Content="Salir"  Background="Transparent" Foreground="Gray" Margin="0,15,0,0" BorderThickness="1" Click="CloseApp_Click"/>
             </StackPanel>
         </Grid>
     </Border>

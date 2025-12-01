@@ -21,5 +21,18 @@ namespace Presentacion.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void BtnCerrarSesionClick(object sender, RoutedEventArgs e)
+        {
+            //Creamos una instancia de la ventana de Login para cerrar sesión y volver a ella
+            LoginView Login = new LoginView();
+            Login.Show();
+            //Cerramos la ventana actual de Dentista
+            Window.GetWindow(this)?.Close();
+        }
     }
 }

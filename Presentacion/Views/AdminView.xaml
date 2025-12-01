@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Presentacion.Views"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
@@ -18,16 +18,17 @@
         <!-- Sidebar Admin -->
         <Border Grid.Column="0" Background="#2C3E50">
             <StackPanel Margin="10">
-                <TextBlock Text="ADMIN PANEL" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,20,0,30" HorizontalAlignment="Center"/>
+                <TextBlock Text="ADMIN PANEL" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,20,0,30" HorizontalAlignment="Center" Height="28" Width="143"/>
 
                 <!-- Botones de Navegación -->
                 <Button Content="Gestión Usuarios" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
-                <Button Content="Roles y Permisos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
-                <Button Content="Reportes Financieros" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
-                <Button Content="Configuración BD" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
+                <Button Content="Gestion Citas/Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
+                <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
+                <Button Content="Factura" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
+                
 
                 <Separator Background="#7F8C8D" Margin="0,20"/>
-                <Button Content="Cerrar Sesión" Background="#E74C3C" Foreground="White" Height="35" Margin="0,10"/>
+                <Button Content="Cerrar Sesión" Background="#E74C3C" Foreground="White" Height="35" Click="BtnCerrarSesionClick" Margin="0,10"/>
             </StackPanel>
         </Border>
 

@@ -31,5 +31,14 @@ namespace Presentacion.Views
         {
 
         }
+
+    private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            //Creamos una instancia de la ventana de Login para cerrar sesión y volver a ella
+            LoginView Login = new LoginView();
+            Login.Show();
+            //Cerramos la ventana actual de Recepcionista
+            Window.GetWindow(this)?.Close();
+        }
     }
 }

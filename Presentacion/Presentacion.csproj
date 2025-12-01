@@ -9,11 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\diente.png" />
+    <None Remove="assets\icons\circle-x.png" />
+    <None Remove="assets\icons\dashboard.png" />
+    <None Remove="assets\icons\person.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationLogic\ApplicationLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\diente.png" />
+    <Resource Include="assets\icons\circle-x.png" />
+    <Resource Include="assets\icons\dashboard.png" />
+    <Resource Include="assets\icons\person.png" />
   </ItemGroup>
 
 </Project>
