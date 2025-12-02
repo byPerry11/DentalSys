@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\tagit\\source\\repos\\DentalSys\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\adminview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\adminview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\adminview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\adminview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\dentistview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\dentistview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\dataaccess\\entities\\tratamientoentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\entities\\tratamientoentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\dataaccess\\repositories\\tratamientorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\tratamientorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\dataaccess\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\recepcionistview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -19,24 +35,28 @@
       "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\recepcionistview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\dentistview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\dentistview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\dataaccess\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\adminview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\adminview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{441ED98D-58E5-4CD5-BB6B-6DA13E412E34}|ApplicationLogic\\ApplicationLogic.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\applicationlogic\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{441ED98D-58E5-4CD5-BB6B-6DA13E412E34}|ApplicationLogic\\ApplicationLogic.csproj|solutionrelative:applicationlogic\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\dataaccess\\connections\\connectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B57A29-FD65-4DAD-A100-4B1D2214E79D}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\connections\\connectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\dentistview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\dentistview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\dentistview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\dentistview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{806BA6D6-A915-47C8-BF27-22359C71D683}|Presentacion\\Presentacion.csproj|c:\\users\\tagit\\source\\repos\\dentalsys\\presentacion\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -62,11 +82,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ConnectionFactory.cs",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Connections\\ConnectionFactory.cs",
               "RelativeDocumentMoniker": "DataAccess\\Connections\\ConnectionFactory.cs",
@@ -75,8 +95,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T18:37:53.375Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -88,7 +107,84 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
+              "Title": "AdminView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\AdminView.xaml.cs",
+              "RelativeDocumentMoniker": "Presentacion\\Views\\AdminView.xaml.cs",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\AdminView.xaml.cs",
+              "RelativeToolTip": "Presentacion\\Views\\AdminView.xaml.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwE4AAACAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T02:16:24.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TratamientoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Repositories\\TratamientoRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\TratamientoRepository.cs",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Repositories\\TratamientoRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\TratamientoRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T02:16:08.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TratamientoEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Entities\\TratamientoEntity.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Entities\\TratamientoEntity.cs",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Entities\\TratamientoEntity.cs",
+              "RelativeToolTip": "DataAccess\\Entities\\TratamientoEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T06:12:17.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T06:11:57.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\ApplicationLogic\\DTOs\\UserDTO.cs",
+              "RelativeDocumentMoniker": "ApplicationLogic\\DTOs\\UserDTO.cs",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\ApplicationLogic\\DTOs\\UserDTO.cs",
+              "RelativeToolTip": "ApplicationLogic\\DTOs\\UserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T06:07:43.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Entities\\UserEntity.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Entities\\UserEntity.cs",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Entities\\UserEntity.cs",
+              "RelativeToolTip": "DataAccess\\Entities\\UserEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T06:07:34.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "LoginView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\LoginView.xaml.cs",
               "RelativeDocumentMoniker": "Presentacion\\Views\\LoginView.xaml.cs",
@@ -96,12 +192,11 @@
               "RelativeToolTip": "Presentacion\\Views\\LoginView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T03:28:06.301Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T03:28:06.301Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "DentistView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\DentistView.xaml.cs",
               "RelativeDocumentMoniker": "Presentacion\\Views\\DentistView.xaml.cs",
@@ -109,12 +204,11 @@
               "RelativeToolTip": "Presentacion\\Views\\DentistView.xaml.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAswBwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T19:17:24.495Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T19:17:24.495Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Presentacion\\Views\\MainWindow.xaml",
@@ -125,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AdminView.xaml",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\AdminView.xaml",
               "RelativeDocumentMoniker": "Presentacion\\Views\\AdminView.xaml",
@@ -137,19 +231,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "DentistView.xaml",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\DentistView.xaml",
               "RelativeDocumentMoniker": "Presentacion\\Views\\DentistView.xaml",
               "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\DentistView.xaml",
               "RelativeToolTip": "Presentacion\\Views\\DentistView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-29T02:37:41.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T02:37:41.792Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "ConnectionChecker.cs",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\DataAccess\\Check.Connection\\ConnectionChecker.cs",
               "RelativeDocumentMoniker": "DataAccess\\Check.Connection\\ConnectionChecker.cs",
@@ -161,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "DatabaseService.cs",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\ApplicationLogic\\Services\\DatabaseService.cs",
               "RelativeDocumentMoniker": "ApplicationLogic\\Services\\DatabaseService.cs",
@@ -173,20 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\AdminView.xaml.cs",
-              "RelativeDocumentMoniker": "Presentacion\\Views\\AdminView.xaml.cs",
-              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\AdminView.xaml.cs",
-              "RelativeToolTip": "Presentacion\\Views\\AdminView.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T20:56:02.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "RecepcionistView.xaml",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\RecepcionistView.xaml",
               "RelativeDocumentMoniker": "Presentacion\\Views\\RecepcionistView.xaml",
@@ -198,7 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\App.config",
               "RelativeDocumentMoniker": "Presentacion\\App.config",
@@ -206,12 +286,11 @@
               "RelativeToolTip": "Presentacion\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-11-25T16:20:22.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T16:20:22.775Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "RecepcionistView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\RecepcionistView.xaml.cs",
               "RelativeDocumentMoniker": "Presentacion\\Views\\RecepcionistView.xaml.cs",
@@ -224,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "LoginView.xaml",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\LoginView.xaml",
               "RelativeDocumentMoniker": "Presentacion\\Views\\LoginView.xaml",

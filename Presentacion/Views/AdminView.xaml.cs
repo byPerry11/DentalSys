@@ -12,9 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using DataAccess.Connections;
+using DataAccess.Repositories;
+
 namespace Presentacion.Views
 {
-   
+
     public partial class AdminView : UserControl
     {
         public AdminView()
@@ -28,6 +31,53 @@ namespace Presentacion.Views
             Login.Show();
             //Cerramos la ventana actual de Administrador
             Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnTratamientosClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Configurar el título
+                HeaderTitle.Text = "Gestión de Tratamientos";
+
+                // Ocultar el dashboard y mostrar el DataGrid
+                DashboardGrid.Visibility = Visibility.Collapsed;
+                UsuariosContainer.Visibility = Visibility.Collapsed;
+                TratamientosContainer.Visibility = Visibility.Visible;
+
+                // Cargar datos
+                var connectionProvider = new MySqlConnectionProvider();
+                var repository = new TratamientoRepository(connectionProvider);
+                var tratamientos = repository.GetAllTratamientos();
+
+                TratamientosDataGrid.ItemsSource = tratamientos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar tratamientos: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+        private void BtnGestionUsuariosClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HeaderTitle.Text = "Gestión de Usuarios";
+
+                DashboardGrid.Visibility = Visibility.Collapsed;
+                //TratamientosContainer.Visibility = Visibility.Collapsed;
+                UsuariosContainer.Visibility = Visibility.Visible;
+
+                var connectionProvider = new MySqlConnectionProvider();
+                var repository = new UserRepository(connectionProvider);
+                var users = repository.GetAllUsers();
+
+                UsuariosDataGrid.ItemsSource = users;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar usuarios: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

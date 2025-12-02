@@ -21,9 +21,9 @@
                 <TextBlock Text="ADMIN PANEL" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,20,0,30" HorizontalAlignment="Center" Height="28" Width="143"/>
 
                 <!-- Botones de Navegación -->
-                <Button Content="Gestión Usuarios" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
+                <Button Content="Gestión Usuarios" Click="BtnGestionUsuariosClick" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
                 <Button Content="Gestion Citas/Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
-                <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
+                <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnTratamientosClick"/>
                 <Button Content="Factura" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
                 
 
@@ -38,11 +38,14 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+          
+                
 
-            <TextBlock Text="Resumen General" FontSize="24" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,20"/>
+
+                <TextBlock x:Name="HeaderTitle" Text="Resumen General" FontSize="24" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,20"/>
 
             <!-- Tarjetas de Resumen (Ejemplo) -->
-            <UniformGrid Grid.Row="1" Columns="2" Rows="2" Margin="0,0,0,0">
+            <UniformGrid x:Name="DashboardGrid" Grid.Row="1" Columns="2" Rows="2" Margin="0,0,0,0">
                 <Border Background="White" CornerRadius="10" Margin="10" Padding="20">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="10" Color="#CCC" ShadowDepth="2" Opacity="0.3"/>
@@ -68,6 +71,66 @@
                     <TextBlock Text="[Aquí iría un DataGrid con logs de actividad]" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Silver"/>
                 </Border>
             </UniformGrid>
+
+            <!-- DataGrid para Tratamientos (Inicialmente oculto) -->
+            <!-- Contenedor para Tratamientos (Inicialmente oculto) -->
+            <Grid x:Name="TratamientosContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Content="Editar tratamientos" HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#3498DB" Foreground="White" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <DataGrid x:Name="TratamientosDataGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id_Tratamiento}" Width="50"/>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
+                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}" Width="100"/>
+                        <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <!-- Contenedor para Gestion de usuarios -->
+            <Grid x:Name="UsuariosContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Content="+ Usuario Nuevo" HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#2C3E50" Foreground="White" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <DataGrid x:Name="UsuariosDataGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id_Usuario}" Width="50"/>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre_Usuario}" Width="150"/>
+                        <DataGridTextColumn Header="Rol" Binding="{Binding Rol}" Width="100"/>
+                        <DataGridTextColumn Header="Fecha Creación" Binding="{Binding Fecha_Creacion, StringFormat=d}" Width="120"/>
+                        <DataGridTemplateColumn Header="Acciones" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Content="Editar" Margin="5,0" Width="60" Background="#F39C12" Foreground="White" BorderThickness="0"/>
+                                        <Button Content="Eliminar" Margin="5,0" Width="60" Background="#E74C3C" Foreground="White" BorderThickness="0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
