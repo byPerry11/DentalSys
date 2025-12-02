@@ -11,5 +11,6 @@ namespace ApplicationLogic.DTOs
         public int Id { get; set; }
         public string? Username { get; set; }
         public string? Role { get; set; }//sera admin, dentista o recepcionista
+        public DateTime? FechaCreacion { get; set; }
     }
 }

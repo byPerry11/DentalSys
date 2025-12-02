@@ -80,7 +80,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button Content="Editar tratamientos" HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#3498DB" Foreground="White" BorderThickness="0">
+                <Button Content="Agregar tratamiento" HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#3498DB" Foreground="White" BorderThickness="0">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -90,7 +90,7 @@
 
                 <DataGrid x:Name="TratamientosDataGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id_Tratamiento}" Width="50"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                         <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
                         <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}" Width="100"/>
                         <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*"/>
@@ -104,21 +104,17 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button Content="+ Usuario Nuevo" HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#2C3E50" Foreground="White" BorderThickness="0">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
+                <Button  HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#2C3E50" Foreground="White" BorderThickness="0">
+                    <Image Source="/assets/icons/person-add.png"></Image>
                 </Button>
 
                 <DataGrid x:Name="UsuariosDataGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id_Usuario}" Width="50"/>
-                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre_Usuario}" Width="150"/>
-                        <DataGridTextColumn Header="Rol" Binding="{Binding Rol}" Width="100"/>
-                        <DataGridTextColumn Header="Fecha Creación" Binding="{Binding Fecha_Creacion, StringFormat=d}" Width="120"/>
-                        <DataGridTemplateColumn Header="Acciones" Width="*">
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Username}" Width="150"/>
+                        <DataGridTextColumn Header="Rol" Binding="{Binding Role}" Width="100"/>
+                        <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion, StringFormat=d}" Width="120"/>
+                        <DataGridTemplateColumn Header="" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

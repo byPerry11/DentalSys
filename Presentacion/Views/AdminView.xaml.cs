@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using DataAccess.Connections;
-using DataAccess.Repositories;
+using ApplicationLogic.Services;
 
 namespace Presentacion.Views
 {
@@ -46,9 +45,8 @@ namespace Presentacion.Views
                 TratamientosContainer.Visibility = Visibility.Visible;
 
                 // Cargar datos
-                var connectionProvider = new MySqlConnectionProvider();
-                var repository = new TratamientoRepository(connectionProvider);
-                var tratamientos = repository.GetAllTratamientos();
+                var service = new TratamientoService();
+                var tratamientos = service.GetAllTratamientos();
 
                 TratamientosDataGrid.ItemsSource = tratamientos;
             }
@@ -65,12 +63,11 @@ namespace Presentacion.Views
                 HeaderTitle.Text = "Gestión de Usuarios";
 
                 DashboardGrid.Visibility = Visibility.Collapsed;
-                //TratamientosContainer.Visibility = Visibility.Collapsed;
+                TratamientosContainer.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Visible;
 
-                var connectionProvider = new MySqlConnectionProvider();
-                var repository = new UserRepository(connectionProvider);
-                var users = repository.GetAllUsers();
+                var service = new UserService();
+                var users = service.GetAllUsers();
 
                 UsuariosDataGrid.ItemsSource = users;
             }

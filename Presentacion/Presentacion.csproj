@@ -12,6 +12,7 @@
     <None Remove="assets\diente.png" />
     <None Remove="assets\icons\circle-x.png" />
     <None Remove="assets\icons\dashboard.png" />
+    <None Remove="assets\icons\person-add.png" />
     <None Remove="assets\icons\person.png" />
   </ItemGroup>
 
@@ -27,6 +28,7 @@
     <Resource Include="assets\diente.png" />
     <Resource Include="assets\icons\circle-x.png" />
     <Resource Include="assets\icons\dashboard.png" />
+    <Resource Include="assets\icons\person-add.png" />
     <Resource Include="assets\icons\person.png" />
   </ItemGroup>
 
