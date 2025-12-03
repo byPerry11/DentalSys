@@ -253,3 +253,7 @@ C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\refi
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.pdb
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Presentacion.genruntimeconfig.cache
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\ref\Presentacion.dll
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\UserFormView.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\UserFormView.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\TratamientoFormView.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\TratamientoFormView.g.cs

@@ -99,5 +99,76 @@ namespace DataAccess.Repositories
 
             return users;
         }
+
+        public void DeleteUser(int id)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "DELETE FROM usuarios WHERE id_usuario = @id";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    var parameter = command.CreateParameter();
+                    parameter.ParameterName = "@id";
+                    parameter.Value = id;
+                    command.Parameters.Add(parameter);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void AddUser(UserEntity user)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "INSERT INTO usuarios (nombre_usuario, password_hash, rol, fecha_creacion) VALUES (@username, @password, @role, @date)";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    var p1 = command.CreateParameter(); p1.ParameterName = "@username"; p1.Value = user.Nombre_Usuario; command.Parameters.Add(p1);
+                    var p2 = command.CreateParameter(); p2.ParameterName = "@password"; p2.Value = user.Pasword_Hash; command.Parameters.Add(p2);
+                    var p3 = command.CreateParameter(); p3.ParameterName = "@role"; p3.Value = user.Rol; command.Parameters.Add(p3);
+                    var p4 = command.CreateParameter(); p4.ParameterName = "@date"; p4.Value = user.Fecha_Creacion; command.Parameters.Add(p4);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateUser(UserEntity user)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "UPDATE usuarios SET nombre_usuario = @username, rol = @role WHERE id_usuario = @id";
+                if (!string.IsNullOrEmpty(user.Pasword_Hash))
+                {
+                    query = "UPDATE usuarios SET nombre_usuario = @username, rol = @role, password_hash = @password WHERE id_usuario = @id";
+                }
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    var p1 = command.CreateParameter(); p1.ParameterName = "@username"; p1.Value = user.Nombre_Usuario; command.Parameters.Add(p1);
+                    var p2 = command.CreateParameter(); p2.ParameterName = "@role"; p2.Value = user.Rol; command.Parameters.Add(p2);
+                    var p3 = command.CreateParameter(); p3.ParameterName = "@id"; p3.Value = user.Id_Usuario; command.Parameters.Add(p3);
+
+                    if (!string.IsNullOrEmpty(user.Pasword_Hash))
+                    {
+                        var p4 = command.CreateParameter(); p4.ParameterName = "@password"; p4.Value = user.Pasword_Hash; command.Parameters.Add(p4);
+                    }
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

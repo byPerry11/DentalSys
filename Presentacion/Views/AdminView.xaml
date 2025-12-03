@@ -7,6 +7,61 @@
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <Style x:Key="ModernDataGrid" TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowHeight" Value="40"/>
+            <Setter Property="ColumnHeaderHeight" Value="45"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#F0F0F0"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#FAFAFA"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#333"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#95A5A6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#EEE"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F5F6FA"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="#2980B9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
@@ -80,22 +135,38 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button Content="Agregar tratamiento" HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#3498DB" Foreground="White" BorderThickness="0">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
+                <Button  HorizontalAlignment="Right" Margin="0,0,0,10" Width="auto" Height="30" Background="Transparent" Foreground="White" BorderThickness="0">
+                    <Image Source="/assets/icons/dental.png"></Image>
                 </Button>
 
-                <DataGrid x:Name="TratamientosDataGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
-                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}" Width="100"/>
-                        <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                    </Border.Effect>
+                    <DataGrid x:Name="TratamientosDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
+                            <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}" Width="100"/>
+                            <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*"/>
+                            <DataGridTemplateColumn Header="" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button  Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0"  Click="BtnEditarTratamiento_Click">
+                                                <Image Source="/assets/icons/edit.png"></Image>
+                                            </Button>
+
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0"  Click="BtnEliminarTratamiento_Click">
+                                                <Image Source="/assets/icons/circle-x.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
             </Grid>
             <!-- Contenedor para Gestion de usuarios -->
             <Grid x:Name="UsuariosContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
@@ -104,28 +175,38 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button  HorizontalAlignment="Right" Margin="0,0,0,10" Width="150" Height="30" Background="#2C3E50" Foreground="White" BorderThickness="0">
+                <Button  HorizontalAlignment="Right" Width="auto" Height="45" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnNuevoUsuario_Click">
                     <Image Source="/assets/icons/person-add.png"></Image>
                 </Button>
 
-                <DataGrid x:Name="UsuariosDataGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                        <DataGridTextColumn Header="Nombre" Binding="{Binding Username}" Width="150"/>
-                        <DataGridTextColumn Header="Rol" Binding="{Binding Role}" Width="100"/>
-                        <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion, StringFormat=d}" Width="120"/>
-                        <DataGridTemplateColumn Header="" Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Content="Editar" Margin="5,0" Width="60" Background="#F39C12" Foreground="White" BorderThickness="0"/>
-                                        <Button Content="Eliminar" Margin="5,0" Width="60" Background="#E74C3C" Foreground="White" BorderThickness="0"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                    </Border.Effect>
+                    <DataGrid x:Name="UsuariosDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Username}" Width="150"/>
+                            <DataGridTextColumn Header="Rol" Binding="{Binding Role}" Width="130"/>
+                            <DataGridTextColumn Header="Fecha Creación" Binding="{Binding FechaCreacion, StringFormat=d}" Width="130"/>
+                            <DataGridTemplateColumn Header="" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button  Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0"  Click="BtnEditarUsuario_Click">
+                                                <Image Source="/assets/icons/edit.png"></Image>
+                                            </Button>
+
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0"  Click="BtnEliminarUsuario_Click">
+                                                <Image Source="/assets/icons/circle-x.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
             </Grid>
         </Grid>
     </Grid>

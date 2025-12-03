@@ -10,8 +10,11 @@
 
   <ItemGroup>
     <None Remove="assets\diente.png" />
+    <None Remove="assets\icons\circle-minus-fill.png" />
     <None Remove="assets\icons\circle-x.png" />
     <None Remove="assets\icons\dashboard.png" />
+    <None Remove="assets\icons\dental.png" />
+    <None Remove="assets\icons\edit.png" />
     <None Remove="assets\icons\person-add.png" />
     <None Remove="assets\icons\person.png" />
   </ItemGroup>
@@ -26,8 +29,11 @@
 
   <ItemGroup>
     <Resource Include="assets\diente.png" />
+    <Resource Include="assets\icons\circle-minus-fill.png" />
     <Resource Include="assets\icons\circle-x.png" />
     <Resource Include="assets\icons\dashboard.png" />
+    <Resource Include="assets\icons\dental.png" />
+    <Resource Include="assets\icons\edit.png" />
     <Resource Include="assets\icons\person-add.png" />
     <Resource Include="assets\icons\person.png" />
   </ItemGroup>

@@ -30,5 +30,42 @@ namespace ApplicationLogic.Services
                 FechaCreacion = u.Fecha_Creacion
             }).ToList();
         }
+
+        public void DeleteUser(int id)
+        {
+            _userRepository.DeleteUser(id);
+        }
+
+        public void CreateUser(UserDTO userDto, string password)
+        {
+            string passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+
+            var entity = new DataAccess.Entities.UserEntity
+            {
+                Nombre_Usuario = userDto.Username,
+                Pasword_Hash = passwordHash,
+                Rol = userDto.Role,
+                Fecha_Creacion = DateTime.Now
+            };
+
+            _userRepository.AddUser(entity);
+        }
+
+        public void UpdateUser(UserDTO userDto, string? newPassword)
+        {
+            var entity = new DataAccess.Entities.UserEntity
+            {
+                Id_Usuario = userDto.Id,
+                Nombre_Usuario = userDto.Username,
+                Rol = userDto.Role
+            };
+
+            if (!string.IsNullOrEmpty(newPassword))
+            {
+                entity.Pasword_Hash = BCrypt.Net.BCrypt.HashPassword(newPassword);
+            }
+
+            _userRepository.UpdateUser(entity);
+        }
     }
 }

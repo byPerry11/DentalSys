@@ -50,5 +50,93 @@ namespace DataAccess.Repositories
 
             return tratamientos;
         }
+
+        public void AddTratamiento(TratamientoEntity tratamiento)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "INSERT INTO tratamiento (Nombre, Precio, Descripcion) VALUES (@Nombre, @Precio, @Descripcion)";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    var paramNombre = command.CreateParameter();
+                    paramNombre.ParameterName = "@Nombre";
+                    paramNombre.Value = tratamiento.Nombre;
+                    command.Parameters.Add(paramNombre);
+
+                    var paramPrecio = command.CreateParameter();
+                    paramPrecio.ParameterName = "@Precio";
+                    paramPrecio.Value = tratamiento.Precio;
+                    command.Parameters.Add(paramPrecio);
+
+                    var paramDesc = command.CreateParameter();
+                    paramDesc.ParameterName = "@Descripcion";
+                    paramDesc.Value = (object)tratamiento.Descripcion ?? DBNull.Value;
+                    command.Parameters.Add(paramDesc);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateTratamiento(TratamientoEntity tratamiento)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "UPDATE tratamiento SET Nombre = @Nombre, Precio = @Precio, Descripcion = @Descripcion WHERE Id_Tratamiento = @Id";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = tratamiento.Id_Tratamiento;
+                    command.Parameters.Add(paramId);
+
+                    var paramNombre = command.CreateParameter();
+                    paramNombre.ParameterName = "@Nombre";
+                    paramNombre.Value = tratamiento.Nombre;
+                    command.Parameters.Add(paramNombre);
+
+                    var paramPrecio = command.CreateParameter();
+                    paramPrecio.ParameterName = "@Precio";
+                    paramPrecio.Value = tratamiento.Precio;
+                    command.Parameters.Add(paramPrecio);
+
+                    var paramDesc = command.CreateParameter();
+                    paramDesc.ParameterName = "@Descripcion";
+                    paramDesc.Value = (object)tratamiento.Descripcion ?? DBNull.Value;
+                    command.Parameters.Add(paramDesc);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteTratamiento(int id)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "DELETE FROM tratamiento WHERE Id_Tratamiento = @Id";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = id;
+                    command.Parameters.Add(paramId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\tagit\source\repos\DentalSys\Presentacion\App.xaml
-5-332092904
+72013029079
 
-10-1210062274
+12-2050562406
 225-1680264069
-Views\AdminView.xaml;Views\DentistView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;Views\RecepcionistView.xaml;
+Views\AdminView.xaml;Views\DentistView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;Views\RecepcionistView.xaml;Views\TratamientoFormView.xaml;Views\UserFormView.xaml;
 
 False
 

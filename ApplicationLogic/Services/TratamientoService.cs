@@ -30,5 +30,33 @@ namespace ApplicationLogic.Services
                 Descripcion = t.Descripcion
             }).ToList();
         }
+
+        public void AddTratamiento(TratamientoDTO dto)
+        {
+            var entity = new DataAccess.Entities.TratamientoEntity
+            {
+                Nombre = dto.Nombre,
+                Precio = dto.Precio,
+                Descripcion = dto.Descripcion
+            };
+            _tratamientoRepository.AddTratamiento(entity);
+        }
+
+        public void UpdateTratamiento(TratamientoDTO dto)
+        {
+            var entity = new DataAccess.Entities.TratamientoEntity
+            {
+                Id_Tratamiento = dto.Id,
+                Nombre = dto.Nombre,
+                Precio = dto.Precio,
+                Descripcion = dto.Descripcion
+            };
+            _tratamientoRepository.UpdateTratamiento(entity);
+        }
+
+        public void DeleteTratamiento(int id)
+        {
+            _tratamientoRepository.DeleteTratamiento(id);
+        }
     }
 }
