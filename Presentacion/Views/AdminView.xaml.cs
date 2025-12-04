@@ -11,24 +11,32 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 using ApplicationLogic.Services;
+using ApplicationLogic.DTOs;
 
 namespace Presentacion.Views
 {
-
     public partial class AdminView : UserControl
     {
+        private readonly UserService _userService;
+        private readonly TratamientoService _tratamientoService;
+        private readonly PacienteService _pacienteService;
+
         public AdminView()
         {
             InitializeComponent();
+            _userService = new UserService();
+            _tratamientoService = new TratamientoService();
+            _pacienteService = new PacienteService();
+            LoadUsuarios();
+            LoadTratamientos();
+            LoadPacientes();
         }
+
         private void BtnCerrarSesionClick(object sender, RoutedEventArgs e)
         {
-            //Creamos una instancia de la ventana de Login para cerrar sesión y volver a ella
             LoginView Login = new LoginView();
             Login.Show();
-            //Cerramos la ventana actual de Administrador
             Window.GetWindow(this)?.Close();
         }
 
@@ -36,40 +44,35 @@ namespace Presentacion.Views
         {
             try
             {
-                // Configurar el título
                 HeaderTitle.Text = "Gestión de Tratamientos";
-
-                // Ocultar el dashboard y mostrar el DataGrid
                 DashboardGrid.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Collapsed;
+                PacientesContainer.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Visible;
-
-                // Cargar datos
-                var service = new TratamientoService();
-                var tratamientos = service.GetAllTratamientos();
-
-                TratamientosDataGrid.ItemsSource = tratamientos;
+                LoadTratamientos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar tratamientos: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
+
+        private void LoadTratamientos()
+        {
+            var tratamientos = _tratamientoService.GetAllTratamientos();
+            TratamientosDataGrid.ItemsSource = tratamientos;
+        }
+
         private void BtnGestionUsuariosClick(object sender, RoutedEventArgs e)
         {
             try
             {
                 HeaderTitle.Text = "Gestión de Usuarios";
-
                 DashboardGrid.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Collapsed;
+                PacientesContainer.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Visible;
-
-                var service = new UserService();
-                var users = service.GetAllUsers();
-
-                UsuariosDataGrid.ItemsSource = users;
+                LoadUsuarios();
             }
             catch (Exception ex)
             {
@@ -77,13 +80,18 @@ namespace Presentacion.Views
             }
         }
 
+        private void LoadUsuarios()
+        {
+            var users = _userService.GetAllUsers();
+            UsuariosDataGrid.ItemsSource = users;
+        }
+
         private void BtnEliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Obtener el usuario seleccionado desde el botón
                 var button = sender as Button;
-                var user = button?.DataContext as ApplicationLogic.DTOs.UserDTO;
+                var user = button?.DataContext as UserDTO;
 
                 if (user != null)
                 {
@@ -94,11 +102,8 @@ namespace Presentacion.Views
 
                     if (result == MessageBoxResult.Yes)
                     {
-                        var service = new UserService();
-                        service.DeleteUser(user.Id);
-
-                        // Recargar la lista
-                        BtnGestionUsuariosClick(null, null);
+                        _userService.DeleteUser(user.Id);
+                        LoadUsuarios();
                         MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
@@ -114,21 +119,21 @@ namespace Presentacion.Views
             var form = new UserFormView();
             if (form.ShowDialog() == true)
             {
-                BtnGestionUsuariosClick(null, null); // Refrescar lista
+                LoadUsuarios();
             }
         }
 
         private void BtnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var user = button?.DataContext as ApplicationLogic.DTOs.UserDTO;
+            var user = button?.DataContext as UserDTO;
 
             if (user != null)
             {
                 var form = new UserFormView(user);
                 if (form.ShowDialog() == true)
                 {
-                    BtnGestionUsuariosClick(null, null); // Refrescar lista
+                    LoadUsuarios();
                 }
             }
         }
@@ -136,14 +141,14 @@ namespace Presentacion.Views
         private void BtnEditarTratamiento_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var tratamiento = button?.DataContext as ApplicationLogic.DTOs.TratamientoDTO;
+            var tratamiento = button?.DataContext as TratamientoDTO;
 
             if (tratamiento != null)
             {
                 var form = new TratamientoFormView(tratamiento);
                 if (form.ShowDialog() == true)
                 {
-                    BtnTratamientosClick(null, null); // Refrescar lista
+                    LoadTratamientos();
                 }
             }
         }
@@ -153,7 +158,7 @@ namespace Presentacion.Views
             try
             {
                 var button = sender as Button;
-                var tratamiento = button?.DataContext as ApplicationLogic.DTOs.TratamientoDTO;
+                var tratamiento = button?.DataContext as TratamientoDTO;
 
                 if (tratamiento != null)
                 {
@@ -164,10 +169,8 @@ namespace Presentacion.Views
 
                     if (result == MessageBoxResult.Yes)
                     {
-                        var service = new TratamientoService();
-                        service.DeleteTratamiento(tratamiento.Id);
-
-                        BtnTratamientosClick(null, null); // Refrescar lista
+                        _tratamientoService.DeleteTratamiento(tratamiento.Id);
+                        LoadTratamientos();
                         MessageBox.Show("Tratamiento eliminado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
@@ -177,5 +180,114 @@ namespace Presentacion.Views
                 MessageBox.Show($"Error al eliminar tratamiento: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void LoadPacientes()
+        {
+            try
+            {
+                var pacientes = _pacienteService.GetAllPacientes();
+                PacientesDataGrid.ItemsSource = pacientes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar pacientes: {ex.Message}");
+            }
+        }
+
+        private void BtnGestionPacientesClick(object sender, RoutedEventArgs e)
+        {
+            DashboardGrid.Visibility = Visibility.Collapsed;
+            TratamientosContainer.Visibility = Visibility.Collapsed;
+            UsuariosContainer.Visibility = Visibility.Collapsed;
+            PacientesContainer.Visibility = Visibility.Visible;
+            HeaderTitle.Text = "Gestión de Pacientes";
+            LoadPacientes();
+        }
+
+        private void BtnNuevoPaciente_Click(object sender, RoutedEventArgs e)
+        {
+            var form = new PacienteFormView();
+            var window = new Window
+            {
+                Title = "Nuevo Paciente",
+                Content = form,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+
+            form.OnSave += (paciente) =>
+            {
+                try
+                {
+                    _pacienteService.AddPaciente(paciente);
+                    LoadPacientes();
+                    window.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al guardar paciente: {ex.Message}");
+                }
+            };
+
+            form.OnCancel += () => window.Close();
+
+            window.ShowDialog();
+        }
+
+        private void BtnEditarPaciente_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is PacienteDTO paciente)
+            {
+                var form = new PacienteFormView(paciente);
+                var window = new Window
+                {
+                    Title = "Editar Paciente",
+                    Content = form,
+                    SizeToContent = SizeToContent.WidthAndHeight,
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+
+                form.OnSave += (updatedPaciente) =>
+                {
+                    try
+                    {
+                        _pacienteService.UpdatePaciente(updatedPaciente);
+                        LoadPacientes();
+                        window.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al actualizar paciente: {ex.Message}");
+                    }
+                };
+
+                form.OnCancel += () => window.Close();
+
+                window.ShowDialog();
+            }
+        }
+
+        private void BtnEliminarPaciente_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is PacienteDTO paciente)
+            {
+                var result = MessageBox.Show($"¿Está seguro de eliminar al paciente {paciente.Nombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        _pacienteService.DeletePaciente(paciente.Id);
+                        LoadPacientes();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al eliminar paciente: {ex.Message}");
+                    }
+                }
+            }
+        }
     }
 }
+

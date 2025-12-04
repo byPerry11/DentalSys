@@ -77,10 +77,12 @@
 
                 <!-- Botones de Navegación -->
                 <Button Content="Gestión Usuarios" Click="BtnGestionUsuariosClick" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
+                <Button Content="Gestion de Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnGestionPacientesClick"/>
                 <Button Content="Gestion Citas/Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
                 <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnTratamientosClick"/>
                 <Button Content="Factura" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
-                
+
+
 
                 <Separator Background="#7F8C8D" Margin="0,20"/>
                 <Button Content="Cerrar Sesión" Background="#E74C3C" Foreground="White" Height="35" Click="BtnCerrarSesionClick" Margin="0,10"/>
@@ -99,7 +101,7 @@
 
                 <TextBlock x:Name="HeaderTitle" Text="Resumen General" FontSize="24" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,20"/>
 
-            <!-- Tarjetas de Resumen (Ejemplo) -->
+            <!-- Tarjetas de Resumen -->
             <UniformGrid x:Name="DashboardGrid" Grid.Row="1" Columns="2" Rows="2" Margin="0,0,0,0">
                 <Border Background="White" CornerRadius="10" Margin="10" Padding="20">
                     <Border.Effect>
@@ -121,14 +123,13 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Espacio para DataGrid o Gráficos -->
+                <!-- Espacio para DataGrid -->
                 <Border Grid.ColumnSpan="2" Background="White" CornerRadius="10" Margin="10" Padding="20">
                     <TextBlock Text="[Aquí iría un DataGrid con logs de actividad]" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Silver"/>
                 </Border>
             </UniformGrid>
 
-            <!-- DataGrid para Tratamientos (Inicialmente oculto) -->
-            <!-- Contenedor para Tratamientos (Inicialmente oculto) -->
+            <!-- DataGrid para Tratamientos -->
             <Grid x:Name="TratamientosContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -179,6 +180,8 @@
                     <Image Source="/assets/icons/person-add.png"></Image>
                 </Button>
 
+                <!-- DataGrid para Usuarios -->
+
                 <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
@@ -198,6 +201,50 @@
                                             </Button>
 
                                             <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0"  Click="BtnEliminarUsuario_Click">
+                                                <Image Source="/assets/icons/circle-x.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+
+            <!-- Contenedor de pacientes -->
+
+            <Grid x:Name="PacientesContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button HorizontalAlignment="Right" Width="auto" Height="45" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnNuevoPaciente_Click">
+                    <Image Source="/assets/icons/person-add.png"></Image>
+                </Button>
+
+                <!-- DataGrid para Pacientes -->
+                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                    </Border.Effect>
+                    <DataGrid x:Name="PacientesDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="150"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="110"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="220"/>
+                            <DataGridTextColumn Header="Fecha Nacimiento" Binding="{Binding FechaNacimiento, StringFormat=d}" Width="150"/>
+                            <DataGridTextColumn Header="Facturacion" Binding="{Binding Facturada}" Width="105"/>
+                             <DataGridTemplateColumn Header="" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEditarPaciente_Click">
+                                                <Image Source="/assets/icons/edit.png"></Image>
+                                            </Button>
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarPaciente_Click">
                                                 <Image Source="/assets/icons/circle-x.png"></Image>
                                             </Button>
                                         </StackPanel>
