@@ -259,3 +259,5 @@ C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\View
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\TratamientoFormView.g.cs
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\PacienteFormView.baml
 C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\PacienteFormView.g.cs
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\CitaFormView.baml
+C:\Users\tagit\source\repos\DentalSys\Presentacion\obj\Debug\net8.0-windows\Views\CitaFormView.g.cs

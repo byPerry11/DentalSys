@@ -56,6 +56,44 @@ namespace DataAccess.Repositories
             return pacientes;
         }
 
+        public PacienteEntity? GetPacienteById(int id)
+        {
+            PacienteEntity? paciente = null;
+
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM paciente WHERE Id_Paciente = @Id";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    AddParameter(command, "@Id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            paciente = new PacienteEntity
+                            {
+                                Id_Paciente = reader.GetInt32(reader.GetOrdinal("Id_Paciente")),
+                                Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre")) ? null : reader.GetString(reader.GetOrdinal("Nombre")),
+                                Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? null : reader.GetString(reader.GetOrdinal("Telefono")),
+                                Contacto_Emergencia = reader.IsDBNull(reader.GetOrdinal("Contacto_Emergencia")) ? null : reader.GetString(reader.GetOrdinal("Contacto_Emergencia")),
+                                Numero_Emergencia = reader.IsDBNull(reader.GetOrdinal("Numero_Emergencia")) ? null : reader.GetString(reader.GetOrdinal("Numero_Emergencia")),
+                                Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
+                                Fecha_Nacimiento = reader.GetDateTime(reader.GetOrdinal("Fecha_Nacimiento")),
+                                Fecha_Registro = reader.GetDateTime(reader.GetOrdinal("Fecha_Registro")),
+                                Facturada = reader.IsDBNull(reader.GetOrdinal("Facturada")) ? null : reader.GetString(reader.GetOrdinal("Facturada")),
+                                Tasa_IVA = reader.GetDecimal(reader.GetOrdinal("Tasa_IVA"))
+                            };
+                        }
+                    }
+                }
+            }
+            return paciente;
+        }
+
         public void AddPaciente(PacienteEntity paciente)
         {
             using (var connection = _provider.CreateConnection())

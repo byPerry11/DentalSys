@@ -6,6 +6,62 @@
         xmlns:local="clr-namespace:Presentacion.Views"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style x:Key="ModernDataGrid" TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowHeight" Value="40"/>
+            <Setter Property="ColumnHeaderHeight" Value="45"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#F0F0F0"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#FAFAFA"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#333"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#95A5A6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#EEE"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F5F6FA"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="#2980B9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -24,9 +80,8 @@
                 <TextBlock Text="Usuario" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,5,0,10" HorizontalAlignment="Center"/>
                 <TextBlock Text="Odontología General" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
-                <Button Content="Editar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
-
-                <Button Content="Eliminar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Gestion Citas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="pendiente" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
                 <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Click="BtnCerrarSesion_Click" Background="Transparent" Foreground="White" BorderThickness="0"/>
             </StackPanel>
         </Border>
@@ -44,13 +99,51 @@
                     <Grid Margin="20,0">
                         <TextBlock Text="Recepción DentalSys" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#25AD98"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <Button Content="+ Nueva Cita" Background="#25AD98" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
-                            <Button Content="+ Registrar Paciente" Background="#25AD98" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0"/>
+                            <Button Content="+ Nueva Cita" Background="#25AD98" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0" Click="BtnNuevaCita_Click"/>
+                            <Button Content="+ Registrar Paciente" Background="#25AD98" Foreground="White" Padding="15,8" Margin="5" BorderThickness="0" Click="BtnRegistrarPaciente_Click"/>
                         </StackPanel>
                     </Grid>
                 </Border>
             </Border>
 
+            <!-- DataGrid de Citas Próximas -->
+            <Grid Grid.Row="1" Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Próximas Citas" FontSize="20" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,15"/>
+
+                <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                    </Border.Effect>
+                    <DataGrid x:Name="CitasDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Paciente" Binding="{Binding PacienteNombre}" Width="200"/>
+                            <DataGridTextColumn Header="Dentista" Binding="{Binding DentistaNombre}" Width="200"/>
+                            <DataGridTextColumn Header="Fecha y Hora" Binding="{Binding FechaHora, StringFormat='dd/MM/yyyy HH:mm'}" Width="200"/>
+                            <DataGridTextColumn Header="Estatus" Binding="{Binding Estatus}" Width="200"/>
+                            <DataGridTemplateColumn Header="" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Margin="1,0" Width="30" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEditarCita_Click">
+                                                <Image Source="/assets/icons/edit.png"/>
+                                            </Button>
+                                            <Button Margin="1,0" Width="30" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarCita_Click">
+                                                <Image Source="/assets/icons/circle-x.png"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
             
         </Grid>
     </Grid>

@@ -66,6 +66,42 @@ namespace DataAccess.Repositories
             return user;
         }
 
+        public UserEntity? GetUserById(int id)
+        {
+            UserEntity? user = null;
+
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "SELECT id_usuario, nombre_usuario, password_hash, rol FROM usuarios WHERE id_usuario = @id";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    var parameter = command.CreateParameter();
+                    parameter.ParameterName = "@id";
+                    parameter.Value = id;
+                    command.Parameters.Add(parameter);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            user = new UserEntity
+                            {
+                                Id_Usuario = reader.GetInt32(reader.GetOrdinal("id_usuario")),
+                                Nombre_Usuario = reader.GetString(reader.GetOrdinal("nombre_usuario")),
+                                Pasword_Hash = reader.GetString(reader.GetOrdinal("password_hash")),
+                                Rol = reader.GetString(reader.GetOrdinal("rol"))
+                            };
+                        }
+                    }
+                }
+            }
+            return user;
+        }
+
         public List<UserEntity> GetAllUsers()
         {
             var users = new List<UserEntity>();

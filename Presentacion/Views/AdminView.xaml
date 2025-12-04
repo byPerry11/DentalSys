@@ -140,11 +140,11 @@
                     <Image Source="/assets/icons/dental.png"></Image>
                 </Button>
 
-                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
+                <Border Grid.Row="2" Background="White" CornerRadius="20" Padding="0">
                     <Border.Effect>
-                        <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                        <DropShadowEffect BlurRadius="50" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
                     </Border.Effect>
-                    <DataGrid x:Name="TratamientosDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                    <DataGrid x:Name="TratamientosDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                             <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
