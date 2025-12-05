@@ -11,147 +11,52 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ApplicationLogic.Services;
-using ApplicationLogic.DTOs;
 
 namespace Presentacion.Views
 {
     public partial class RecepcionistView : UserControl
     {
-        private readonly CitaService _citaService;
-        private readonly PacienteService _pacienteService;
+        // Bandera interna para saber si el menu esta colapsado
+        private bool _menuColapsado = false;
 
         public RecepcionistView()
         {
             InitializeComponent();
-            _citaService = new CitaService();
-            _pacienteService = new PacienteService();
-            LoadCitas();
+
         }
 
-        private void LoadCitas()
+        private void BtnHamburger_Click(object sender, RoutedEventArgs e)
         {
-            try
+            // Si la columna esta ancha, la colapsamos; si esta chica, la expandimos
+            if (SideMenuColumn.Width.Value > 100)
             {
-                var citas = _citaService.GetUpcomingCitas();
-                CitasDataGrid.ItemsSource = citas;
+                // Colapsar menu
+                SideMenuColumn.Width = new GridLength(80);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error al cargar citas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void BtnRegistrarPaciente_Click(object sender, RoutedEventArgs e)
-        {
-            var form = new PacienteFormView();
-            var window = new Window
-            {
-                Title = "Nuevo Paciente",
-                Content = form,
-                SizeToContent = SizeToContent.WidthAndHeight,
-                ResizeMode = ResizeMode.NoResize,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen
-            };
-
-            form.OnSave += (paciente) =>
-            {
-                try
-                {
-                    _pacienteService.AddPaciente(paciente);
-                    window.Close();
-                    MessageBox.Show("Paciente registrado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al guardar paciente: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            };
-
-            form.OnCancel += () => window.Close();
-
-            window.ShowDialog();
-        }
-
-        private void BtnNuevaCita_Click(object sender, RoutedEventArgs e)
-        {
-            OpenCitaForm();
-        }
-
-        private void BtnEditarCita_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button btn && btn.DataContext is CitaDTO cita)
-            {
-                OpenCitaForm(cita);
+                // Expandir menu
+                SideMenuColumn.Width = new GridLength(220);
             }
         }
 
-        private void OpenCitaForm(CitaDTO cita = null)
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var form = new CitaFormView(cita);
-            var title = cita == null ? "Nueva Cita" : "Editar Cita";
-            var window = new Window
-            {
-                Title = title,
-                Content = form,
-                SizeToContent = SizeToContent.WidthAndHeight,
-                ResizeMode = ResizeMode.NoResize,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen
-            };
 
-            form.OnSave += (citaToSave) =>
-            {
-                try
-                {
-                    if (citaToSave.Id == 0)
-                    {
-                        _citaService.AddCita(citaToSave);
-                        MessageBox.Show("Cita agendada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        _citaService.UpdateCita(citaToSave);
-                        MessageBox.Show("Cita actualizada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    LoadCitas();
-                    window.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al guardar cita: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            };
-
-            form.OnCancel += () => window.Close();
-
-            window.ShowDialog();
         }
 
-        private void BtnEliminarCita_Click(object sender, RoutedEventArgs e)
+        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.DataContext is CitaDTO cita)
-            {
-                var result = MessageBox.Show($"¿Está seguro de eliminar la cita del paciente {cita.PacienteNombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes)
-                {
-                    try
-                    {
-                        _citaService.DeleteCita(cita.Id);
-                        LoadCitas();
-                        MessageBox.Show("Cita eliminada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al eliminar cita: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-            }
+
         }
 
-        private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
+    private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
+            //Creamos una instancia de la ventana de Login para cerrar sesión y volver a ella
             LoginView Login = new LoginView();
             Login.Show();
+            //Cerramos la ventana actual de Recepcionista
             Window.GetWindow(this)?.Close();
         }
     }
