@@ -33,6 +33,22 @@ namespace Presentacion.Views
             LoadPacientes();
         }
 
+        private void BtnHamburger_Click(object sender, RoutedEventArgs e)
+        {
+            // Si la columna esta ancha, la colapsamos; si esta chica, la expandimos
+            if (SideMenuColumn.Width.Value > 100)
+            {
+                // Colapsar menu
+                SideMenuColumn.Width = new GridLength(80);
+            }
+            else
+            {
+                // Expandir menu
+                SideMenuColumn.Width = new GridLength(220);
+            }
+        }
+
+
         private void BtnCerrarSesionClick(object sender, RoutedEventArgs e)
         {
             LoginView Login = new LoginView();
