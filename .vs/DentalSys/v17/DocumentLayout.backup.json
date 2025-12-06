@@ -66,8 +66,8 @@
               "Title": "CitaFormView.xaml",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\CitaFormView.xaml",
               "RelativeDocumentMoniker": "Presentacion\\Views\\CitaFormView.xaml",
-              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\CitaFormView.xaml*",
-              "RelativeToolTip": "Presentacion\\Views\\CitaFormView.xaml*",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\CitaFormView.xaml",
+              "RelativeToolTip": "Presentacion\\Views\\CitaFormView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-12-04T05:44:18.767Z",
               "EditorCaption": ""
@@ -78,11 +78,10 @@
               "Title": "RecepcionistView.xaml",
               "DocumentMoniker": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\RecepcionistView.xaml",
               "RelativeDocumentMoniker": "Presentacion\\Views\\RecepcionistView.xaml",
-              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\RecepcionistView.xaml*",
-              "RelativeToolTip": "Presentacion\\Views\\RecepcionistView.xaml*",
+              "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\RecepcionistView.xaml",
+              "RelativeToolTip": "Presentacion\\Views\\RecepcionistView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-04T05:08:34.935Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T05:08:34.935Z"
             },
             {
               "$type": "Document",
@@ -150,8 +149,7 @@
               "ToolTip": "C:\\Users\\tagit\\source\\repos\\DentalSys\\Presentacion\\Views\\UserFormView.xaml",
               "RelativeToolTip": "Presentacion\\Views\\UserFormView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-03T03:03:10.897Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-03T03:03:10.897Z"
             },
             {
               "$type": "Document",
