@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ApplicationLogic.Services;
 using ApplicationLogic.DTOs;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using Microsoft.Win32;
+using System.Printing;
 
 namespace Presentacion.Views
 {
@@ -23,6 +27,7 @@ namespace Presentacion.Views
         private readonly PacienteService _pacienteService;
         private readonly CitaService _citaService;
         private readonly ConsultaService _consultaService;
+        private readonly FacturaService _facturaService;
         private List<CitaDTO> _allCitas;
         private List<ConsultaDTO> _allConsultas;
 
@@ -34,6 +39,7 @@ namespace Presentacion.Views
             _pacienteService = new PacienteService();
             _citaService = new CitaService();
             _consultaService = new ConsultaService();
+            _facturaService = new FacturaService();
 
             LoadUsuarios();
             LoadTratamientos();
@@ -52,6 +58,136 @@ namespace Presentacion.Views
 
             // Default to Citas
             BtnToggleCitas_Click(null, null);
+        }
+
+        private void BtnFacturaClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HeaderTitle.Text = "Gestion de Facturacion";
+
+                DashboardGrid.Visibility = Visibility.Collapsed;
+                TratamientosContainer.Visibility = Visibility.Collapsed;
+                PacientesContainer.Visibility = Visibility.Collapsed;
+                UsuariosContainer.Visibility = Visibility.Collapsed;
+                CitasConsultasContainer.Visibility = Visibility.Visible;
+
+                BtnToggleConsultas_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir facturacion: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnGenerarFactura_Click(object sender, RoutedEventArgs e)
+        { 
+            try
+            {
+                var button = sender as Button;
+                var consulta = button?.DataContext as ConsultaDTO;
+
+                if (consulta == null)
+                {
+                    MessageBox.Show("No se pudo obtener la consulta selcciona.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                var factura = _facturaService.BuildFacturaFromConsulta(consulta);
+
+                GenerateFacturaPdf(factura);
+
+                MessageBox.Show("Factura generada correctamente.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar factura: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void GenerateFacturaPdf(FacturaDTO factura)
+        { 
+            if (factura == null)
+                throw new ArgumentNullException(nameof(factura));
+
+            // Crear documento PDF
+            var document = new PdfDocument();
+            document.Info.Title = $"Factura {factura.Folio}";
+
+            var page = document.AddPage();
+            var gfx = XGraphics.FromPdfPage(page);
+
+            var fontTitle = new XFont("Arial", 18, XFontStyle.Bold);
+            var fontLabel = new XFont("Arial", 10, XFontStyle.Regular);
+            var fontValue = new XFont("Arial", 10, XFontStyle.Bold);
+
+            double marginLeft = 40;
+            double y = 40;
+
+            // Titulo
+            gfx.DrawString("Consultorio Dental - Factura",
+                fontTitle, XBrushes.Black, new XRect(marginLeft, y, page.Width - 2 * marginLeft, 30), XStringFormats.TopLeft);
+            y += 40;
+
+            // Datos generales
+            gfx.DrawString("Folio:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.Folio, fontValue, XBrushes.Black, marginLeft + 80, y);
+            y += 20;
+
+            
+            gfx.DrawString("Fecha:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.FechaConsulta.ToString("dd/MM/yyyy HH:mm"),
+                fontValue, XBrushes.Black, marginLeft + 80, y);
+            y += 30;
+
+            // Paciente
+            gfx.DrawString("Paciente:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.PacienteNombre, fontValue, XBrushes.Black, marginLeft + 80, y);
+            y += 20;
+
+            if (!string.IsNullOrWhiteSpace(factura.PacienteTelefono))
+            {
+                gfx.DrawString("Telefono:", fontLabel, XBrushes.Black, marginLeft, y);
+                gfx.DrawString(factura.PacienteTelefono, fontValue, XBrushes.Black, marginLeft + 80, y);
+                y += 20;
+            }
+
+            if (!string.IsNullOrWhiteSpace(factura.PacienteEmail))
+            {
+                gfx.DrawString("Email:", fontLabel, XBrushes.Black, marginLeft, y);
+                gfx.DrawString(factura.PacienteEmail, fontValue, XBrushes.Black, marginLeft + 80, y);
+                y += 30;
+            }
+
+            // Tratamiento
+            gfx.DrawString("Tratamiento:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.TratamientoNombre, fontValue, XBrushes.Black, marginLeft + 90, y);
+            y += 30;
+
+            // Totales
+            double xTotales = page.Width - 220;
+
+            gfx.DrawString("Subtotal:", fontLabel, XBrushes.Black, xTotales, y);
+            gfx.DrawString(factura.Subtotal.ToString("C"), fontValue, XBrushes.Black, xTotales + 80, y);
+            y += 20;
+
+            gfx.DrawString($"IVA ({factura.TasaIVA:P0}):", fontLabel, XBrushes.Black, xTotales, y);
+            gfx.DrawString(factura.IVA.ToString("C"), fontValue, XBrushes.Black, xTotales + 80, y);
+            y += 20;
+
+            gfx.DrawString("Total:", fontTitle, XBrushes.Black, xTotales, y);
+            gfx.DrawString(factura.Total.ToString("C"), fontTitle, XBrushes.Black, xTotales + 80, y);
+
+            // Guardar archivo
+            var dialog = new SaveFileDialog
+            {
+                FileName = $"Factura_{factura.Folio}.pdf",
+                Filter = "Archivo PDF (.pdf)|.pdf"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                document.Save(dialog.FileName);
+            }
         }
 
         private void BtnToggleCitas_Click(object sender, RoutedEventArgs e)

@@ -89,7 +89,7 @@
                     <Button Content="Gestion de Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionPacientesClick"/>
                     <Button Content="Gestion Citas/Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionCitasConsultasClick"/>
                     <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnTratamientosClick"/>
-                    <Button Content="Factura" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0"/>
+                    <Button Content="Factura" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnFacturaClick"/>
                     <Button Content="Cerrar Sesión"  Background="Transparent" Foreground="White" Height="35" HorizontalAlignment="Center" Click="BtnCerrarSesionClick" Margin="0,5" Padding="15, 0" BorderThickness="0"/>
                 </StackPanel>
             </ScrollViewer>
@@ -395,6 +395,15 @@
                              <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat='dd/MM/yyyy HH:mm'}" Width="140"/>
                             <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}" Width="100"/>
                             <DataGridTextColumn Header="Notas" Binding="{Binding Notas}" Width="200"/>
+                            <DataGridTemplateColumn Header="Factura" Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="BtnGenerarFactura_Click" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Generar factura PDF">
+                                            <Image Source="/assets/icons/pdf.png" Width="20" Height="20"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
