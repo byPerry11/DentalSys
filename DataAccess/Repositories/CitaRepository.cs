@@ -122,5 +122,69 @@ namespace DataAccess.Repositories
             parameter.Value = value ?? DBNull.Value;
             command.Parameters.Add(parameter);
         }
+
+        public CitaEntity GetCitaById(int id)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM cita WHERE Id_cita = @Id";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    AddParameter(command, "@Id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new CitaEntity
+                            {
+                                Id_cita = reader.GetInt32(reader.GetOrdinal("Id_cita")),
+                                Id_Paciente = reader.GetInt32(reader.GetOrdinal("Id_Paciente")),
+                                Id_Dentista = reader.GetInt32(reader.GetOrdinal("Id_Dentista")),
+                                Fecha_hora = reader.GetDateTime(reader.GetOrdinal("Fecha_hora")),
+                                Estatus_Cita = reader.IsDBNull(reader.GetOrdinal("Estatus_Cita")) ? null : reader.GetString(reader.GetOrdinal("Estatus_Cita"))
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<CitaEntity> GetAllCitas()
+        {
+            var citas = new List<CitaEntity>();
+
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM cita ORDER BY Fecha_hora DESC";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var cita = new CitaEntity
+                            {
+                                Id_cita = reader.GetInt32(reader.GetOrdinal("Id_cita")),
+                                Id_Paciente = reader.GetInt32(reader.GetOrdinal("Id_Paciente")),
+                                Id_Dentista = reader.GetInt32(reader.GetOrdinal("Id_Dentista")),
+                                Fecha_hora = reader.GetDateTime(reader.GetOrdinal("Fecha_hora")),
+                                Estatus_Cita = reader.IsDBNull(reader.GetOrdinal("Estatus_Cita")) ? null : reader.GetString(reader.GetOrdinal("Estatus_Cita"))
+                            };
+                            citas.Add(cita);
+                        }
+                    }
+                }
+            }
+            return citas;
+        }
     }
 }

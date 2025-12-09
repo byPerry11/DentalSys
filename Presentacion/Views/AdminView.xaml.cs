@@ -21,6 +21,10 @@ namespace Presentacion.Views
         private readonly UserService _userService;
         private readonly TratamientoService _tratamientoService;
         private readonly PacienteService _pacienteService;
+        private readonly CitaService _citaService;
+        private readonly ConsultaService _consultaService;
+        private List<CitaDTO> _allCitas;
+        private List<ConsultaDTO> _allConsultas;
 
         public AdminView()
         {
@@ -28,10 +32,122 @@ namespace Presentacion.Views
             _userService = new UserService();
             _tratamientoService = new TratamientoService();
             _pacienteService = new PacienteService();
+            _citaService = new CitaService();
+            _consultaService = new ConsultaService();
+
             LoadUsuarios();
             LoadTratamientos();
             LoadPacientes();
+            // LoadCitas and LoadConsultas will be called when navigating to the view
         }
+
+        private void BtnGestionCitasConsultasClick(object sender, RoutedEventArgs e)
+        {
+            HeaderTitle.Text = "Gestión de Citas y Consultas";
+            DashboardGrid.Visibility = Visibility.Collapsed;
+            UsuariosContainer.Visibility = Visibility.Collapsed;
+            PacientesContainer.Visibility = Visibility.Collapsed;
+            TratamientosContainer.Visibility = Visibility.Collapsed;
+            CitasConsultasContainer.Visibility = Visibility.Visible;
+
+            // Default to Citas
+            BtnToggleCitas_Click(null, null);
+        }
+
+        private void BtnToggleCitas_Click(object sender, RoutedEventArgs e)
+        {
+            // Highlight Citas button
+            BtnToggleCitas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2980B9"));
+            BtnToggleCitas.BorderThickness = new Thickness(0, 0, 0, 2);
+
+            BtnToggleConsultas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7F8C8D"));
+            BtnToggleConsultas.BorderThickness = new Thickness(0);
+
+            BorderCitas.Visibility = Visibility.Visible;
+            BorderConsultas.Visibility = Visibility.Collapsed;
+
+            LoadCitas();
+        }
+
+        private void BtnToggleConsultas_Click(object sender, RoutedEventArgs e)
+        {
+            // Highlight Consultas button
+            BtnToggleConsultas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2980B9"));
+            BtnToggleConsultas.BorderThickness = new Thickness(0, 0, 0, 2);
+
+            BtnToggleCitas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7F8C8D"));
+            BtnToggleCitas.BorderThickness = new Thickness(0);
+
+            BorderCitas.Visibility = Visibility.Collapsed;
+            BorderConsultas.Visibility = Visibility.Visible;
+
+            LoadConsultas();
+        }
+
+        private void LoadCitas()
+        {
+            try
+            {
+                _allCitas = _citaService.GetAllCitas();
+                FilterCitas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar citas: {ex.Message}");
+            }
+        }
+
+        private void LoadConsultas()
+        {
+            try
+            {
+                _allConsultas = _consultaService.GetAllConsultas();
+                FilterConsultas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar consultas: {ex.Message}");
+            }
+        }
+
+        private void TxtBuscarCitaConsulta_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (BorderCitas.Visibility == Visibility.Visible)
+            {
+                FilterCitas();
+            }
+            else
+            {
+                FilterConsultas();
+            }
+        }
+
+        private void FilterCitas()
+        {
+            if (_allCitas == null) return;
+
+            var filter = TxtBuscarCitaConsulta.Text.ToLower();
+            var filtered = _allCitas.Where(c =>
+                (c.PacienteNombre != null && c.PacienteNombre.ToLower().Contains(filter)) ||
+                (c.DentistaNombre != null && c.DentistaNombre.ToLower().Contains(filter))
+            ).ToList();
+
+            CitasDataGrid.ItemsSource = filtered;
+        }
+
+        private void FilterConsultas()
+        {
+            if (_allConsultas == null) return;
+
+            var filter = TxtBuscarCitaConsulta.Text.ToLower();
+            var filtered = _allConsultas.Where(c =>
+                (c.PacienteNombre != null && c.PacienteNombre.ToLower().Contains(filter)) ||
+                (c.DentistaNombre != null && c.DentistaNombre.ToLower().Contains(filter))
+            ).ToList();
+
+            ConsultasDataGrid.ItemsSource = filtered;
+        }
+
 
         private void BtnHamburger_Click(object sender, RoutedEventArgs e)
         {
@@ -64,6 +180,7 @@ namespace Presentacion.Views
                 DashboardGrid.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Collapsed;
                 PacientesContainer.Visibility = Visibility.Collapsed;
+                CitasConsultasContainer.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Visible;
                 LoadTratamientos();
             }
@@ -87,6 +204,7 @@ namespace Presentacion.Views
                 DashboardGrid.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Collapsed;
                 PacientesContainer.Visibility = Visibility.Collapsed;
+                CitasConsultasContainer.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Visible;
                 LoadUsuarios();
             }
@@ -154,6 +272,15 @@ namespace Presentacion.Views
             }
         }
 
+        private void BtnAgregarTratamiento_Click(object sender, RoutedEventArgs e)
+        {
+            var form = new TratamientoFormView();
+            if (form.ShowDialog() == true)
+            {
+                LoadTratamientos();
+            }
+        }
+
         private void BtnEditarTratamiento_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -215,6 +342,7 @@ namespace Presentacion.Views
             DashboardGrid.Visibility = Visibility.Collapsed;
             TratamientosContainer.Visibility = Visibility.Collapsed;
             UsuariosContainer.Visibility = Visibility.Collapsed;
+            CitasConsultasContainer.Visibility = Visibility.Collapsed;
             PacientesContainer.Visibility = Visibility.Visible;
             HeaderTitle.Text = "Gestión de Pacientes";
             LoadPacientes();
@@ -302,6 +430,16 @@ namespace Presentacion.Views
                         MessageBox.Show($"Error al eliminar paciente: {ex.Message}");
                     }
                 }
+            }
+        }
+
+
+        private void ConsultasDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ConsultasDataGrid.SelectedItem is ConsultaDTO consulta)
+            {
+                var view = new ConsultaInfoView(consulta);
+                view.ShowDialog();
             }
         }
     }

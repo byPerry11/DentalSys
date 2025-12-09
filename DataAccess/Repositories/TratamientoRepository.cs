@@ -138,5 +138,38 @@ namespace DataAccess.Repositories
                 }
             }
         }
+
+        public TratamientoEntity GetTratamientoById(int id)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "SELECT Id_Tratamiento, Nombre, Precio, Descripcion FROM tratamiento WHERE Id_Tratamiento = @Id";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = id;
+                    command.Parameters.Add(paramId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new TratamientoEntity
+                            {
+                                Id_Tratamiento = reader.GetInt32(reader.GetOrdinal("Id_Tratamiento")),
+                                Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre")) ? null : reader.GetString(reader.GetOrdinal("Nombre")),
+                                Precio = reader.GetDecimal(reader.GetOrdinal("Precio")),
+                                Descripcion = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? null : reader.GetString(reader.GetOrdinal("Descripcion"))
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

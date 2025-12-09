@@ -24,6 +24,17 @@ namespace ApplicationLogic.Services
         public List<CitaDTO> GetUpcomingCitas()
         {
             var entities = _citaRepository.GetUpcomingCitas();
+            return MapToDTOs(entities);
+        }
+
+        public List<CitaDTO> GetAllCitas()
+        {
+            var entities = _citaRepository.GetAllCitas();
+            return MapToDTOs(entities);
+        }
+
+        private List<CitaDTO> MapToDTOs(List<DataAccess.Entities.CitaEntity> entities)
+        {
             var dtos = new List<CitaDTO>();
 
             foreach (var entity in entities)
@@ -42,7 +53,6 @@ namespace ApplicationLogic.Services
                     Estatus = entity.Estatus_Cita
                 });
             }
-
             return dtos;
         }
 
