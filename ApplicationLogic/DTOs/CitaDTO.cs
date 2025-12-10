@@ -10,9 +10,9 @@ namespace ApplicationLogic.DTOs
     {
         public int Id { get; set; }
         public int PacienteId { get; set; }
-        public string PacienteNombre { get; set; }
+        public string PacienteNombre { get; set; } // For display purposes
         public int DentistaId { get; set; }
-        public string DentistaNombre { get; set; }
+        public string DentistaNombre { get; set; } // For display purposes
         public DateTime FechaHora { get; set; }
         public string Estatus { get; set; }
     }

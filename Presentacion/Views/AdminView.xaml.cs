@@ -44,44 +44,45 @@ namespace Presentacion.Views
             LoadUsuarios();
             LoadTratamientos();
             LoadPacientes();
-            // Cargar citas y consultas al entrar a la vista
+            // LoadCitas and LoadConsultas will be called when navigating to the view
         }
 
-        private void BtnGestionCitasConsultasClick(object sender, RoutedEventArgs e)
+        private void BtnGestionCitasClick(object sender, RoutedEventArgs e)
         {
-            HeaderTitle.Text = "Gestión de Citas y Consultas";
+            HeaderTitle.Text = "Gestión de Citas";
             DashboardGrid.Visibility = Visibility.Collapsed;
             UsuariosContainer.Visibility = Visibility.Collapsed;
             PacientesContainer.Visibility = Visibility.Collapsed;
             TratamientosContainer.Visibility = Visibility.Collapsed;
-            CitasConsultasContainer.Visibility = Visibility.Visible;
+            ConsultasContainer.Visibility = Visibility.Collapsed;
+            CitasContainer.Visibility = Visibility.Visible;
 
-            // citas por defecto
-            BtnToggleCitas_Click(null, null);
+            LoadCitas();
         }
 
-        private void BtnFacturaClick(object sender, RoutedEventArgs e)
+        private void BtnGestionConsultasClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                HeaderTitle.Text = "Gestion de Facturacion";
+                HeaderTitle.Text = "Gestión de Consultas";
 
                 DashboardGrid.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Collapsed;
                 PacientesContainer.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Collapsed;
-                CitasConsultasContainer.Visibility = Visibility.Visible;
+                CitasContainer.Visibility = Visibility.Collapsed;
+                ConsultasContainer.Visibility = Visibility.Visible;
 
-                BtnToggleConsultas_Click(null, null);
+                LoadConsultas();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al abrir facturacion: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error al cargar consultas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void BtnGenerarFactura_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             try
             {
                 var button = sender as Button;
@@ -105,7 +106,7 @@ namespace Presentacion.Views
         }
 
         private void GenerateFacturaPdf(FacturaDTO factura)
-        { 
+        {
             if (factura == null)
                 throw new ArgumentNullException(nameof(factura));
 
@@ -133,7 +134,7 @@ namespace Presentacion.Views
             gfx.DrawString(factura.Folio, fontValue, XBrushes.Black, marginLeft + 80, y);
             y += 20;
 
-            
+
             gfx.DrawString("Fecha:", fontLabel, XBrushes.Black, marginLeft, y);
             gfx.DrawString(factura.FechaConsulta.ToString("dd/MM/yyyy HH:mm"),
                 fontValue, XBrushes.Black, marginLeft + 80, y);
@@ -190,34 +191,7 @@ namespace Presentacion.Views
             }
         }
 
-        private void BtnToggleCitas_Click(object sender, RoutedEventArgs e)
-        {
-            
-            BtnToggleCitas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2980B9"));
-            BtnToggleCitas.BorderThickness = new Thickness(0, 0, 0, 2);
 
-            BtnToggleConsultas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7F8C8D"));
-            BtnToggleConsultas.BorderThickness = new Thickness(0);
-
-            BorderCitas.Visibility = Visibility.Visible;
-            BorderConsultas.Visibility = Visibility.Collapsed;
-
-            LoadCitas();
-        }
-
-        private void BtnToggleConsultas_Click(object sender, RoutedEventArgs e)
-        {
-            BtnToggleConsultas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2980B9"));
-            BtnToggleConsultas.BorderThickness = new Thickness(0, 0, 0, 2);
-
-            BtnToggleCitas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7F8C8D"));
-            BtnToggleCitas.BorderThickness = new Thickness(0);
-
-            BorderCitas.Visibility = Visibility.Collapsed;
-            BorderConsultas.Visibility = Visibility.Visible;
-
-            LoadConsultas();
-        }
 
         private void LoadCitas()
         {
@@ -245,23 +219,21 @@ namespace Presentacion.Views
             }
         }
 
-        private void TxtBuscarCitaConsulta_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtBuscarCitas_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (BorderCitas.Visibility == Visibility.Visible)
-            {
-                FilterCitas();
-            }
-            else
-            {
-                FilterConsultas();
-            }
+            FilterCitas();
+        }
+
+        private void TxtBuscarConsultas_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FilterConsultas();
         }
 
         private void FilterCitas()
         {
             if (_allCitas == null) return;
 
-            var filter = TxtBuscarCitaConsulta.Text.ToLower();
+            var filter = TxtBuscarCitas.Text.ToLower();
             var filtered = _allCitas.Where(c =>
                 (c.PacienteNombre != null && c.PacienteNombre.ToLower().Contains(filter)) ||
                 (c.DentistaNombre != null && c.DentistaNombre.ToLower().Contains(filter))
@@ -274,7 +246,7 @@ namespace Presentacion.Views
         {
             if (_allConsultas == null) return;
 
-            var filter = TxtBuscarCitaConsulta.Text.ToLower();
+            var filter = TxtBuscarConsultas.Text.ToLower();
             var filtered = _allConsultas.Where(c =>
                 (c.PacienteNombre != null && c.PacienteNombre.ToLower().Contains(filter)) ||
                 (c.DentistaNombre != null && c.DentistaNombre.ToLower().Contains(filter))
@@ -315,7 +287,8 @@ namespace Presentacion.Views
                 DashboardGrid.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Collapsed;
                 PacientesContainer.Visibility = Visibility.Collapsed;
-                CitasConsultasContainer.Visibility = Visibility.Collapsed;
+                CitasContainer.Visibility = Visibility.Collapsed;
+                ConsultasContainer.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Visible;
                 LoadTratamientos();
             }
@@ -339,7 +312,8 @@ namespace Presentacion.Views
                 DashboardGrid.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Collapsed;
                 PacientesContainer.Visibility = Visibility.Collapsed;
-                CitasConsultasContainer.Visibility = Visibility.Collapsed;
+                CitasContainer.Visibility = Visibility.Collapsed;
+                ConsultasContainer.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Visible;
                 LoadUsuarios();
             }
@@ -477,7 +451,8 @@ namespace Presentacion.Views
             DashboardGrid.Visibility = Visibility.Collapsed;
             TratamientosContainer.Visibility = Visibility.Collapsed;
             UsuariosContainer.Visibility = Visibility.Collapsed;
-            CitasConsultasContainer.Visibility = Visibility.Collapsed;
+            CitasContainer.Visibility = Visibility.Collapsed;
+            ConsultasContainer.Visibility = Visibility.Collapsed;
             PacientesContainer.Visibility = Visibility.Visible;
             HeaderTitle.Text = "Gestión de Pacientes";
             LoadPacientes();

@@ -15,10 +15,14 @@ using System.Windows.Shapes;
 
 namespace Presentacion.Views
 {
-   
+    /// <summary>
+    /// Vista de inicio de sesión
+    /// </summary>
     public partial class LoginView : Window
     {
-        
+        /// <summary>
+        /// Constructor de LoginView
+        /// </summary>
         public LoginView()
         {
             InitializeComponent();
@@ -26,7 +30,9 @@ namespace Presentacion.Views
             DataContext = new LoginViewModel();
         }
 
-        
+        /// <summary>
+        /// Maneja el evento de clic del botón Salir
+        /// </summary>
         private void CloseApp_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

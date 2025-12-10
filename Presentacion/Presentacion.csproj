@@ -15,6 +15,7 @@
     <None Remove="assets\icons\dashboard.png" />
     <None Remove="assets\icons\dental.png" />
     <None Remove="assets\icons\edit.png" />
+    <None Remove="assets\icons\newspaper.png" />
     <None Remove="assets\icons\person-add.png" />
     <None Remove="assets\icons\person.png" />
   </ItemGroup>
@@ -37,6 +38,10 @@
     <Resource Include="assets\icons\edit.png" />
     <Resource Include="assets\icons\person-add.png" />
     <Resource Include="assets\icons\person.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\icons\newspaper.png" />
   </ItemGroup>
 
 </Project>

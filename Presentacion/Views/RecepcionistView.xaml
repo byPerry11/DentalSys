@@ -27,9 +27,9 @@
                 <TextBlock Text="Usuario" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,5,0,10" HorizontalAlignment="Center"/>
                 <TextBlock Text="Odontología General" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
-                <Button Content="Editar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
-
-                <Button Content="Eliminar cita" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Calendario" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Gestion Citas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Gestion Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
                 <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Click="BtnCerrarSesion_Click" Background="Transparent" Foreground="White" BorderThickness="0"/>
             </StackPanel>
         </Border>

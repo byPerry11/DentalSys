@@ -45,7 +45,7 @@ namespace ApplicationLogic.Services
                 var tratamiento = _tratamientoRepository.GetTratamientoById(entity.Id_Tratamiento);
                 dto.TratamientoNombre = tratamiento?.Nombre ?? "Desconocido";
 
-                // Get para informacion de cita, paciente y dentista
+                // Get Cita info to get Patient and Dentist
                 var cita = _citaRepository.GetCitaById(entity.Id_Cita);
                 if (cita != null)
                 {
