@@ -13,7 +13,7 @@ namespace ApplicationLogic.Services
         private readonly TratamientoRepository _tratamientoRepository;
         private readonly CitaRepository _citaRepository;
         private readonly PacienteRepository _pacienteRepository;
-        private readonly UserRepository _userRepository;
+        private readonly DentistaRepository _dentistaRepository;
 
         public ConsultaService()
         {
@@ -22,7 +22,7 @@ namespace ApplicationLogic.Services
             _tratamientoRepository = new TratamientoRepository(provider);
             _citaRepository = new CitaRepository(provider);
             _pacienteRepository = new PacienteRepository(provider);
-            _userRepository = new UserRepository(provider);
+            _dentistaRepository = new DentistaRepository(provider);
         }
 
         public List<ConsultaDTO> GetAllConsultas()
@@ -54,8 +54,8 @@ namespace ApplicationLogic.Services
                     var paciente = _pacienteRepository.GetPacienteById(cita.Id_Paciente);
                     dto.PacienteNombre = paciente?.Nombre ?? "Desconocido";
 
-                    var dentista = _userRepository.GetUserById(cita.Id_Dentista);
-                    dto.DentistaNombre = dentista?.Nombre_Usuario ?? "Desconocido";
+                    var dentista = _dentistaRepository.GetDentistaById(cita.Id_Dentista);
+                    dto.DentistaNombre = dentista?.Nombre ?? "Desconocido";
                 }
                 else
                 {

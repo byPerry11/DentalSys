@@ -11,14 +11,14 @@ namespace ApplicationLogic.Services
     {
         private readonly CitaRepository _citaRepository;
         private readonly PacienteRepository _pacienteRepository;
-        private readonly UserRepository _userRepository;
+        private readonly DentistaRepository _dentistaRepository;
 
         public CitaService()
         {
             var provider = ConnectionFactory.Create();
             _citaRepository = new CitaRepository(provider);
             _pacienteRepository = new PacienteRepository(provider);
-            _userRepository = new UserRepository(provider);
+            _dentistaRepository = new DentistaRepository(provider);
         }
 
         public List<CitaDTO> GetUpcomingCitas()
@@ -40,15 +40,15 @@ namespace ApplicationLogic.Services
             foreach (var entity in entities)
             {
                 var paciente = _pacienteRepository.GetPacienteById(entity.Id_Paciente);
-                var dentista = _userRepository.GetUserById(entity.Id_Dentista);
+                var dentista = _dentistaRepository.GetDentistaById(entity.Id_Dentista);
 
                 dtos.Add(new CitaDTO
                 {
                     Id = entity.Id_cita,
                     PacienteId = entity.Id_Paciente,
-                    PacienteNombre = paciente?.Nombre ?? "Desconocido",
+                    PacienteNombre = paciente.Nombre ?? string.Empty,
                     DentistaId = entity.Id_Dentista,
-                    DentistaNombre = dentista?.Nombre_Usuario ?? "Desconocido",
+                    DentistaNombre = dentista.Nombre ?? string.Empty,
                     FechaHora = entity.Fecha_hora,
                     Estatus = entity.Estatus_Cita
                 });

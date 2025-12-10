@@ -28,6 +28,7 @@ namespace Presentacion.Views
         private readonly CitaService _citaService;
         private readonly ConsultaService _consultaService;
         private readonly FacturaService _facturaService;
+        private readonly DentistaService _dentistaService;
         private List<CitaDTO> _allCitas;
         private List<ConsultaDTO> _allConsultas;
 
@@ -40,6 +41,7 @@ namespace Presentacion.Views
             _citaService = new CitaService();
             _consultaService = new ConsultaService();
             _facturaService = new FacturaService();
+            _dentistaService = new DentistaService();
 
             LoadUsuarios();
             LoadTratamientos();
@@ -55,6 +57,7 @@ namespace Presentacion.Views
             PacientesContainer.Visibility = Visibility.Collapsed;
             TratamientosContainer.Visibility = Visibility.Collapsed;
             ConsultasContainer.Visibility = Visibility.Collapsed;
+            DentistasContainer.Visibility = Visibility.Collapsed;
             CitasContainer.Visibility = Visibility.Visible;
 
             LoadCitas();
@@ -72,6 +75,7 @@ namespace Presentacion.Views
                 UsuariosContainer.Visibility = Visibility.Collapsed;
                 CitasContainer.Visibility = Visibility.Collapsed;
                 ConsultasContainer.Visibility = Visibility.Visible;
+                DentistasContainer.Visibility = Visibility.Collapsed;
 
                 LoadConsultas();
             }
@@ -289,6 +293,7 @@ namespace Presentacion.Views
                 PacientesContainer.Visibility = Visibility.Collapsed;
                 CitasContainer.Visibility = Visibility.Collapsed;
                 ConsultasContainer.Visibility = Visibility.Collapsed;
+                DentistasContainer.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Visible;
                 LoadTratamientos();
             }
@@ -315,6 +320,7 @@ namespace Presentacion.Views
                 CitasContainer.Visibility = Visibility.Collapsed;
                 ConsultasContainer.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Visible;
+                DentistasContainer.Visibility = Visibility.Collapsed;
                 LoadUsuarios();
             }
             catch (Exception ex)
@@ -454,6 +460,7 @@ namespace Presentacion.Views
             CitasContainer.Visibility = Visibility.Collapsed;
             ConsultasContainer.Visibility = Visibility.Collapsed;
             PacientesContainer.Visibility = Visibility.Visible;
+            DentistasContainer.Visibility = Visibility.Collapsed;
             HeaderTitle.Text = "Gestión de Pacientes";
             LoadPacientes();
         }
@@ -543,6 +550,129 @@ namespace Presentacion.Views
             }
         }
 
+        private void LoadDentistas()
+        {
+            try
+            {
+                var dentistas = _dentistaService.GetAllDentistas();
+                DentistasDataGrid.ItemsSource = dentistas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar dentistas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnGestionDentistasClick(object sender, RoutedEventArgs e)
+        {
+            HeaderTitle.Text = "Gestion de Dentistas";
+
+            DashboardGrid.Visibility = Visibility.Collapsed;
+            UsuariosContainer.Visibility = Visibility.Collapsed;
+            PacientesContainer.Visibility = Visibility.Collapsed;
+            TratamientosContainer.Visibility = Visibility.Collapsed;
+            CitasContainer.Visibility = Visibility.Collapsed;
+            ConsultasContainer.Visibility = Visibility.Collapsed;
+
+            DentistasContainer.Visibility = Visibility.Visible;
+
+            LoadDentistas();
+        }
+
+        private void BtnNuevoDentista_Click(object sender, RoutedEventArgs e)
+        {
+            var form = new DentistaFormView();
+
+            var window = new Window
+            {
+                Title = "Nuevo Dentista",
+                Content = form,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+
+            form.OnSave += (dentista) =>
+            {
+                try
+                {
+                    _dentistaService.AddDentista(dentista);
+                    LoadDentistas();
+                    window.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al guardar dentista: {ex.Message}",
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            };
+
+            form.OnCancel += () => window.Close();
+
+            window.ShowDialog();
+        }
+
+        private void BtnEditarDentista_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is DentistaDTO dentista)
+            {
+                var form = new DentistaFormView(dentista);
+
+                var window = new Window
+                {
+                    Title = "Editar Dentista",
+                    Content = form,
+                    SizeToContent = SizeToContent.WidthAndHeight,
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+
+                form.OnSave += (updatedDentista) =>
+                {
+                    try
+                    {
+                        _dentistaService.UpdateDentista(updatedDentista);
+                        LoadDentistas();
+                        window.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al actualizar dentista: {ex.Message}",
+                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                };
+
+                form.OnCancel += () => window.Close();
+
+                window.ShowDialog();
+            }
+        }
+
+        private void BtnEliminarDentista_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is DentistaDTO dentista)
+            {
+                var result = MessageBox.Show(
+                    $"¿Esta seguro de eliminar al dentista {dentista.Nombre}?",
+                    "Confirmar Eliminacion",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        _dentistaService.DeleteDentista(dentista.Id_Dentista);
+                        LoadDentistas();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al eliminar dentista: {ex.Message}",
+                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
 
         private void ConsultasDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

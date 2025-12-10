@@ -88,7 +88,7 @@
                     <Button Content="Gestión Usuarios" Click="BtnGestionUsuariosClick" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0"/>
                     <Button Content="Gestion de Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionPacientesClick"/>
                     <Button Content="Gestión Citas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionCitasClick"/>
-                    <Button Content="Gestion Dentistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnTratamientosClick"/>
+                    <Button Content="Gestion Dentistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionDentistasClick"/>
                     <Button Content="Gestión Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionConsultasClick"/>
                     <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnTratamientosClick"/>
                     <Button Content="Cerrar Sesión"  Background="Transparent" Foreground="White" Height="35" HorizontalAlignment="Center" Click="BtnCerrarSesionClick" Margin="0,5" Padding="15, 0" BorderThickness="0"/>
@@ -251,6 +251,49 @@
                                                 <Image Source="/assets/icons/edit.png"></Image>
                                             </Button>
                                             <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarPaciente_Click">
+                                                <Image Source="/assets/icons/circle-x.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+
+            <!-- Contenedor Dentistas -->
+            <Grid x:Name="DentistasContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button HorizontalAlignment="Right" Width="auto" Height="45" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnNuevoDentista_Click">
+                    <Image Source="/assets/icons/person-add.png"></Image>
+                </Button>
+
+                <!-- DataGrid para Dentistas -->
+                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                    </Border.Effect>
+
+                    <DataGrid x:Name="DentistasDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id_Dentista}" Width="50"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="150"/>
+                            <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}" Width="110"/>
+                            <DataGridTextColumn Header="Especialidad" Binding="{Binding Especialidad}" Width="150"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="220"/>
+                            <DataGridTemplateColumn Header="" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEditarDentista_Click">
+                                                <Image Source="/assets/icons/edit.png"></Image>
+                                            </Button>
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarDentista_Click">
                                                 <Image Source="/assets/icons/circle-x.png"></Image>
                                             </Button>
                                         </StackPanel>

@@ -13,7 +13,7 @@ namespace ApplicationLogic.Services
         private readonly CitaRepository _citaRepository;
         private readonly PacienteRepository _pacienteRepository;
         private readonly TratamientoRepository _tratamientoRepository;
-        private readonly UserRepository _userRepository;
+        private readonly DentistaRepository _dentistaRepository;
 
         public FacturaService()
         {
@@ -23,7 +23,7 @@ namespace ApplicationLogic.Services
             _citaRepository = new CitaRepository(provider);
             _pacienteRepository = new PacienteRepository(provider);
             _tratamientoRepository = new TratamientoRepository(provider);
-            _userRepository = new UserRepository(provider);
+            _dentistaRepository = new DentistaRepository(provider);
         }
 
         public FacturaDTO BuildFacturaFromConsulta(ApplicationLogic.DTOs.ConsultaDTO consultaDto)
@@ -41,7 +41,7 @@ namespace ApplicationLogic.Services
             if (paciente == null)
                 throw new InvalidOperationException("No se encontro el paciente asociado.");
 
-            var dentista = _userRepository.GetUserById(cita.Id_Dentista);
+            var dentista = _dentistaRepository.GetDentistaById(cita.Id_Dentista);
             var tratamiento = _tratamientoRepository.GetTratamientoById(consultaDto.TratamientoId);
 
             var subtotal = consultaDto.Precio;
@@ -59,7 +59,7 @@ namespace ApplicationLogic.Services
                 PacienteNombre = paciente.Nombre ?? string.Empty,
                 PacienteTelefono = paciente.Telefono ?? string.Empty,
                 PacienteEmail = paciente.Email ?? string.Empty,
-                DentistaNombre = dentista?.Nombre_Usuario ?? "Desconocido",
+                DentistaNombre = dentista.Nombre ?? string.Empty,
                 TratamientoNombre = tratamiento?.Nombre ?? consultaDto.TratamientoNombre,
                 FechaConsulta = consultaDto.Fecha,
                 Subtotal = subtotal,
