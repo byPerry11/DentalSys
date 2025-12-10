@@ -22,7 +22,7 @@ namespace DataAccess.Repositories
             using (var connection = _provider.CreateConnection())
             {
                 connection.Open();
-                // Get appointments from today onwards
+                // Get datos para la citas futuras
                 string query = "SELECT * FROM cita WHERE Fecha_hora >= @FechaActual ORDER BY Fecha_hora ASC";
 
                 using (var command = connection.CreateCommand())

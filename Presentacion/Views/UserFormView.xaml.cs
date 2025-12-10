@@ -21,7 +21,7 @@ namespace Presentacion.Views
                 Title = "Editar Usuario";
                 TxtUsername.Text = _userToEdit.Username;
                 CmbRole.Text = _userToEdit.Role;
-                // Password is left empty for security, only update if entered
+                
             }
             else
             {

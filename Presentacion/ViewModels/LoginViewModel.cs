@@ -1,7 +1,7 @@
 ﻿using ApplicationLogic.DTOs;
 using ApplicationLogic.Services;
 using System.ComponentModel; //INotifyPropertyChanged
-using System.Configuration; // App.config
+using System.Configuration;
 using System.Windows;
 using System.Windows.Input;
 
@@ -27,9 +27,7 @@ namespace Presentacion.ViewModels
         // Comando para ejecutar el inicio de sesión
         public ICommand LoginCommand { get; }
 
-        /// <summary>
-        /// Evento que se dispara cuando una propiedad cambia
-        /// </summary>
+        
         public event PropertyChangedEventHandler? PropertyChanged;
 
        

@@ -44,7 +44,7 @@ namespace Presentacion.Views
             LoadUsuarios();
             LoadTratamientos();
             LoadPacientes();
-            // LoadCitas and LoadConsultas will be called when navigating to the view
+            // Cargar citas y consultas al entrar a la vista
         }
 
         private void BtnGestionCitasConsultasClick(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace Presentacion.Views
             TratamientosContainer.Visibility = Visibility.Collapsed;
             CitasConsultasContainer.Visibility = Visibility.Visible;
 
-            // Default to Citas
+            // citas por defecto
             BtnToggleCitas_Click(null, null);
         }
 
@@ -192,7 +192,7 @@ namespace Presentacion.Views
 
         private void BtnToggleCitas_Click(object sender, RoutedEventArgs e)
         {
-            // Highlight Citas button
+            
             BtnToggleCitas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2980B9"));
             BtnToggleCitas.BorderThickness = new Thickness(0, 0, 0, 2);
 
@@ -207,7 +207,6 @@ namespace Presentacion.Views
 
         private void BtnToggleConsultas_Click(object sender, RoutedEventArgs e)
         {
-            // Highlight Consultas button
             BtnToggleConsultas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2980B9"));
             BtnToggleConsultas.BorderThickness = new Thickness(0, 0, 0, 2);
 
