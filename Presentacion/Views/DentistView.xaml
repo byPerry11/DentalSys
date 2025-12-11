@@ -99,6 +99,7 @@
                 <TextBlock Text="Odontología" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
                 <Button Content="Mi Agenda Hoy" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnAgenda_Click"/>
+                <Button Content="Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnConsultas_Click"/>
                 <Button Content="Mis Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnPacientes_Click"/>
                 <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Click="BtnCerrarSesionClick" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
             </StackPanel>
@@ -344,6 +345,107 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Border>
+                </Grid>
+
+                <!-- 3. CONSULTAS CONTAINER -->
+                <Grid x:Name="ConsultasContainer" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Card Izquierdo: Lista de Citas Confirmadas -->
+                    <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,10,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Text="Citas Confirmadas" FontSize="18" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                            
+                            <DataGrid x:Name="CitasConfirmadasDataGrid" Grid.Row="1" Style="{StaticResource ModernDataGrid}" 
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                                      SelectionMode="Single" MouseLeftButtonUp="CitasConfirmadasDataGrid_Click"
+                                      MouseDoubleClick="CitasConfirmadasDataGrid_DoubleClick">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Fecha" Binding="{Binding FechaHora, StringFormat='dd/MM/yyyy'}" Width="130"/>
+                                    <DataGridTextColumn Header="Hora" Binding="{Binding FechaHora, StringFormat='HH:mm'}" Width="70"/>
+                                    <DataGridTextColumn Header="Paciente" Binding="{Binding PacienteNombre}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Card Derecho: Detalles y Consultas -->
+                    <Grid Grid.Column="1" Margin="10,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Card Superior: Detalles de Cita -->
+                        <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <TextBlock Text="Detalles de la Cita" FontSize="18" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                                
+                                <StackPanel x:Name="CitaDetallesPanel" Grid.Row="1" Visibility="Collapsed">
+                                    <TextBlock Text="Paciente:" FontWeight="Bold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="TxtDetallePaciente" Text="" FontSize="16" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                                    
+                                    <TextBlock Text="Fecha y Hora:" FontWeight="Bold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="TxtDetalleFecha" Text="" FontSize="16" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                                    
+                                    <TextBlock Text="Estado:" FontWeight="Bold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="TxtDetalleEstado" Text="" FontSize="16" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                                    
+                                    <TextBlock Text="Dentista:" FontWeight="Bold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                                    <TextBlock x:Name="TxtDetalleDentista" Text="" FontSize="16" Foreground="#2C3E50" Margin="0,0,0,10"/>
+                                    
+                                    <TextBlock Text="Doble click en la cita para convertirla en consulta" FontStyle="Italic" Foreground="#95A5A6" TextWrapping="Wrap"/>
+                                </StackPanel>
+                                
+                                <TextBlock x:Name="TxtNoSeleccion" Grid.Row="1" Text="Seleccione una cita para ver los detalles" 
+                                           FontStyle="Italic" Foreground="#BDC3C7" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Card Inferior: Gestión de Consultas -->
+                        <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,10,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <TextBlock Text="Consultas Generadas" FontSize="18" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                                
+                                <DataGrid x:Name="ConsultasDataGrid" Grid.Row="1" Style="{StaticResource ModernDataGrid}" 
+                                          AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                                          SelectionMode="Single" MouseDoubleClick="ConsultasDataGrid_DoubleClick">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat='dd/MM/yyyy'}" Width="100"/>
+                                        <DataGridTextColumn Header="Tratamiento" Binding="{Binding TratamientoNombre}" Width="*"/>
+                                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat='C2'}" Width="100"/>
+                                        <DataGridTemplateColumn Header="Factura" Width="80">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Click="BtnGenerarFactura_Click" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Generar factura PDF">
+                                                        <Image Source="/assets/icons/newspaper.png" Width="35" Height="35"/>
+                                                    </Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </Grid>
 
             </Grid>

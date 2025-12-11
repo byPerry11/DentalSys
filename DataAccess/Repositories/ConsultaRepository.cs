@@ -47,5 +47,51 @@ namespace DataAccess.Repositories
             }
             return consultas;
         }
+
+        public void AddConsulta(ConsultaEntity consulta)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = @"INSERT INTO consulta (Id_Tratamiento, Id_Cita, Precio_Consulta, Notas)
+                                 VALUES (@IdTratamiento, @IdCita, @Precio, @Notas)";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    AddParameter(command, "@IdTratamiento", consulta.Id_Tratamiento);
+                    AddParameter(command, "@IdCita", consulta.Id_Cita);
+                    AddParameter(command, "@Precio", consulta.Precio_Consulta);
+                    AddParameter(command, "@Notas", consulta.Notas);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool ExistsConsultaByCitaId(int citaId)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM consulta WHERE Id_Cita = @CitaId";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    AddParameter(command, "@CitaId", citaId);
+
+                    var result = command.ExecuteScalar();
+                    return Convert.ToInt32(result) > 0;
+                }
+            }
+        }
+
+        private void AddParameter(IDbCommand command, string name, object value)
+        {
+            var parameter = command.CreateParameter();
+            parameter.ParameterName = name;
+            parameter.Value = value ?? DBNull.Value;
+            command.Parameters.Add(parameter);
+        }
     }
 }

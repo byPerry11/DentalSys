@@ -68,5 +68,22 @@ namespace ApplicationLogic.Services
 
             return dtos;
         }
+
+        public void AddConsulta(ConsultaDTO dto)
+        {
+            var entity = new DataAccess.Entities.ConsultaEntity
+            {
+                Id_Tratamiento = dto.TratamientoId,
+                Id_Cita = dto.CitaId,
+                Precio_Consulta = dto.Precio,
+                Notas = dto.Notas
+            };
+            _consultaRepository.AddConsulta(entity);
+        }
+
+        public bool ExistsConsultaByCitaId(int citaId)
+        {
+            return _consultaRepository.ExistsConsultaByCitaId(citaId);
+        }
     }
 }

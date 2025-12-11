@@ -1,10 +1,11 @@
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using ApplicationLogic.DTOs;
 
 namespace Presentacion.Views
 {
-    public partial class ConsultaInfoView : Window
+    public partial class ConsultaInfoView : UserControl
     {
         public ConsultaInfoView(ConsultaDTO consulta)
         {
@@ -26,7 +27,7 @@ namespace Presentacion.Views
 
         private void BtnCerrar_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Window.GetWindow(this)?.Close();
         }
     }
 }

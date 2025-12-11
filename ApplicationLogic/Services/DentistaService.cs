@@ -25,6 +25,7 @@ namespace ApplicationLogic.Services
             return entities.Select(d => new DentistaDTO
             {
                 Id_Dentista = d.Id_Dentista,
+                Id_Usuario = d.Id_Usuario,
                 Nombre = d.Nombre,
                 Telefono = d.Telefono,
                 Especialidad = d.Especialidad,
@@ -59,6 +60,24 @@ namespace ApplicationLogic.Services
             _dentistaRepository.UpdateDentista(entity);
         }
 
+
+        public DentistaDTO? GetDentistaByUsuarioId(int usuarioId)
+        {
+            var entity = _dentistaRepository.GetDentistaByUsuarioId(usuarioId);
+
+            if (entity == null)
+                return null;
+
+            return new DentistaDTO
+            {
+                Id_Dentista = entity.Id_Dentista,
+                Id_Usuario = entity.Id_Usuario,
+                Nombre = entity.Nombre,
+                Telefono = entity.Telefono,
+                Especialidad = entity.Especialidad,
+                Email = entity.Email
+            };
+        }
 
         public void DeleteDentista(int id)
         {

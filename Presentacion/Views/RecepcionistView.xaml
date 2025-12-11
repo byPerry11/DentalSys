@@ -338,6 +338,20 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="" Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEditarCita_Click">
+                                                    <Image Source="/assets/icons/edit.png"></Image>
+                                                </Button>
+                                                <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarCita_Click">
+                                                    <Image Source="/assets/icons/circle-x.png"></Image>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Border>

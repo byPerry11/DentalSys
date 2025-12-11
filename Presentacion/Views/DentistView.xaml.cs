@@ -12,6 +12,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using Microsoft.Win32;
 
 namespace Presentacion.Views
 {
@@ -19,6 +22,7 @@ namespace Presentacion.Views
     {
         private readonly CitaService _citaService;
         private readonly PacienteService _pacienteService;
+        private readonly FacturaService _facturaService;
         private int _currentDentistaId;
         private DateTime _currentMonth;
 
@@ -33,13 +37,24 @@ namespace Presentacion.Views
 
             _citaService = new CitaService();
             _pacienteService = new PacienteService();
+            _facturaService = new FacturaService();
             _currentMonth = DateTime.Now;
 
             // Get logged-in dentist ID
             if (UserSession.CurrentUser != null)
             {
-                _currentDentistaId = UserSession.CurrentUser.Id;
-                TxtDentistName.Text = $"Dr. {UserSession.CurrentUser.Username}";
+                if (UserSession.CurrentUser.Id_Dentista.HasValue)
+                {
+                    _currentDentistaId = UserSession.CurrentUser.Id_Dentista.Value;
+                    TxtDentistName.Text = $"Dr. {UserSession.CurrentUser.Username}";
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el registro de dentista asociado a este usuario.",
+                                  "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    // User will see empty dashboard, but won't crash
+                    _currentDentistaId = 0;
+                }
             }
 
             OpenDayDetailsCommand = new RelayCommand(ExecuteOpenDayDetails);
@@ -86,10 +101,16 @@ namespace Presentacion.Views
             ShowPacientes();
         }
 
+        private void BtnConsultas_Click(object sender, RoutedEventArgs e)
+        {
+            ShowConsultas();
+        }
+
         private void ShowAgenda()
         {
             HeaderTitle.Text = "Mi Agenda Hoy";
             AgendaContainer.Visibility = Visibility.Visible;
+            ConsultasContainer.Visibility = Visibility.Collapsed;
             PacientesContainer.Visibility = Visibility.Collapsed;
 
             LoadDashboardData();
@@ -99,9 +120,20 @@ namespace Presentacion.Views
         {
             HeaderTitle.Text = "Mis Pacientes";
             AgendaContainer.Visibility = Visibility.Collapsed;
+            ConsultasContainer.Visibility = Visibility.Collapsed;
             PacientesContainer.Visibility = Visibility.Visible;
 
             LoadPacientesList();
+        }
+
+        private void ShowConsultas()
+        {
+            HeaderTitle.Text = "Consultas";
+            AgendaContainer.Visibility = Visibility.Collapsed;
+            ConsultasContainer.Visibility = Visibility.Visible;
+            PacientesContainer.Visibility = Visibility.Collapsed;
+
+            LoadCitasConfirmadas();
         }
         #endregion
 
@@ -428,6 +460,256 @@ namespace Presentacion.Views
                         MessageBox.Show($"Error al eliminar paciente: {ex.Message}");
                     }
                 }
+            }
+        }
+        #endregion
+
+        #region Consultas Logic
+        private CitaDTO? _selectedCita;
+
+        private void LoadCitasConfirmadas()
+        {
+            try
+            {
+                var citasConfirmadas = _citaService.GetAllCitas()
+                    .Where(c => c.DentistaId == _currentDentistaId &&
+                               c.Estatus?.ToLower() == "confirmada" &&
+                               c.FechaHora >= DateTime.Now)
+                    .OrderBy(c => c.FechaHora)
+                    .ToList();
+
+                CitasConfirmadasDataGrid.ItemsSource = citasConfirmadas;
+
+                // Clear selection
+                _selectedCita = null;
+                CitaDetallesPanel.Visibility = Visibility.Collapsed;
+                TxtNoSeleccion.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar citas confirmadas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void CitasConfirmadasDataGrid_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (CitasConfirmadasDataGrid.SelectedItem is CitaDTO cita)
+            {
+                _selectedCita = cita;
+                MostrarDetallesCita(cita);
+            }
+        }
+
+        private void MostrarDetallesCita(CitaDTO cita)
+        {
+            TxtDetallePaciente.Text = cita.PacienteNombre;
+            TxtDetalleFecha.Text = cita.FechaHora.ToString("dd/MM/yyyy HH:mm");
+            TxtDetalleEstado.Text = cita.Estatus;
+            TxtDetalleDentista.Text = cita.DentistaNombre;
+
+            CitaDetallesPanel.Visibility = Visibility.Visible;
+            TxtNoSeleccion.Visibility = Visibility.Collapsed;
+
+            // Load consultations for this appointment
+            LoadConsultas(cita.Id);
+        }
+
+        private void LoadConsultas(int citaId)
+        {
+            try
+            {
+                var consultaService = new ConsultaService();
+                var todasConsultas = consultaService.GetAllConsultas();
+
+                // Filter consultations for this specific appointment
+                var consultasCita = todasConsultas.Where(c => c.CitaId == citaId).ToList();
+
+                ConsultasDataGrid.ItemsSource = consultasCita;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar consultas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ConsultasDataGrid_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ConsultasDataGrid.SelectedItem is ConsultaDTO consulta)
+            {
+                MostrarDetallesConsulta(consulta);
+            }
+        }
+
+        private void MostrarDetallesConsulta(ConsultaDTO consulta)
+        {
+            var form = new ConsultaInfoView(consulta);
+            var window = new Window
+            {
+                Title = "Detalles de Consulta",
+                Content = form,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            window.ShowDialog();
+        }
+
+        private void CitasConfirmadasDataGrid_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (_selectedCita != null)
+            {
+                MostrarFormularioConvertirConsulta(_selectedCita);
+            }
+        }
+
+        private void MostrarFormularioConvertirConsulta(CitaDTO cita)
+        {
+            // Check if consultation already exists for this appointment
+            var consultaService = new ConsultaService();
+            if (consultaService.ExistsConsultaByCitaId(cita.Id))
+            {
+                MessageBox.Show("Ya existe una consulta generada para esta cita.",
+                              "Consulta Existente",
+                              MessageBoxButton.OK,
+                              MessageBoxImage.Information);
+                return;
+            }
+
+            var form = new GenerarConsultaView(cita);
+            var window = new Window
+            {
+                Title = "Generar Consulta",
+                Content = form,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+
+            form.OnGenerar += (consulta) =>
+            {
+                try
+                {
+                    consultaService.AddConsulta(consulta);
+                    window.Close();
+                    MessageBox.Show("Consulta generada exitosamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadCitasConfirmadas(); // Refresh list
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al generar consulta: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            };
+
+            form.OnCancelar += () => window.Close();
+            window.ShowDialog();
+        }
+
+        private void BtnGenerarFactura_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var button = sender as Button;
+                var consulta = button?.DataContext as ConsultaDTO;
+
+                if (consulta == null)
+                {
+                    MessageBox.Show("No se pudo obtener la consulta seleccionada.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                var factura = _facturaService.BuildFacturaFromConsulta(consulta);
+
+                GenerateFacturaPdf(factura);
+
+                MessageBox.Show("Factura generada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al generar factura: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void GenerateFacturaPdf(FacturaDTO factura)
+        {
+            if (factura == null)
+                throw new ArgumentNullException(nameof(factura));
+
+            // Crear documento PDF
+            var document = new PdfDocument();
+            document.Info.Title = $"Factura {factura.Folio}";
+
+            var page = document.AddPage();
+            var gfx = XGraphics.FromPdfPage(page);
+
+            var fontTitle = new XFont("Arial", 18, XFontStyle.Bold);
+            var fontLabel = new XFont("Arial", 10, XFontStyle.Regular);
+            var fontValue = new XFont("Arial", 10, XFontStyle.Bold);
+
+            double marginLeft = 40;
+            double y = 40;
+
+            // Titulo
+            gfx.DrawString("Consultorio Dental - Factura",
+                fontTitle, XBrushes.Black, new XRect(marginLeft, y, page.Width - 2 * marginLeft, 30), XStringFormats.TopLeft);
+            y += 40;
+
+            // Datos generales
+            gfx.DrawString("Folio:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.Folio, fontValue, XBrushes.Black, marginLeft + 80, y);
+            y += 20;
+
+            gfx.DrawString("Fecha:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.FechaConsulta.ToString("dd/MM/yyyy HH:mm"),
+                fontValue, XBrushes.Black, marginLeft + 80, y);
+            y += 30;
+
+            // Paciente
+            gfx.DrawString("Paciente:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.PacienteNombre, fontValue, XBrushes.Black, marginLeft + 80, y);
+            y += 20;
+
+            if (!string.IsNullOrWhiteSpace(factura.PacienteTelefono))
+            {
+                gfx.DrawString("Telefono:", fontLabel, XBrushes.Black, marginLeft, y);
+                gfx.DrawString(factura.PacienteTelefono, fontValue, XBrushes.Black, marginLeft + 80, y);
+                y += 20;
+            }
+
+            if (!string.IsNullOrWhiteSpace(factura.PacienteEmail))
+            {
+                gfx.DrawString("Email:", fontLabel, XBrushes.Black, marginLeft, y);
+                gfx.DrawString(factura.PacienteEmail, fontValue, XBrushes.Black, marginLeft + 80, y);
+                y += 30;
+            }
+
+            // Tratamiento
+            gfx.DrawString("Tratamiento:", fontLabel, XBrushes.Black, marginLeft, y);
+            gfx.DrawString(factura.TratamientoNombre, fontValue, XBrushes.Black, marginLeft + 90, y);
+            y += 30;
+
+            // Totales
+            double xTotales = page.Width - 220;
+
+            gfx.DrawString("Subtotal:", fontLabel, XBrushes.Black, xTotales, y);
+            gfx.DrawString(factura.Subtotal.ToString("C"), fontValue, XBrushes.Black, xTotales + 80, y);
+            y += 20;
+
+            gfx.DrawString($"IVA ({factura.TasaIVA:P0}):", fontLabel, XBrushes.Black, xTotales, y);
+            gfx.DrawString(factura.IVA.ToString("C"), fontValue, XBrushes.Black, xTotales + 80, y);
+            y += 20;
+
+            gfx.DrawString("Total:", fontTitle, XBrushes.Black, xTotales, y);
+            gfx.DrawString(factura.Total.ToString("C"), fontTitle, XBrushes.Black, xTotales + 80, y);
+
+            // Guardar archivo
+            var dialog = new SaveFileDialog
+            {
+                FileName = $"Factura_{factura.Folio}.pdf",
+                Filter = "Archivo PDF (.pdf)|.pdf"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                document.Save(dialog.FileName);
             }
         }
         #endregion

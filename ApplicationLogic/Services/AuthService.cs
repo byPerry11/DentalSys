@@ -14,7 +14,7 @@ namespace ApplicationLogic.Services
     {
         private readonly UserRepository _userRepository;
 
-        
+
         public AuthService()
         {
             var provider = ConnectionFactory.Create();
@@ -29,7 +29,7 @@ namespace ApplicationLogic.Services
             _userRepository = new UserRepository(provider);
         }
 
-        
+
         public UserDTO? Login(string username, string? password)
         {
             // Validar que los parámetros no sean nulos o vacíos
@@ -50,12 +50,22 @@ namespace ApplicationLogic.Services
 
             if (passwordValid)
             {
-                return new UserDTO
+                var userDto = new UserDTO
                 {
                     Id = userEntity.Id_Usuario,
                     Username = userEntity.Nombre_Usuario,
                     Role = userEntity.Rol
                 };
+
+                // If user is a dentist, look up their Id_Dentista
+                if (userEntity.Rol?.ToLower() == "dentista")
+                {
+                    var dentistaService = new DentistaService();
+                    var dentista = dentistaService.GetDentistaByUsuarioId(userEntity.Id_Usuario);
+                    userDto.Id_Dentista = dentista?.Id_Dentista;
+                }
+
+                return userDto;
             }
 
             return null; // Contraseña incorrecta

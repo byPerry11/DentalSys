@@ -1,73 +1,89 @@
-<Window x:Class="Presentacion.Views.ConsultaInfoView"
+<UserControl x:Class="Presentacion.Views.ConsultaInfoView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Detalles de Consulta" Height="600" Width="450" 
-        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        Background="#F4F6F6">
-    <Window.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#BDC3C7"/>
-            <Setter Property="Background" Value="#F9F9F9"/>
-            <Setter Property="IsReadOnly" Value="True"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                            <ScrollViewer x:Name="PART_ContentHost"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        d:DesignHeight="550" Width="500">
+    <Border Background="White" CornerRadius="10" Padding="20">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" Color="Black" Opacity="0.2"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-    <Grid Margin="25">
-        <StackPanel>
-            <TextBlock Text="Información de Consulta" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+            <!-- Header -->
+            <TextBlock Text="Información de Consulta" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,20"/>
 
-            <Grid Margin="0,0,0,15">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="0,0,5,0">
-                    <TextBlock Text="Fecha" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtFecha" Height="35"/>
+            <!-- Form Content -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- Fecha y Precio en Grid -->
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                            <TextBlock Text="Fecha" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtFecha" Height="35" IsReadOnly="True" Background="#ECF0F1" 
+                                     BorderBrush="#BDC3C7" BorderThickness="1" Padding="10,0" 
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                            <TextBlock Text="Precio" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtPrecio" Height="35" IsReadOnly="True" Background="#ECF0F1" 
+                                     BorderBrush="#BDC3C7" BorderThickness="1" Padding="10,0" 
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Tratamiento -->
+                    <TextBlock Text="Tratamiento" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,10,0,5"/>
+                    <TextBox x:Name="TxtTratamiento" Height="35" IsReadOnly="True" Background="#ECF0F1" 
+                             BorderBrush="#BDC3C7" BorderThickness="1" Padding="10,0" 
+                             VerticalContentAlignment="Center" Margin="0,0,0,10"/>
+
+                    <!-- Paciente -->
+                    <TextBlock Text="Paciente" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,5"/>
+                    <TextBox x:Name="TxtPaciente" Height="35" IsReadOnly="True" Background="#ECF0F1" 
+                             BorderBrush="#BDC3C7" BorderThickness="1" Padding="10,0" 
+                             VerticalContentAlignment="Center" Margin="0,0,0,10"/>
+
+                    <!-- Dentista -->
+                    <TextBlock Text="Dentista" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,5"/>
+                    <TextBox x:Name="TxtDentista" Height="35" IsReadOnly="True" Background="#ECF0F1" 
+                             BorderBrush="#BDC3C7" BorderThickness="1" Padding="10,0" 
+                             VerticalContentAlignment="Center" Margin="0,0,0,10"/>
+
+                    <!-- Notas -->
+                    <TextBlock Text="Notas" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,5"/>
+                    <TextBox x:Name="TxtNotas" Height="100" IsReadOnly="True" Background="#ECF0F1" 
+                             BorderBrush="#BDC3C7" BorderThickness="1" Padding="10" 
+                             TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                             VerticalContentAlignment="Top"/>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                    <TextBlock Text="Precio" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtPrecio" Height="35"/>
-                </StackPanel>
-            </Grid>
+            </ScrollViewer>
 
-            <TextBlock Text="Tratamiento" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-            <TextBox x:Name="TxtTratamiento" Height="35" Margin="0,0,0,15"/>
-
-            <TextBlock Text="Paciente" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-            <TextBox x:Name="TxtPaciente" Height="35" Margin="0,0,0,15"/>
-
-            <TextBlock Text="Dentista" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-            <TextBox x:Name="TxtDentista" Height="35" Margin="0,0,0,15"/>
-
-            <TextBlock Text="Notas" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-            <TextBox x:Name="TxtNotas" Height="80" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,0,0,20"/>
-
-            <Button Content="Cerrar" Width="100" Height="35" HorizontalAlignment="Center" Click="BtnCerrar_Click"
-                    Background="#2980B9" Foreground="White" BorderThickness="0" Margin="0,10,0,0">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </StackPanel>
-    </Grid>
-</Window>
+            <!-- Action Button -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button Content="Cerrar" Width="100" Height="35" Click="BtnCerrar_Click"
+                        Background="#95A5A6" Foreground="White" BorderThickness="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

@@ -699,7 +699,15 @@ namespace Presentacion.Views
             if (ConsultasDataGrid.SelectedItem is ConsultaDTO consulta)
             {
                 var view = new ConsultaInfoView(consulta);
-                view.ShowDialog();
+                var window = new Window
+                {
+                    Title = "Detalles de Consulta",
+                    Content = view,
+                    SizeToContent = SizeToContent.WidthAndHeight,
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                window.ShowDialog();
             }
         }
     }

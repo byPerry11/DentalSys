@@ -454,6 +454,65 @@ namespace Presentacion.Views
             ).ToList();
             CitasDataGrid.ItemsSource = filtered;
         }
+
+        private void BtnEditarCita_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is CitaDTO cita)
+            {
+                var form = new CitaFormView(cita);
+                var window = new Window
+                {
+                    Title = "Editar Cita",
+                    Content = form,
+                    SizeToContent = SizeToContent.WidthAndHeight,
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+
+                form.OnSave += (updatedCita) =>
+                {
+                    try
+                    {
+                        _citaService.UpdateCita(updatedCita);
+                        LoadAllCitasList();
+                        LoadUpcomingAppointments();
+                        UpdateCalendar(_currentMonth);
+                        window.Close();
+                        MessageBox.Show("Cita actualizada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al actualizar cita: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                };
+
+                form.OnCancel += () => window.Close();
+                window.ShowDialog();
+            }
+        }
+
+        private void BtnEliminarCita_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is CitaDTO cita)
+            {
+                var result = MessageBox.Show($"¿Está seguro de eliminar la cita del paciente {cita.PacienteNombre} programada para {cita.FechaHora:dd/MM/yyyy HH:mm}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        _citaService.DeleteCita(cita.Id);
+                        LoadAllCitasList();
+                        LoadUpcomingAppointments();
+                        UpdateCalendar(_currentMonth);
+                        MessageBox.Show("Cita eliminada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al eliminar cita: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Gestion Pacientes Logic

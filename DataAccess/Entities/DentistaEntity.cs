@@ -9,6 +9,7 @@ namespace DataAccess.Entities
     public class DentistaEntity
     {
         public int Id_Dentista { get; set; }
+        public int? Id_Usuario { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Especialidad { get; set; }

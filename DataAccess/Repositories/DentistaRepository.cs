@@ -34,6 +34,7 @@ namespace DataAccess.Repositories
                             var dentista = new DentistaEntity
                             {
                                 Id_Dentista = reader.GetInt32(reader.GetOrdinal("Id_Dentista")),
+                                Id_Usuario = reader.IsDBNull(reader.GetOrdinal("id_usuario")) ? null : reader.GetInt32(reader.GetOrdinal("id_usuario")),
                                 Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre")) ? null : reader.GetString(reader.GetOrdinal("Nombre")),
                                 Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? null : reader.GetString(reader.GetOrdinal("Telefono")),
                                 Especialidad = reader.IsDBNull(reader.GetOrdinal("Especialidad")) ? null : reader.GetString(reader.GetOrdinal("Especialidad")),
@@ -70,6 +71,7 @@ namespace DataAccess.Repositories
                             dentista = new DentistaEntity
                             {
                                 Id_Dentista = reader.GetInt32(reader.GetOrdinal("Id_Dentista")),
+                                Id_Usuario = reader.IsDBNull(reader.GetOrdinal("id_usuario")) ? null : reader.GetInt32(reader.GetOrdinal("id_usuario")),
                                 Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre")) ? null : reader.GetString(reader.GetOrdinal("Nombre")),
                                 Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? null : reader.GetString(reader.GetOrdinal("Telefono")),
                                 Especialidad = reader.IsDBNull(reader.GetOrdinal("Especialidad")) ? null : reader.GetString(reader.GetOrdinal("Especialidad")),
@@ -146,6 +148,41 @@ namespace DataAccess.Repositories
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        public DentistaEntity? GetDentistaByUsuarioId(int usuarioId)
+        {
+            DentistaEntity? dentista = null;
+
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                string query = "SELECT * FROM Dentista WHERE id_usuario = @UsuarioId";
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    AddParameter(command, "@UsuarioId", usuarioId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            dentista = new DentistaEntity
+                            {
+                                Id_Dentista = reader.GetInt32(reader.GetOrdinal("Id_Dentista")),
+                                Id_Usuario = reader.IsDBNull(reader.GetOrdinal("id_usuario")) ? null : reader.GetInt32(reader.GetOrdinal("id_usuario")),
+                                Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre")) ? null : reader.GetString(reader.GetOrdinal("Nombre")),
+                                Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono")) ? null : reader.GetString(reader.GetOrdinal("Telefono")),
+                                Especialidad = reader.IsDBNull(reader.GetOrdinal("Especialidad")) ? null : reader.GetString(reader.GetOrdinal("Especialidad")),
+                                Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email"))
+                            };
+                        }
+                    }
+                }
+            }
+
+            return dentista;
         }
 
         private void AddParameter(IDbCommand command, string name, object value)
