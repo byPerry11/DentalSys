@@ -49,7 +49,7 @@ namespace ApplicationLogic.Services
         {
             var entity = new DentistaEntity
             {
-                Id_Dentista = dto.Id_Dentista,   
+                Id_Dentista = dto.Id_Dentista,
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
                 Especialidad = dto.Especialidad,

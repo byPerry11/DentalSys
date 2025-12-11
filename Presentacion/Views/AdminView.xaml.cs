@@ -31,6 +31,7 @@ namespace Presentacion.Views
         private readonly DentistaService _dentistaService;
         private List<CitaDTO> _allCitas;
         private List<ConsultaDTO> _allConsultas;
+        private List<PacienteDTO> _allPacientes;
 
         public AdminView()
         {
@@ -443,13 +444,32 @@ namespace Presentacion.Views
         {
             try
             {
-                var pacientes = _pacienteService.GetAllPacientes();
-                PacientesDataGrid.ItemsSource = pacientes;
+                _allPacientes = _pacienteService.GetAllPacientes();
+                FilterPacientes();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar pacientes: {ex.Message}");
             }
+        }
+
+        private void TxtBuscarPacientes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FilterPacientes();
+        }
+
+        private void FilterPacientes()
+        {
+            if (_allPacientes == null) return;
+
+            var filter = TxtBuscarPacientes.Text.ToLower();
+            var filtered = _allPacientes.Where(p =>
+                (p.Nombre != null && p.Nombre.ToLower().Contains(filter)) ||
+                (p.Email != null && p.Email.ToLower().Contains(filter)) ||
+                (p.Telefono != null && p.Telefono.ToLower().Contains(filter))
+            ).ToList();
+
+            PacientesDataGrid.ItemsSource = filtered;
         }
 
         private void BtnGestionPacientesClick(object sender, RoutedEventArgs e)

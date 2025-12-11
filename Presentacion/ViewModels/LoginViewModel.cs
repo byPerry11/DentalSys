@@ -7,13 +7,13 @@ using System.Windows.Input;
 
 namespace Presentacion.ViewModels
 {
-    
+
     public class LoginViewModel : INotifyPropertyChanged
     {
         private readonly AuthService _authService;
         private string _username = string.Empty;
 
-       
+
         public string Username
         {
             get => _username;
@@ -32,13 +32,13 @@ namespace Presentacion.ViewModels
         /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
 
-       
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-    
+
         public LoginViewModel()
         {
             // AuthService usa ConnectionFactory 
@@ -46,7 +46,7 @@ namespace Presentacion.ViewModels
             LoginCommand = new RelayCommand<object>(ExecuteLogin);
         }
 
-        
+
         private void ExecuteLogin(object parameter)
         {
             // Validar que el username no esté vacío
@@ -74,6 +74,8 @@ namespace Presentacion.ViewModels
 
             if (user != null && !string.IsNullOrEmpty(user.Role))
             {
+                // Store user in session
+                Presentacion.Utils.UserSession.CurrentUser = user;
                 AbrirDashboard(user.Role);
             }
             else
@@ -83,7 +85,7 @@ namespace Presentacion.ViewModels
             }
         }
 
-        
+
         private void AbrirDashboard(string role)
         {
             // Instanciar MainWindow

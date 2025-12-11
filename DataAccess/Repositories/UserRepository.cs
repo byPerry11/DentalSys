@@ -178,6 +178,7 @@ namespace DataAccess.Repositories
             }
         }
 
+
         public void UpdateUser(UserEntity user)
         {
             using (var connection = _provider.CreateConnection())

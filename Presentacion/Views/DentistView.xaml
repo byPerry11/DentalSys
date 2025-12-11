@@ -4,11 +4,84 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentacion.Views"
+        xmlns:converters="clr-namespace:Presentacion.Converters"
         mc:Ignorable="d"
-        d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+        d:DesignHeight="700" d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <converters:CitaStatusConverter x:Key="CitaStatusConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        
+        <!-- Card Style -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#DDD" BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Modern DataGrid Style -->
+        <Style x:Key="ModernDataGrid" TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="RowHeight" Value="40"/>
+            <Setter Property="ColumnHeaderHeight" Value="45"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#F0F0F0"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#FAFAFA"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#333"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#95A5A6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#EEE"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F5F6FA"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="#2980B9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#F5F7FA">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="SideMenuColumn" Width="200"/>
+            <ColumnDefinition x:Name="SideMenuColumn" Width="220"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -22,46 +95,258 @@
                 </Button>
                 <Image Source="pack://application:,,,/assets/icons/person.png" Width="60" Height="66" HorizontalAlignment="Center" Margin="0,20,0,10"/>
 
-                <TextBlock Text="Dr. Perfil" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,5,0,10" HorizontalAlignment="Center"/>
-                <TextBlock Text="Odontología General" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock x:Name="TxtDentistName" Text="Dr. Perfil" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,5,0,10" HorizontalAlignment="Center"/>
+                <TextBlock Text="Odontología" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
-                <Button Content="Mi Agenda Hoy" Height="40" Margin="0,5" Background="#2980B9" Foreground="White" BorderThickness="0"/>
-                <Button Content="Mis Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
-                <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0"/>
-                <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Click="BtnCerrarSesionClick" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Mi Agenda Hoy" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnAgenda_Click"/>
+                <Button Content="Mis Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnPacientes_Click"/>
+                <Button Content="Cerrar Sesion" Height="40" Margin="0,5" Click="BtnCerrarSesionClick" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0"/>
             </StackPanel>
         </Border>
 
-        <!-- Contenido Dentista -->
-        <Grid Grid.Column="1" Margin="20">
+        <!-- Contenido Principal -->
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/> <!-- Topbar -->
+                <RowDefinition Height="*"/>    <!-- Content -->
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                <TextBlock Text="Pacientes Programados" FontSize="22" Foreground="#2C3E50"/>
-                <TextBlock Text="(19 Nov 2025)" FontSize="16" Foreground="Gray" VerticalAlignment="Bottom" Margin="10,0,0,2"/>
-            </StackPanel>
+            <!-- Top Bar -->
+            <Border Grid.Row="0" Height="60" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+                <Grid Margin="20,0">
+                    <TextBlock x:Name="HeaderTitle" Text="Mi Agenda Hoy" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#2C3E50"/>
+                </Grid>
+            </Border>
 
-            <!-- Lista de Citas -->
-            <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" 
-                      Background="White" BorderThickness="1" BorderBrush="#EEE">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Hora" Width="80" Binding="{Binding Hora}"/>
-                    <DataGridTextColumn Header="Paciente" Width="*" Binding="{Binding NombrePaciente}"/>
-                    <DataGridTextColumn Header="Motivo" Width="150" Binding="{Binding Motivo}"/>
-                    <DataGridTextColumn Header="Estado" Width="100" Binding="{Binding Estado}"/>
-                    <DataGridTemplateColumn Header="Acción" Width="100">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Atender" Background="#27AE60" Foreground="White" Padding="5,2"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-                <!-- Datos Dummy para vista de diseño -->
-            </DataGrid>
+            <!-- Main Content Area -->
+            <Grid Grid.Row="1" Margin="20">
+                
+                <!-- 1. AGENDA CONTAINER (Dashboard) -->
+                <Grid x:Name="AgendaContainer" Visibility="Visible">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"/> <!-- Calendario -->
+                        <ColumnDefinition Width="*"/>   <!-- Widgets Derecha -->
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Widget de Calendario (Izquierda) -->
+                    <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,20,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/> <!-- Header -->
+                                <RowDefinition Height="*"/>    <!-- Days -->
+                            </Grid.RowDefinitions>
+
+                            <!-- Header Calendario -->
+                            <Grid Grid.Row="0" Margin="0,0,0,10">
+                                <TextBlock x:Name="TxtMesAnio" Text="Diciembre 2025" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Foreground="#2C3E50"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Content="&lt;" Width="30" Height="30" Click="BtnPrevMonth_Click" Background="Transparent" BorderThickness="0" FontSize="16"/>
+                                    <Button Content="&gt;" Width="30" Height="30" Click="BtnNextMonth_Click" Background="Transparent" BorderThickness="0" FontSize="16"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- Cuerpo Calendario -->
+                             <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/> <!-- Nombres Dias -->
+                                    <RowDefinition Height="*"/> 
+                                </Grid.RowDefinitions>
+                                
+                                <!-- Cabecera Días -->
+                                <UniformGrid Columns="7" Margin="0,0,0,5">
+                                    <TextBlock Text="D" HorizontalAlignment="Center" Foreground="#7F8C8D"/>
+                                    <TextBlock Text="L" HorizontalAlignment="Center" Foreground="#7F8C8D"/>
+                                    <TextBlock Text="M" HorizontalAlignment="Center" Foreground="#7F8C8D"/>
+                                    <TextBlock Text="M" HorizontalAlignment="Center" Foreground="#7F8C8D"/>
+                                    <TextBlock Text="J" HorizontalAlignment="Center" Foreground="#7F8C8D"/>
+                                    <TextBlock Text="V" HorizontalAlignment="Center" Foreground="#7F8C8D"/>
+                                    <TextBlock Text="S" HorizontalAlignment="Center" Foreground="#7F8C8D"/>
+                                </UniformGrid>
+
+                                <!-- Grid Dias -->
+                                <ItemsControl x:Name="CalendarItemsControl" Grid.Row="1">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="7" Rows="6"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Margin="2" Background="{Binding BackgroundBrush}" CornerRadius="5">
+                                                <Button Background="Transparent" BorderThickness="0" Command="{Binding DataContext.OpenDayDetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Cursor="Hand">
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <ContentPresenter/>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                    <Grid>
+                                                        <TextBlock Text="{Binding DayNumber}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{Binding ForegroundBrush}" Margin="5"/>
+                                                        <!-- Indicadores de Citas -->
+                                                        <ItemsControl ItemsSource="{Binding Indicators}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,2">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Ellipse Width="4" Height="4" Fill="{Binding ColorBrush}" Margin="1"/>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </Grid>
+                                                </Button>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Widgets Derecha -->
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/> <!-- Próximas Citas -->
+                            <RowDefinition Height="*"/> <!-- Estadísticas Semanales -->
+                        </Grid.RowDefinitions>
+
+                        <!-- Widget "Próximas Citas" -->
+                        <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Mis Próximas Citas" FontSize="16" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,10"/>
+                                
+                                <DataGrid x:Name="DgProximasCitas" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                                          Background="White" BorderThickness="0" HeadersVisibility="Column"
+                                          GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#EEE" RowBackground="White">
+                                    <DataGrid.Resources>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="Background" Value="White"/>
+                                            <Setter Property="Foreground" Value="#7F8C8D"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                            <Setter Property="Padding" Value="10,5"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                        </Style>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="Padding" Value="10"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="DataGridCell">
+                                                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                            <ContentPresenter VerticalAlignment="Center" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Hora" Binding="{Binding HoraStr}" Width="Auto" FontWeight="Bold" Foreground="#333"/>
+                                        <DataGridTextColumn Header="Paciente" Binding="{Binding NombrePaciente}" Width="*" Foreground="#555"/>
+                                        <DataGridTextColumn Header="Tratamiento" Binding="{Binding Tratamiento}" Width="*" Foreground="#555"/>
+                                        
+                                        <DataGridTemplateColumn Header="Estado" Width="Auto">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="{Binding Estatus, Converter={StaticResource CitaStatusConverter}}" 
+                                                            CornerRadius="10" Padding="10,4">
+                                                        <TextBlock Text="{Binding Estatus}" Foreground="White" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+
+                        <!-- Widget "Citas por Semana" -->
+                        <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,10,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Mis Citas por Semana" FontSize="16" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,10"/>
+                                <Canvas x:Name="WeeklyChartCanvas" Grid.Row="1" ClipToBounds="True"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <!-- 2. PACIENTES CONTAINER -->
+                <Grid x:Name="PacientesContainer" Visibility="Collapsed">
+                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Search Bar -->
+                    <Grid Grid.Row="0" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border Grid.Column="1" Background="White" CornerRadius="20" BorderBrush="#E0E0E0" BorderThickness="1" Padding="10,5" Width="300">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="TxtBuscarCitas" Grid.Column="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" TextChanged="TxtBuscarCitas_TextChanged">
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type TextBox}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type TextBox}">
+                                                        <Grid>
+                                                            <TextBlock Text="Buscar por dentista o paciente..." Foreground="#AAA" Visibility="{Binding Text.IsEmpty, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="2,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False"/>
+                                                            <ScrollViewer x:Name="PART_ContentHost" Background="Transparent"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <Border Grid.Row="1" Style="{StaticResource CardStyle}" Padding="0">
+                        <DataGrid x:Name="PacientesDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="150"/>
+                                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="110"/>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="220"/>
+                                <DataGridTextColumn Header="Fecha Nacimiento" Binding="{Binding FechaNacimiento, StringFormat=d}" Width="150"/>
+                                 <DataGridTemplateColumn Header="" Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEditarPaciente_Click">
+                                                    <Image Source="/assets/icons/edit.png"></Image>
+                                                </Button>
+                                                <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarPaciente_Click">
+                                                    <Image Source="/assets/icons/circle-x.png"></Image>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+                </Grid>
+
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

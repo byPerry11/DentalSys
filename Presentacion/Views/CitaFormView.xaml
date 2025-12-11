@@ -28,8 +28,8 @@
                 <TextBlock Text="Fecha" FontWeight="SemiBold" Margin="0,10,0,5"/>
                 <DatePicker x:Name="DpFecha" Height="30"/>
 
-                <TextBlock Text="Hora (HH:mm)" FontWeight="SemiBold" Margin="0,10,0,5"/>
-                <TextBox x:Name="TxtHora" Height="30" Padding="5"/>
+                <TextBlock Text="Hora" FontWeight="SemiBold" Margin="0,10,0,5"/>
+                <ComboBox x:Name="CmbHora" Height="30"/>
 
                 <TextBlock Text="Estatus" FontWeight="SemiBold" Margin="0,10,0,5"/>
                 <ComboBox x:Name="CmbEstatus" Height="30">
