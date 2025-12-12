@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ApplicationLogic.DTOs
 {
-    // Objeto de transferencia para Recepcionista
     public class RecepcionistaDTO
     {
-        public int IdRecepcionista { get; set; }
+        public int Id_Recepcionista { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
-
+        public string Estado { get; set; }
+        public DateTime? Fecha_Creacion { get; set; }
     }
 }

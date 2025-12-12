@@ -1,83 +1,86 @@
-﻿using System;
+﻿using ApplicationLogic.DTOs;
+using DataAccess.Connections;
+using DataAccess.Entities;
+using DataAccess.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ApplicationLogic.DTOs;
-using DataAccess.Entities;
-using DataAccess.Repositories;
 
 namespace ApplicationLogic.Services
 {
     public class AdministradorService
     {
-        private readonly AdministradorRepository _adminRepository;
+        private readonly AdministradorRepository _administradorRepository;
 
-        public AdministradorService(AdministradorRepository adminRepository)
+        public AdministradorService()
         {
-            _adminRepository = adminRepository;
+            var provider = ConnectionFactory.Create();
+            _administradorRepository = new AdministradorRepository(provider);
         }
 
         public List<AdministradorDTO> GetAllAdministradores()
         {
-            var entities = _adminRepository.GetAllAdministradores();
+            var entities = _administradorRepository.GetAllAdministradores();
 
-            return entities
-                .Select(e => new AdministradorDTO
-                {
-                    IdAdministrador = e.Id_Administrador,
-                    Nombre = e.Nombre,
-                    Telefono = e.Telefono,
-                    Email = e.Email
-                })
-                .ToList();
-        }
-
-        public AdministradorDTO? GetAdministradorById(int id)
-        {
-            var entity = _adminRepository.GetAdministradorById(id);
-
-            if (entity == null)
-                return null;
-
-            return new AdministradorDTO
+            return entities.Select(e => new AdministradorDTO
             {
-                IdAdministrador = entity.Id_Administrador,
-                Nombre = entity.Nombre,
-                Telefono = entity.Telefono,
-                Email = entity.Email
-            };
+                Id_Administrador = e.Id_Administrador,
+                Nombre = e.Nombre,
+                Telefono = e.Telefono,
+                Email = e.Email,
+                Estado = e.Estado,
+                Fecha_Creacion = e.Fecha_Creacion
+            }).ToList();
         }
 
         public void AddAdministrador(AdministradorDTO dto)
         {
             var entity = new AdministradorEntity
             {
-                // Id lo genera la base
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
-                Email = dto.Email
+                Email = dto.Email,
+                Estado = dto.Estado ?? "activo"
             };
 
-            _adminRepository.AddAdministrador(entity);
+            _administradorRepository.AddAdministrador(entity);
         }
 
         public void UpdateAdministrador(AdministradorDTO dto)
         {
             var entity = new AdministradorEntity
             {
-                Id_Administrador = dto.IdAdministrador,
+                Id_Administrador = dto.Id_Administrador,
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
-                Email = dto.Email
+                Email = dto.Email,
+                Estado = dto.Estado ?? "activo"
             };
 
-            _adminRepository.UpdateAdministrador(entity);
+            _administradorRepository.UpdateAdministrador(entity);
         }
 
         public void DeleteAdministrador(int id)
         {
-            _adminRepository.DeleteAdministrador(id);
+            _administradorRepository.DeleteAdministrador(id);
+        }
+
+        public AdministradorDTO? GetAdministradorById(int id)
+        {
+            var entity = _administradorRepository.GetAdministradorById(id);
+            if (entity == null) return null;
+
+            return new AdministradorDTO
+            {
+                Id_Administrador = entity.Id_Administrador,
+                Nombre = entity.Nombre,
+                Telefono = entity.Telefono,
+                Email = entity.Email,
+                Estado = entity.Estado,
+                Fecha_Creacion = entity.Fecha_Creacion
+            };
         }
     }
 }

@@ -29,6 +29,8 @@ namespace Presentacion.Views
         private readonly ConsultaService _consultaService;
         private readonly FacturaService _facturaService;
         private readonly DentistaService _dentistaService;
+        private readonly AdministradorService _administradorService;
+        private readonly RecepcionistaService _recepcionistaService;
         private List<CitaDTO> _allCitas;
         private List<ConsultaDTO> _allConsultas;
         private List<PacienteDTO> _allPacientes;
@@ -43,6 +45,8 @@ namespace Presentacion.Views
             _consultaService = new ConsultaService();
             _facturaService = new FacturaService();
             _dentistaService = new DentistaService();
+            _administradorService = new AdministradorService();
+            _recepcionistaService = new RecepcionistaService();
 
             LoadUsuarios();
             LoadTratamientos();
@@ -60,6 +64,8 @@ namespace Presentacion.Views
             ConsultasContainer.Visibility = Visibility.Collapsed;
             DentistasContainer.Visibility = Visibility.Collapsed;
             CitasContainer.Visibility = Visibility.Visible;
+            AdministradoresContainer.Visibility = Visibility.Collapsed;
+            RecepcionistasContainer.Visibility = Visibility.Collapsed;
 
             LoadCitas();
         }
@@ -77,6 +83,8 @@ namespace Presentacion.Views
                 CitasContainer.Visibility = Visibility.Collapsed;
                 ConsultasContainer.Visibility = Visibility.Visible;
                 DentistasContainer.Visibility = Visibility.Collapsed;
+                AdministradoresContainer.Visibility = Visibility.Collapsed;
+                RecepcionistasContainer.Visibility = Visibility.Collapsed;
 
                 LoadConsultas();
             }
@@ -296,6 +304,8 @@ namespace Presentacion.Views
                 ConsultasContainer.Visibility = Visibility.Collapsed;
                 DentistasContainer.Visibility = Visibility.Collapsed;
                 TratamientosContainer.Visibility = Visibility.Visible;
+                AdministradoresContainer.Visibility = Visibility.Collapsed;
+                RecepcionistasContainer.Visibility = Visibility.Collapsed;
                 LoadTratamientos();
             }
             catch (Exception ex)
@@ -322,6 +332,8 @@ namespace Presentacion.Views
                 ConsultasContainer.Visibility = Visibility.Collapsed;
                 UsuariosContainer.Visibility = Visibility.Visible;
                 DentistasContainer.Visibility = Visibility.Collapsed;
+                AdministradoresContainer.Visibility = Visibility.Collapsed;
+                RecepcionistasContainer.Visibility = Visibility.Collapsed;
                 LoadUsuarios();
             }
             catch (Exception ex)
@@ -481,6 +493,8 @@ namespace Presentacion.Views
             ConsultasContainer.Visibility = Visibility.Collapsed;
             PacientesContainer.Visibility = Visibility.Visible;
             DentistasContainer.Visibility = Visibility.Collapsed;
+            AdministradoresContainer.Visibility = Visibility.Collapsed;
+            RecepcionistasContainer.Visibility = Visibility.Collapsed;
             HeaderTitle.Text = "Gestión de Pacientes";
             LoadPacientes();
         }
@@ -593,6 +607,8 @@ namespace Presentacion.Views
             TratamientosContainer.Visibility = Visibility.Collapsed;
             CitasContainer.Visibility = Visibility.Collapsed;
             ConsultasContainer.Visibility = Visibility.Collapsed;
+            AdministradoresContainer.Visibility = Visibility.Collapsed;
+            RecepcionistasContainer.Visibility = Visibility.Collapsed;
 
             DentistasContainer.Visibility = Visibility.Visible;
 
@@ -694,6 +710,251 @@ namespace Presentacion.Views
             }
         }
 
+        private void LoadAdministradores()
+        {
+            try
+            {
+                var admins = _administradorService.GetAllAdministradores();
+                AdministradoresDataGrid.ItemsSource = admins;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar administradores: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnGestionAdministradorClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HeaderTitle.Text = "Gestión de Administradores";
+
+                DashboardGrid.Visibility = Visibility.Collapsed;
+                TratamientosContainer.Visibility = Visibility.Collapsed;
+                PacientesContainer.Visibility = Visibility.Collapsed;
+                CitasContainer.Visibility = Visibility.Collapsed;
+                ConsultasContainer.Visibility = Visibility.Collapsed;
+                UsuariosContainer.Visibility = Visibility.Collapsed;
+                DentistasContainer.Visibility = Visibility.Collapsed;
+                RecepcionistasContainer.Visibility = Visibility.Collapsed;
+
+                AdministradoresContainer.Visibility = Visibility.Visible;
+
+                LoadAdministradores();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar administradores: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnNuevoAdministrador_Click(object sender, RoutedEventArgs e)
+        {
+            var form = new AdministradorFormView();
+            var window = new Window
+            {
+                Title = "Nuevo Administrador",
+                Content = form,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+
+            form.OnSave += (admin) =>
+            {
+                try
+                {
+                    _administradorService.AddAdministrador(admin);
+                    LoadAdministradores();
+                    window.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al guardar administrador: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            };
+
+            form.OnCancel += () => window.Close();
+
+            window.ShowDialog();
+        }
+
+        private void BtnEditarAdministrador_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is AdministradorDTO admin)
+            {
+                var form = new AdministradorFormView(admin);
+                var window = new Window
+                {
+                    Title = "Editar Administrador",
+                    Content = form,
+                    SizeToContent = SizeToContent.WidthAndHeight,
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+
+                form.OnSave += (updated) =>
+                {
+                    try
+                    {
+                        _administradorService.UpdateAdministrador(updated);
+                        LoadAdministradores();
+                        window.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al actualizar administrador: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                };
+
+                form.OnCancel += () => window.Close();
+
+                window.ShowDialog();
+            }
+        }
+
+        private void BtnEliminarAdministrador_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is AdministradorDTO admin)
+            {
+                var result = MessageBox.Show($"¿Está seguro de eliminar al administrador {admin.Nombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        _administradorService.DeleteAdministrador(admin.Id_Administrador);
+                        LoadAdministradores();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al eliminar administrador: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
+
+        private void LoadRecepcionistas()
+        {
+            try
+            {
+                var list = _recepcionistaService.GetAllRecepcionistas();
+                RecepcionistasDataGrid.ItemsSource = list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar recepcionistas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnGestionRecepcionistasClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HeaderTitle.Text = "Gestión de Recepcionistas";
+
+                DashboardGrid.Visibility = Visibility.Collapsed;
+                TratamientosContainer.Visibility = Visibility.Collapsed;
+                PacientesContainer.Visibility = Visibility.Collapsed;
+                CitasContainer.Visibility = Visibility.Collapsed;
+                ConsultasContainer.Visibility = Visibility.Collapsed;
+                UsuariosContainer.Visibility = Visibility.Collapsed;
+                DentistasContainer.Visibility = Visibility.Collapsed;
+                AdministradoresContainer.Visibility = Visibility.Collapsed; // si lo añadiste
+
+                RecepcionistasContainer.Visibility = Visibility.Visible;
+
+                LoadRecepcionistas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar recepcionistas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnNuevoRecepcionista_Click(object sender, RoutedEventArgs e)
+        {
+            var form = new RecepcionistaFormView();
+            var window = new Window
+            {
+                Title = "Nuevo Recepcionista",
+                Content = form,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+
+            form.OnSave += (r) =>
+            {
+                try
+                {
+                    _recepcionistaService.AddRecepcionista(r);
+                    LoadRecepcionistas();
+                    window.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al guardar recepcionista: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            };
+
+            form.OnCancel += () => window.Close();
+
+            window.ShowDialog();
+        }
+
+        private void BtnEditarRecepcionista_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is RecepcionistaDTO r)
+            {
+                var form = new RecepcionistaFormView(r);
+                var window = new Window
+                {
+                    Title = "Editar Recepcionista",
+                    Content = form,
+                    SizeToContent = SizeToContent.WidthAndHeight,
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+
+                form.OnSave += (updated) =>
+                {
+                    try
+                    {
+                        _recepcionistaService.UpdateRecepcionista(updated);
+                        LoadRecepcionistas();
+                        window.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al actualizar recepcionista: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                };
+
+                form.OnCancel += () => window.Close();
+
+                window.ShowDialog();
+            }
+        }
+
+        private void BtnEliminarRecepcionista_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is RecepcionistaDTO r)
+            {
+                var result = MessageBox.Show($"¿Está seguro de eliminar a la recepcionista {r.Nombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        _recepcionistaService.DeleteRecepcionista(r.Id_Recepcionista);
+                        LoadRecepcionistas();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al eliminar recepcionista: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
         private void ConsultasDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (ConsultasDataGrid.SelectedItem is ConsultaDTO consulta)

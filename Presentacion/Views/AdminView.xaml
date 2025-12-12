@@ -88,9 +88,9 @@
                     <Button Content="Gestión Usuarios" Click="BtnGestionUsuariosClick" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0"/>
                     <Button Content="Gestion de Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionPacientesClick"/>
                     <Button Content="Gestión Citas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionCitasClick"/>
-                    <Button Content="Gestion Administrador" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0"/>
-                    <Button Content="Gestion Dentistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" />
-                    <Button Content="Gestion Recepcionistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0"/>
+                    <Button Content="Gestion Administrador" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionAdministradorClick"/>
+                    <Button Content="Gestion Dentistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionDentistasClick"/>
+                    <Button Content="Gestion Recepcionistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionRecepcionistasClick"/>
                     <Button Content="Gestión Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionConsultasClick"/>
                     <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnTratamientosClick"/>
                     <Button Content="Cerrar Sesión"  Background="Transparent" Foreground="White" Height="35" HorizontalAlignment="Center" Click="BtnCerrarSesionClick" Margin="0,5" Padding="15, 0" BorderThickness="0"/>
@@ -292,6 +292,88 @@
                                                 <Image Source="/assets/icons/edit.png"></Image>
                                             </Button>
                                             <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarPaciente_Click">
+                                                <Image Source="/assets/icons/circle-x.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+            
+            <!-- Contenedor Administradores -->
+            <Grid x:Name="AdministradoresContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button HorizontalAlignment="Right" Width="auto" Height="45" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnNuevoAdministrador_Click">
+                    <Image Source="/assets/icons/person-add.png"></Image>
+                </Button>
+
+                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                    </Border.Effect>
+
+                    <DataGrid x:Name="AdministradoresDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id_Administrador}" Width="60"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="130"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                            <DataGridTemplateColumn Header="" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEditarAdministrador_Click">
+                                                <Image Source="/assets/icons/edit.png"></Image>
+                                            </Button>
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarAdministrador_Click">
+                                                <Image Source="/assets/icons/circle-x.png"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+
+            <!-- Contenedor Recepcionistas -->
+            <Grid x:Name="RecepcionistasContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button HorizontalAlignment="Right" Width="auto" Height="45" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnNuevoRecepcionista_Click">
+                    <Image Source="/assets/icons/person-add.png"></Image>
+                </Button>
+
+                <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="0">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#DDD" ShadowDepth="2" Opacity="0.4"/>
+                    </Border.Effect>
+
+                    <DataGrid x:Name="RecepcionistasDataGrid" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" BorderThickness="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id_Recepcionista}" Width="60"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="200"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="130"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                            <DataGridTemplateColumn Header="" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEditarRecepcionista_Click">
+                                                <Image Source="/assets/icons/edit.png"></Image>
+                                            </Button>
+                                            <Button Margin="1,0" Width="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="BtnEliminarRecepcionista_Click">
                                                 <Image Source="/assets/icons/circle-x.png"></Image>
                                             </Button>
                                         </StackPanel>

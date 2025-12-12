@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ApplicationLogic.DTOs;
+using DataAccess.Connections;
+using DataAccess.Entities;
+using DataAccess.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ApplicationLogic.DTOs;
-using DataAccess.Entities;
-using DataAccess.Repositories;
 
 namespace ApplicationLogic.Services
 {
@@ -13,50 +14,34 @@ namespace ApplicationLogic.Services
     {
         private readonly RecepcionistaRepository _recepcionistaRepository;
 
-        public RecepcionistaService(RecepcionistaRepository recepcionistaRepository)
+        public RecepcionistaService()
         {
-            _recepcionistaRepository = recepcionistaRepository;
+            var provider = ConnectionFactory.Create();
+            _recepcionistaRepository = new RecepcionistaRepository(provider);
         }
 
         public List<RecepcionistaDTO> GetAllRecepcionistas()
         {
             var entities = _recepcionistaRepository.GetAllRecepcionistas();
-
-            return entities
-                .Select(e => new RecepcionistaDTO
-                {
-                    IdRecepcionista = e.Id_Recepcionista,
-                    Nombre = e.Nombre,
-                    Telefono = e.Telefono,
-                    Email = e.Email
-                })
-                .ToList();
-        }
-
-        public RecepcionistaDTO? GetRecepcionistaById(int id)
-        {
-            var entity = _recepcionistaRepository.GetRecepcionistaById(id);
-
-            if (entity == null)
-                return null;
-
-            return new RecepcionistaDTO
+            return entities.Select(e => new RecepcionistaDTO
             {
-                IdRecepcionista = entity.Id_Recepcionista,
-                Nombre = entity.Nombre,
-                Telefono = entity.Telefono,
-                Email = entity.Email
-            };
+                Id_Recepcionista = e.Id_Recepcionista,
+                Nombre = e.Nombre,
+                Telefono = e.Telefono,
+                Email = e.Email,
+                Estado = e.Estado,
+                Fecha_Creacion = e.Fecha_Creacion
+            }).ToList();
         }
 
         public void AddRecepcionista(RecepcionistaDTO dto)
         {
             var entity = new RecepcionistaEntity
             {
-                // Id lo genera la base de datos
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
-                Email = dto.Email
+                Email = dto.Email,
+                Estado = dto.Estado ?? "activo"
             };
 
             _recepcionistaRepository.AddRecepcionista(entity);
@@ -66,10 +51,11 @@ namespace ApplicationLogic.Services
         {
             var entity = new RecepcionistaEntity
             {
-                Id_Recepcionista = dto.IdRecepcionista,
+                Id_Recepcionista = dto.Id_Recepcionista,
                 Nombre = dto.Nombre,
                 Telefono = dto.Telefono,
-                Email = dto.Email
+                Email = dto.Email,
+                Estado = dto.Estado ?? "activo"
             };
 
             _recepcionistaRepository.UpdateRecepcionista(entity);
@@ -78,6 +64,21 @@ namespace ApplicationLogic.Services
         public void DeleteRecepcionista(int id)
         {
             _recepcionistaRepository.DeleteRecepcionista(id);
+        }
+
+        public RecepcionistaDTO? GetRecepcionistaById(int id)
+        {
+            var e = _recepcionistaRepository.GetRecepcionistaById(id);
+            if (e == null) return null;
+            return new RecepcionistaDTO
+            {
+                Id_Recepcionista = e.Id_Recepcionista,
+                Nombre = e.Nombre,
+                Telefono = e.Telefono,
+                Email = e.Email,
+                Estado = e.Estado,
+                Fecha_Creacion = e.Fecha_Creacion
+            };
         }
     }
 }

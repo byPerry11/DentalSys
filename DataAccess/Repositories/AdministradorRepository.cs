@@ -20,7 +20,7 @@ namespace DataAccess.Repositories
 
         public List<AdministradorEntity> GetAllAdministradores()
         {
-            var administradores = new List<AdministradorEntity>();
+            var list = new List<AdministradorEntity>();
 
             using (var connection = _provider.CreateConnection())
             {
@@ -30,32 +30,27 @@ namespace DataAccess.Repositories
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            var admin = new AdministradorEntity
+                            var a = new AdministradorEntity
                             {
-                                Id_Administrador = reader.GetInt32(reader.GetOrdinal("Id_Administrador")),
-                                Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre"))
-                                    ? null
-                                    : reader.GetString(reader.GetOrdinal("Nombre")),
-                                Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono"))
-                                    ? null
-                                    : reader.GetString(reader.GetOrdinal("Telefono")),
-                                Email = reader.IsDBNull(reader.GetOrdinal("Email"))
-                                    ? null
-                                    : reader.GetString(reader.GetOrdinal("Email"))
+                                Id_Administrador = reader.GetInt32(reader.GetOrdinal("id_administrador")),
+                                Nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? null : reader.GetString(reader.GetOrdinal("nombre")),
+                                Telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? null : reader.GetString(reader.GetOrdinal("telefono")),
+                                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                                Estado = reader.IsDBNull(reader.GetOrdinal("estado")) ? null : reader.GetString(reader.GetOrdinal("estado")),
+                                Fecha_Creacion = reader.IsDBNull(reader.GetOrdinal("fecha_creacion")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("fecha_creacion"))
                             };
 
-                            administradores.Add(admin);
+                            list.Add(a);
                         }
                     }
                 }
             }
 
-            return administradores;
+            return list;
         }
 
         public AdministradorEntity? GetAdministradorById(int id)
@@ -65,7 +60,7 @@ namespace DataAccess.Repositories
             using (var connection = _provider.CreateConnection())
             {
                 connection.Open();
-                string query = "SELECT * FROM Administrador WHERE Id_Administrador = @Id";
+                string query = "SELECT * FROM Administrador WHERE id_administrador = @Id";
 
                 using (var command = connection.CreateCommand())
                 {
@@ -78,16 +73,12 @@ namespace DataAccess.Repositories
                         {
                             admin = new AdministradorEntity
                             {
-                                Id_Administrador = reader.GetInt32(reader.GetOrdinal("Id_Administrador")),
-                                Nombre = reader.IsDBNull(reader.GetOrdinal("Nombre"))
-                                    ? null
-                                    : reader.GetString(reader.GetOrdinal("Nombre")),
-                                Telefono = reader.IsDBNull(reader.GetOrdinal("Telefono"))
-                                    ? null
-                                    : reader.GetString(reader.GetOrdinal("Telefono")),
-                                Email = reader.IsDBNull(reader.GetOrdinal("Email"))
-                                    ? null
-                                    : reader.GetString(reader.GetOrdinal("Email"))
+                                Id_Administrador = reader.GetInt32(reader.GetOrdinal("id_administrador")),
+                                Nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? null : reader.GetString(reader.GetOrdinal("nombre")),
+                                Telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? null : reader.GetString(reader.GetOrdinal("telefono")),
+                                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                                Estado = reader.IsDBNull(reader.GetOrdinal("estado")) ? null : reader.GetString(reader.GetOrdinal("estado")),
+                                Fecha_Creacion = reader.IsDBNull(reader.GetOrdinal("fecha_creacion")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("fecha_creacion"))
                             };
                         }
                     }
@@ -103,16 +94,16 @@ namespace DataAccess.Repositories
             {
                 connection.Open();
                 string query = @"
-                    INSERT INTO Administrador (Nombre, Telefono, Email)
-                    VALUES (@Nombre, @Telefono, @Email)";
+                    INSERT INTO Administrador (nombre, telefono, email, estado)
+                    VALUES (@Nombre, @Telefono, @Email, @Estado)";
 
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-
                     AddParameter(command, "@Nombre", admin.Nombre);
                     AddParameter(command, "@Telefono", admin.Telefono);
                     AddParameter(command, "@Email", admin.Email);
+                    AddParameter(command, "@Estado", admin.Estado ?? "activo");
 
                     command.ExecuteNonQuery();
                 }
@@ -126,19 +117,20 @@ namespace DataAccess.Repositories
                 connection.Open();
                 string query = @"
                     UPDATE Administrador
-                    SET Nombre = @Nombre,
-                        Telefono = @Telefono,
-                        Email = @Email
-                    WHERE Id_Administrador = @Id_Administrador";
+                    SET nombre = @Nombre,
+                        telefono = @Telefono,
+                        email = @Email,
+                        estado = @Estado
+                    WHERE id_administrador = @Id";
 
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-
-                    AddParameter(command, "@Id_Administrador", admin.Id_Administrador);
+                    AddParameter(command, "@Id", admin.Id_Administrador);
                     AddParameter(command, "@Nombre", admin.Nombre);
                     AddParameter(command, "@Telefono", admin.Telefono);
                     AddParameter(command, "@Email", admin.Email);
+                    AddParameter(command, "@Estado", admin.Estado ?? "activo");
 
                     command.ExecuteNonQuery();
                 }
@@ -150,7 +142,7 @@ namespace DataAccess.Repositories
             using (var connection = _provider.CreateConnection())
             {
                 connection.Open();
-                string query = "DELETE FROM Administrador WHERE Id_Administrador = @Id";
+                string query = "DELETE FROM Administrador WHERE id_administrador = @Id";
 
                 using (var command = connection.CreateCommand())
                 {
