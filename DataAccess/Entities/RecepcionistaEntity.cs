@@ -9,6 +9,7 @@ namespace DataAccess.Entities
     public class RecepcionistaEntity
     {
         public int Id_Recepcionista { get; set; }
+        public int? Id_Usuario { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }

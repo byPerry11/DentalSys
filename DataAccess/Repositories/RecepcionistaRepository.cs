@@ -88,6 +88,38 @@ namespace DataAccess.Repositories
             return resp;
         }
 
+        public RecepcionistaEntity? GetRecepcionistaByUsuarioId(int userId)
+        {
+            using (var connection = _provider.CreateConnection())
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM Recepcionista WHERE id_usuario = @UserId";
+                    var p1 = command.CreateParameter();
+                    p1.ParameterName = "@UserId";
+                    p1.Value = userId;
+                    command.Parameters.Add(p1);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (!reader.Read())
+                            return null;
+
+                        return new RecepcionistaEntity
+                        {
+                            Id_Recepcionista = reader.GetInt32(reader.GetOrdinal("id_recepcionista")),
+                            Nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? null : reader.GetString(reader.GetOrdinal("nombre")),
+                            Telefono = reader.IsDBNull(reader.GetOrdinal("telefono")) ? null : reader.GetString(reader.GetOrdinal("telefono")),
+                            Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                            Estado = reader.IsDBNull(reader.GetOrdinal("estado")) ? null : reader.GetString(reader.GetOrdinal("estado")),
+                            Fecha_Creacion = reader.IsDBNull(reader.GetOrdinal("fecha_creacion")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("fecha_creacion")),
+                            Id_Usuario = reader.IsDBNull(reader.GetOrdinal("id_usuario")) ? null : reader.GetInt32(reader.GetOrdinal("id_usuario"))
+                        };
+                    }
+                }
+            }
+        }
         public void AddRecepcionista(RecepcionistaEntity r)
         {
             using (var connection = _provider.CreateConnection())

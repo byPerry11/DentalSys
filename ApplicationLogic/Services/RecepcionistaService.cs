@@ -13,11 +13,14 @@ namespace ApplicationLogic.Services
     public class RecepcionistaService
     {
         private readonly RecepcionistaRepository _recepcionistaRepository;
+        private readonly UserRepository _userRepository;
 
         public RecepcionistaService()
         {
             var provider = ConnectionFactory.Create();
             _recepcionistaRepository = new RecepcionistaRepository(provider);
+            _userRepository = new UserRepository(provider);
+
         }
 
         public List<RecepcionistaDTO> GetAllRecepcionistas()
@@ -30,10 +33,24 @@ namespace ApplicationLogic.Services
                 Telefono = e.Telefono,
                 Email = e.Email,
                 Estado = e.Estado,
-                Fecha_Creacion = e.Fecha_Creacion
+                Fecha_Creacion = e.Fecha_Creacion,
+                Id_Usuario= e.Id_Usuario
             }).ToList();
         }
-
+        public List<RecepcionistaDTO> GetRecepcionistasDisponibles()
+        {
+            var entities = _userRepository.GetRecepcionistasDisponibles();
+            return entities.Select(e => new RecepcionistaDTO
+            {
+                Id_Recepcionista = e.Id_Recepcionista,
+                Nombre = e.Nombre,
+                Telefono = e.Telefono,
+                Email = e.Email,
+                Estado = e.Estado,
+                Fecha_Creacion = e.Fecha_Creacion,
+                Id_Usuario = e.Id_Usuario
+            }).ToList();
+        }
         public void AddRecepcionista(RecepcionistaDTO dto)
         {
             var entity = new RecepcionistaEntity
@@ -80,5 +97,31 @@ namespace ApplicationLogic.Services
                 Fecha_Creacion = e.Fecha_Creacion
             };
         }
+        public RecepcionistaDTO? GetRecepcionistaByUsuarioId(int userId)
+        {
+            var entity = _recepcionistaRepository.GetRecepcionistaByUsuarioId(userId);
+            if (entity == null) return null;
+
+            return new RecepcionistaDTO
+            {
+                Id_Recepcionista = entity.Id_Recepcionista,
+                Nombre = entity.Nombre,
+                Telefono = entity.Telefono,
+                Email = entity.Email,
+                Estado = entity.Estado,
+                Fecha_Creacion = entity.Fecha_Creacion,
+                Id_Usuario = entity.Id_Usuario
+            };
+        }
+        public void AssignUserToRecepcionista(int recepId, int usuarioId)
+        {
+            _userRepository.AssignUserToRecepcionista(recepId, usuarioId);
+        }
+
+        public void RemoveUserFromRecepcionista(int recepId)
+        {
+            _userRepository.RemoveUserFromRecepcionista(recepId);
+        }
+
     }
 }

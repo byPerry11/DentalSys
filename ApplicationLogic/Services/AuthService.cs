@@ -54,15 +54,50 @@ namespace ApplicationLogic.Services
                 {
                     Id = userEntity.Id_Usuario,
                     Username = userEntity.Nombre_Usuario,
-                    Role = userEntity.Rol
+                    Role = userEntity.Rol,
+                    FechaCreacion = userEntity.Fecha_Creacion
                 };
 
-                // If user is a dentist, look up their Id_Dentista
-                if (userEntity.Rol?.ToLower() == "dentista")
+                switch (userEntity.Rol?.ToLower())
                 {
-                    var dentistaService = new DentistaService();
-                    var dentista = dentistaService.GetDentistaByUsuarioId(userEntity.Id_Usuario);
-                    userDto.Id_Dentista = dentista?.Id_Dentista;
+                    case "administrador":
+                        {
+                            var adminService = new AdministradorService();
+                            var admin = adminService.GetAdministradorByUsuarioId(userEntity.Id_Usuario);
+
+                            if (admin == null)
+                                return null; // usuario sin perfil asignado → no debe entrar
+
+                            userDto.Id_Administrador = admin.Id_Administrador;
+                            break;
+                        }
+
+                    case "recepcionista":
+                        {
+                            var recepService = new RecepcionistaService();
+                            var recepcionista = recepService.GetRecepcionistaByUsuarioId(userEntity.Id_Usuario);
+
+                            if (recepcionista == null)
+                                return null; // usuario sin perfil asignado
+
+                            userDto.Id_Recepcionista = recepcionista.Id_Recepcionista;
+                            break;
+                        }
+
+                    case "dentista":
+                        {
+                            var dentistaService = new DentistaService();
+                            var dentista = dentistaService.GetDentistaByUsuarioId(userEntity.Id_Usuario);
+
+                            if (dentista == null)
+                                return null; // usuario sin perfil asignado
+
+                            userDto.Id_Dentista = dentista.Id_Dentista;
+                            break;
+                        }
+
+                    default:
+                        return null;
                 }
 
                 return userDto;

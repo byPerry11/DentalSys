@@ -1,9 +1,13 @@
 <Window x:Class="Presentacion.Views.UserFormView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Usuario" Height="400" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="Usuario" Height="480" Width="450"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         Background="#F4F6F6">
+
     <Window.Resources>
+
+        <!-- Estilo para TextBox -->
         <Style TargetType="TextBox">
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -13,13 +17,18 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Border CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                        <Border CornerRadius="5"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}">
                             <ScrollViewer x:Name="PART_ContentHost"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Estilo para PasswordBox -->
         <Style TargetType="PasswordBox">
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -29,13 +38,18 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
-                        <Border CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                        <Border CornerRadius="5"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}">
                             <ScrollViewer x:Name="PART_ContentHost"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Estilo ComboBox -->
         <Style TargetType="ComboBox">
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -43,47 +57,115 @@
             <Setter Property="BorderBrush" Value="#BDC3C7"/>
             <Setter Property="Background" Value="White"/>
         </Style>
+
     </Window.Resources>
+
 
     <Grid Margin="25">
         <StackPanel>
-            <TextBlock Text="Detalles del Usuario" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,20" HorizontalAlignment="Center"/>
 
-            <TextBlock Text="Nombre de Usuario" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-            <TextBox x:Name="TxtUsername" Height="35" Margin="0,0,0,15"/>
+            <!-- TÍTULO -->
+            <TextBlock Text="Detalles del Usuario"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"
+                       Margin="0,0,0,20"
+                       HorizontalAlignment="Center"/>
 
-            <TextBlock Text="Contraseña" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-            <PasswordBox x:Name="TxtPassword" Height="35" Margin="0,0,0,15"/>
+            <!-- ROL -->
+            <TextBlock Text="Rol"
+                       FontWeight="SemiBold"
+                       Foreground="#34495E"
+                       Margin="0,0,0,5"/>
 
-            <TextBlock Text="Rol" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
-            <ComboBox x:Name="CmbRole" Height="35" Margin="0,0,0,20">
-                <ComboBoxItem Content="Administrador"/>
-                <ComboBoxItem Content="Dentista"/>
-                <ComboBoxItem Content="Recepcionista"/>
-            </ComboBox>
+            <ComboBox x:Name="CmbRole"
+                      Height="35"
+                      Margin="0,0,0,20"
+                      SelectionChanged="CmbRole_SelectionChanged"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                <Button Content="Cancelar" Width="100" Height="35" Margin="0,0,10,0" Click="BtnCancel_Click"
-                        Background="White" Foreground="#7F8C8D" BorderBrush="#BDC3C7" BorderThickness="1">
+            <!-- PERFIL SEGÚN ROL -->
+            <TextBlock x:Name="LblProfile"
+                       Text="Perfil disponible"
+                       FontWeight="SemiBold"
+                       Foreground="#34495E"
+                       Margin="0,0,0,5"
+                       Visibility="Visible"/>
+
+            <ComboBox x:Name="CmbProfiles"
+                      Height="35"
+                      Margin="0,0,0,15"
+                      Visibility="Visible"
+                      DisplayMemberPath="Nombre"
+                      SelectedValuePath="Id"/>
+
+            <!-- USERNAME -->
+            <TextBlock Text="Nombre de Usuario"
+                       FontWeight="SemiBold"
+                       Foreground="#34495E"
+                       Margin="0,0,0,5"/>
+
+            <TextBox x:Name="TxtUsername"
+                     Height="35"
+                     Margin="0,0,0,15"/>
+
+            <!-- PASSWORD -->
+            <TextBlock Text="Contraseña"
+                       FontWeight="SemiBold"
+                       Foreground="#34495E"
+                       Margin="0,0,0,5"/>
+
+            <PasswordBox x:Name="TxtPassword"
+                         Height="35"
+                         Margin="0,0,0,15"/>
+
+
+            <!-- BOTONES -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0,10,0,0">
+
+                <Button Content="Cancelar"
+                        Width="100"
+                        Height="35"
+                        Margin="0,0,10,0"
+                        Click="BtnCancel_Click"
+                        Background="White"
+                        Foreground="#7F8C8D"
+                        BorderBrush="#BDC3C7"
+                        BorderThickness="1">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border CornerRadius="5"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Guardar" Width="100" Height="35" Click="BtnSave_Click"
-                        Background="#27AE60" Foreground="White" BorderThickness="0">
+
+                <Button Content="Guardar"
+                        Width="100"
+                        Height="35"
+                        Click="BtnSave_Click"
+                        Background="#27AE60"
+                        Foreground="White"
+                        BorderThickness="0">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="5" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border CornerRadius="5"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+
             </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>

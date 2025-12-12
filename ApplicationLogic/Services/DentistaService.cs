@@ -11,11 +11,13 @@ namespace ApplicationLogic.Services
     public class DentistaService
     {
         private readonly DentistaRepository _dentistaRepository;
+        private readonly UserRepository _userRepository;
 
         public DentistaService()
         {
             var provider = ConnectionFactory.Create();
             _dentistaRepository = new DentistaRepository(provider);
+            _userRepository = new UserRepository(provider);
         }
 
         public List<DentistaDTO> GetAllDentistas()
@@ -32,7 +34,19 @@ namespace ApplicationLogic.Services
                 Email = d.Email
             }).ToList();
         }
-
+        public List<DentistaDTO> GetDentistasDisponibles()
+        {
+            var entities = _userRepository.GetDentistasDisponibles();
+            return entities.Select(d => new DentistaDTO
+            {
+                Id_Dentista = d.Id_Dentista,
+                Id_Usuario = d.Id_Usuario,
+                Nombre = d.Nombre,
+                Telefono = d.Telefono,
+                Especialidad = d.Especialidad,
+                Email = d.Email
+            }).ToList();
+        }
         public void AddDentista(DentistaDTO dto)
         {
             var entity = new DentistaEntity
@@ -82,6 +96,16 @@ namespace ApplicationLogic.Services
         public void DeleteDentista(int id)
         {
             _dentistaRepository.DeleteDentista(id);
+        }
+
+        public void AssignUserToDentista(int dentistaId, int usuarioId)
+        {
+            _userRepository.AssignUserToDentista(dentistaId, usuarioId);
+        }
+
+        public void RemoveUserFromDentista(int dentistaId)
+        {
+            _userRepository.RemoveUserFromDentista(dentistaId);
         }
     }
 }
