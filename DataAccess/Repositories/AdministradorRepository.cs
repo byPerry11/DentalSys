@@ -25,7 +25,7 @@ namespace DataAccess.Repositories
             using (var connection = _provider.CreateConnection())
             {
                 connection.Open();
-                string query = "SELECT * FROM Administrador";
+                string query = "SELECT * FROM Administrador ORDER BY id_administrador ASC;";
 
                 using (var command = connection.CreateCommand())
                 {
@@ -193,5 +193,7 @@ namespace DataAccess.Repositories
             parameter.Value = value ?? DBNull.Value;
             command.Parameters.Add(parameter);
         }
+
+
     }
 }

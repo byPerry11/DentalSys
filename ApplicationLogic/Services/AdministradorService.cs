@@ -51,9 +51,25 @@ namespace ApplicationLogic.Services
                 Id_Usuario = e.Id_Usuario
             }).ToList();
         }
+        private void ValidateAdministrador(AdministradorDTO dto, bool isUpdate = false)
+        {
+            if (dto == null)
+                throw new Exception("El objeto Administrador es nulo.");
+
+            if (isUpdate && dto.Id_Administrador <= 0)
+                throw new Exception("ID inválido para actualización.");
+
+            if (string.IsNullOrWhiteSpace(dto.Nombre))
+                throw new Exception("El nombre es obligatorio.");
+
+            if (string.IsNullOrWhiteSpace(dto.Email))
+                throw new Exception("El email es obligatorio.");
+        }
 
         public void AddAdministrador(AdministradorDTO dto)
         {
+            ValidateAdministrador(dto);
+
             var entity = new AdministradorEntity
             {
                 Nombre = dto.Nombre,
@@ -67,6 +83,8 @@ namespace ApplicationLogic.Services
 
         public void UpdateAdministrador(AdministradorDTO dto)
         {
+            ValidateAdministrador(dto, isUpdate: true);
+
             var entity = new AdministradorEntity
             {
                 Id_Administrador = dto.Id_Administrador,
@@ -81,6 +99,9 @@ namespace ApplicationLogic.Services
 
         public void DeleteAdministrador(int id)
         {
+            if (id <= 0)
+                throw new Exception("ID inválido para eliminar.");
+
             _administradorRepository.DeleteAdministrador(id);
         }
 
@@ -120,12 +141,19 @@ namespace ApplicationLogic.Services
         }
         public void AssignUserToAdministrador(int adminId, int usuarioId)
         {
+            if (adminId <= 0 || usuarioId <= 0)
+                throw new Exception("IDs inválidos.");
+
             _userRepository.AssignUserToAdministrador(adminId, usuarioId);
         }
 
         public void RemoveUserFromAdministrador(int adminId)
         {
+            if (adminId <= 0)
+                throw new Exception("ID inválido para remover usuario.");
+
             _userRepository.RemoveUserFromAdministrador(adminId);
         }
+
     }
 }
