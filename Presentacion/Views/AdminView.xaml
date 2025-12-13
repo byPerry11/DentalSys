@@ -70,7 +70,8 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar Admin -->
-        <Border Grid.Column="0" Background="#2C3E50">
+        <Border Grid.Column="0" Background="#5C9DFF
+">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
               HorizontalScrollBarVisibility="Disabled">
                 <StackPanel Margin="10">
@@ -79,21 +80,39 @@
                         HorizontalAlignment="Right" Margin="0,10,0,0" Click="BtnHamburger_Click">
                         <Image Source="pack://application:,,,/assets/icons/dashboard.png" Stretch="Uniform"/>
                     </Button>
-                    <Image Source="pack://application:,,,/assets/icons/person.png" Width="60" Height="66" HorizontalAlignment="Center" Margin="0,20,0,10"/>
+                    <Image x:Name="ImgProfile" Source="pack://application:,,,/assets/icons/person.png" Width="60" Height="66" HorizontalAlignment="Center" Margin="0,20,0,10"/>
 
-                    <TextBlock Text="Admin " Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,5,0,10" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Odontologia general" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0, 0, 0, 30"/>
+                    <TextBlock x:Name="TxtAdminName" Text="Admin " Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,5,0,10" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TxtAdminRole" Text="Odontologia general" Foreground="#D6EAF8" FontSize="12" HorizontalAlignment="Center" Margin="0, 0, 0, 30"/>
 
                     <!-- Botones de Navegación -->
-                    <Button Content="Gestión Usuarios" Click="BtnGestionUsuariosClick" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0"/>
-                    <Button Content="Gestion de Pacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionPacientesClick"/>
-                    <Button Content="Gestión Citas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionCitasClick"/>
-                    <Button Content="Gestion Administrador" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionAdministradorClick"/>
-                    <Button Content="Gestion Dentistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionDentistasClick"/>
-                    <Button Content="Gestion Recepcionistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionRecepcionistasClick"/>
-                    <Button Content="Gestión Consultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnGestionConsultasClick"/>
-                    <Button Content="Tratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Center" Padding="15,0" Click="BtnTratamientosClick"/>
-                    <Button Content="Cerrar Sesión"  Background="Transparent" Foreground="White" Height="35" HorizontalAlignment="Center" Click="BtnCerrarSesionClick" Margin="0,5" Padding="15, 0" BorderThickness="0"/>
+                    <Button x:Name="BtnGestionUsuarios" Click="BtnGestionUsuariosClick" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0">
+                        <TextBlock x:Name="TxtGestionUsuarios" Text="Gestión Usuarios" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnGestionPacientes" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnGestionPacientesClick">
+                        <TextBlock x:Name="TxtGestionPacientes" Text="Gestion de Pacientes" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnGestionCitas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnGestionCitasClick">
+                        <TextBlock x:Name="TxtGestionCitas" Text="Gestión Citas" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnGestionAdministrador" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnGestionAdministradorClick">
+                        <TextBlock x:Name="TxtGestionAdministrador" Text="Gestion Administrador" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnGestionDentistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnGestionDentistasClick">
+                        <TextBlock x:Name="TxtGestionDentistas" Text="Gestion Dentistas" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnGestionRecepcionistas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnGestionRecepcionistasClick">
+                        <TextBlock x:Name="TxtGestionRecepcionistas" Text="Gestion Recepcionistas" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnGestionConsultas" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnGestionConsultasClick">
+                        <TextBlock x:Name="TxtGestionConsultas" Text="Gestión Consultas" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnTratamientos" Height="40" Margin="0,5" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="15,0" Click="BtnTratamientosClick">
+                        <TextBlock x:Name="TxtTratamientos" Text="Tratamientos" TextWrapping="NoWrap"/>
+                    </Button>
+                    <Button x:Name="BtnCerrarSesion" Background="Transparent" Foreground="White" Height="35" HorizontalAlignment="Center" Click="BtnCerrarSesionClick" Margin="0,5" Padding="15, 0" BorderThickness="0">
+                        <TextBlock x:Name="TxtCerrarSesion" Text="Cerrar Sesión" TextWrapping="NoWrap"/>
+                    </Button>
                 </StackPanel>
             </ScrollViewer>
         </Border>
@@ -111,32 +130,101 @@
                 <TextBlock x:Name="HeaderTitle" Text="Resumen General" FontSize="24" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,20"/>
 
             <!-- Tarjetas de Resumen -->
-            <UniformGrid x:Name="DashboardGrid" Grid.Row="1" Columns="2" Rows="2" Margin="0,0,0,0">
-                <Border Background="White" CornerRadius="10" Margin="10" Padding="20">
+<Grid x:Name="DashboardGrid" Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Columna de cards -->
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <!-- Card 1: Pacientes -->
+                    <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,15" Height="110">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="#CCC" ShadowDepth="2" Opacity="0.3"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Pacientes (Mes)" Foreground="#7F8C8D" FontSize="14" FontWeight="SemiBold"/>
+                                <TextBlock x:Name="TxtNuevosPacientes" Text="0" FontSize="32" FontWeight="Bold" Foreground="#5C9DFF
+" Margin="0,5,0,0"/>
+                            </StackPanel>
+                            <Image Grid.Column="1" Source="/assets/icons/person.png" Width="40" Opacity="0.2" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Card 2: Total Generado -->
+                    <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,15" Height="110">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="#CCC" ShadowDepth="2" Opacity="0.3"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Total Generado (Mes)" Foreground="#7F8C8D" FontSize="14" FontWeight="SemiBold"/>
+                                <TextBlock x:Name="TxtTotalGenerado" Text="$0.00" FontSize="32" FontWeight="Bold" Foreground="#27AE60" Margin="0,5,0,0"/>
+                            </StackPanel>
+                            <Image Grid.Column="1" Source="/assets/icons/newspaper.png" Width="40" Opacity="0.2" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Card 3: Tratamiento Top -->
+                    <Border Background="White" CornerRadius="10" Padding="20" Height="110">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="#CCC" ShadowDepth="2" Opacity="0.3"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Tratamiento Top (Mes)" Foreground="#7F8C8D" FontSize="14" FontWeight="SemiBold"/>
+                                <TextBlock x:Name="TxtTratamientoTop" Text="-" FontSize="20" FontWeight="Bold" Foreground="#E67E22" Margin="0,5,0,0" TextTrimming="CharacterEllipsis"/>
+                            </StackPanel>
+                            <Image Grid.Column="1" Source="/assets/icons/dental.png" Width="40" Opacity="0.2" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <!-- Columna derecha para actividad -->
+                <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="20">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="10" Color="#CCC" ShadowDepth="2" Opacity="0.3"/>
                     </Border.Effect>
-                    <StackPanel>
-                        <TextBlock Text="Usuarios Activos" Foreground="Gray"/>
-                        <TextBlock Text="12" FontSize="30" FontWeight="Bold" Foreground="#2980B9"/>
-                    </StackPanel>
-                </Border>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Log de Actividad Reciente" FontSize="16" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,15"/>
 
-                <Border Background="White" CornerRadius="10" Margin="10" Padding="20">
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="10" Color="#CCC" ShadowDepth="2" Opacity="0.3"/>
-                    </Border.Effect>
-                    <StackPanel>
-                        <TextBlock Text="Ingresos del Mes" Foreground="Gray"/>
-                        <TextBlock Text="$45,200" FontSize="30" FontWeight="Bold" Foreground="#27AE60"/>
-                    </StackPanel>
+                        <DataGrid x:Name="LogsDataGrid" Grid.Row="1" Style="{StaticResource ModernDataGrid}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HeadersVisibility="Column" BorderThickness="0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Fecha/Hora" Binding="{Binding FechaHora, StringFormat='dd/MM/yyyy HH:mm'}" Width="140"/>
+                                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}" Width="120"/>
+                                <DataGridTextColumn Header="Acción" Binding="{Binding Accion}" Width="*"/>
+                                <DataGridTemplateColumn Header="Detalle" Width="80">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="#ECF0F1" CornerRadius="5" Padding="5,2" HorizontalAlignment="Center">
+                                                <TextBlock Text="Ver" FontSize="11" Foreground="#7F8C8D"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </Border>
-
-                <!-- Espacio para DataGrid -->
-                <Border Grid.ColumnSpan="2" Background="White" CornerRadius="10" Margin="10" Padding="20">
-                    <TextBlock Text="[Aquí iría un DataGrid con logs de actividad]" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Silver"/>
-                </Border>
-            </UniformGrid>
+            </Grid>
 
             <!-- DataGrid para Tratamientos -->
             <Grid x:Name="TratamientosContainer" Grid.Row="1" Visibility="Collapsed" Margin="10">

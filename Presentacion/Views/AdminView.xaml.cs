@@ -51,8 +51,11 @@ namespace Presentacion.Views
             LoadUsuarios();
             LoadTratamientos();
             LoadPacientes();
+
             // LoadCitas and LoadConsultas will be called when navigating to the view
         }
+
+
 
         private void BtnGestionCitasClick(object sender, RoutedEventArgs e)
         {
@@ -276,11 +279,39 @@ namespace Presentacion.Views
             {
                 // Colapsar menu
                 SideMenuColumn.Width = new GridLength(80);
+
+                // Ocultar textos
+                ImgProfile.Visibility = Visibility.Collapsed;
+                TxtAdminName.Visibility = Visibility.Collapsed;
+                TxtAdminRole.Visibility = Visibility.Collapsed;
+                TxtGestionUsuarios.Visibility = Visibility.Collapsed;
+                TxtGestionPacientes.Visibility = Visibility.Collapsed;
+                TxtGestionCitas.Visibility = Visibility.Collapsed;
+                TxtGestionAdministrador.Visibility = Visibility.Collapsed;
+                TxtGestionDentistas.Visibility = Visibility.Collapsed;
+                TxtGestionRecepcionistas.Visibility = Visibility.Collapsed;
+                TxtGestionConsultas.Visibility = Visibility.Collapsed;
+                TxtTratamientos.Visibility = Visibility.Collapsed;
+                TxtCerrarSesion.Visibility = Visibility.Collapsed;
             }
             else
             {
                 // Expandir menu
                 SideMenuColumn.Width = new GridLength(220);
+
+                // Mostrar textos
+                ImgProfile.Visibility = Visibility.Visible;
+                TxtAdminName.Visibility = Visibility.Visible;
+                TxtAdminRole.Visibility = Visibility.Visible;
+                TxtGestionUsuarios.Visibility = Visibility.Visible;
+                TxtGestionPacientes.Visibility = Visibility.Visible;
+                TxtGestionCitas.Visibility = Visibility.Visible;
+                TxtGestionAdministrador.Visibility = Visibility.Visible;
+                TxtGestionDentistas.Visibility = Visibility.Visible;
+                TxtGestionRecepcionistas.Visibility = Visibility.Visible;
+                TxtGestionConsultas.Visibility = Visibility.Visible;
+                TxtTratamientos.Visibility = Visibility.Visible;
+                TxtCerrarSesion.Visibility = Visibility.Visible;
             }
         }
 
@@ -817,7 +848,7 @@ namespace Presentacion.Views
         {
             if (sender is Button btn && btn.DataContext is AdministradorDTO admin)
             {
-                var result = MessageBox.Show($"¿Está seguro de eliminar al administrador {admin.Nombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var result = MessageBox.Show($"¿Estás seguro de eliminar al administrador {admin.Nombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -833,44 +864,6 @@ namespace Presentacion.Views
             }
         }
 
-        private void LoadRecepcionistas()
-        {
-            try
-            {
-                var list = _recepcionistaService.GetAllRecepcionistas();
-                RecepcionistasDataGrid.ItemsSource = list;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar recepcionistas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void BtnGestionRecepcionistasClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                HeaderTitle.Text = "Gestión de Recepcionistas";
-
-                DashboardGrid.Visibility = Visibility.Collapsed;
-                TratamientosContainer.Visibility = Visibility.Collapsed;
-                PacientesContainer.Visibility = Visibility.Collapsed;
-                CitasContainer.Visibility = Visibility.Collapsed;
-                ConsultasContainer.Visibility = Visibility.Collapsed;
-                UsuariosContainer.Visibility = Visibility.Collapsed;
-                DentistasContainer.Visibility = Visibility.Collapsed;
-                AdministradoresContainer.Visibility = Visibility.Collapsed; // si lo añadiste
-
-                RecepcionistasContainer.Visibility = Visibility.Visible;
-
-                LoadRecepcionistas();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar recepcionistas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void BtnNuevoRecepcionista_Click(object sender, RoutedEventArgs e)
         {
             var form = new RecepcionistaFormView();
@@ -883,11 +876,11 @@ namespace Presentacion.Views
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
 
-            form.OnSave += (r) =>
+            form.OnSave += (recep) =>
             {
                 try
                 {
-                    _recepcionistaService.AddRecepcionista(r);
+                    _recepcionistaService.AddRecepcionista(recep);
                     LoadRecepcionistas();
                     window.Close();
                 }
@@ -904,9 +897,9 @@ namespace Presentacion.Views
 
         private void BtnEditarRecepcionista_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.DataContext is RecepcionistaDTO r)
+            if (sender is Button btn && btn.DataContext is RecepcionistaDTO recep)
             {
-                var form = new RecepcionistaFormView(r);
+                var form = new RecepcionistaFormView(recep);
                 var window = new Window
                 {
                     Title = "Editar Recepcionista",
@@ -938,14 +931,14 @@ namespace Presentacion.Views
 
         private void BtnEliminarRecepcionista_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.DataContext is RecepcionistaDTO r)
+            if (sender is Button btn && btn.DataContext is RecepcionistaDTO recep)
             {
-                var result = MessageBox.Show($"¿Está seguro de eliminar a la recepcionista {r.Nombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var result = MessageBox.Show($"¿Estás seguro de eliminar al recepcionista {recep.Nombre}?", "Confirmar Eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        _recepcionistaService.DeleteRecepcionista(r.Id_Recepcionista);
+                        _recepcionistaService.DeleteRecepcionista(recep.Id_Recepcionista);
                         LoadRecepcionistas();
                     }
                     catch (Exception ex)
@@ -955,6 +948,45 @@ namespace Presentacion.Views
                 }
             }
         }
+
+        private void BtnGestionRecepcionistasClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HeaderTitle.Text = "Gestión de Recepcionistas";
+
+                DashboardGrid.Visibility = Visibility.Collapsed;
+                TratamientosContainer.Visibility = Visibility.Collapsed;
+                PacientesContainer.Visibility = Visibility.Collapsed;
+                CitasContainer.Visibility = Visibility.Collapsed;
+                ConsultasContainer.Visibility = Visibility.Collapsed;
+                UsuariosContainer.Visibility = Visibility.Collapsed;
+                DentistasContainer.Visibility = Visibility.Collapsed;
+                AdministradoresContainer.Visibility = Visibility.Collapsed;
+                RecepcionistasContainer.Visibility = Visibility.Visible;
+
+                LoadRecepcionistas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar recepcionistas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LoadRecepcionistas()
+        {
+            try
+            {
+                var receps = _recepcionistaService.GetAllRecepcionistas();
+                RecepcionistasDataGrid.ItemsSource = receps;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar recepcionistas: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
         private void ConsultasDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (ConsultasDataGrid.SelectedItem is ConsultaDTO consulta)

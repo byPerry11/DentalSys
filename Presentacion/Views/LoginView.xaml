@@ -14,7 +14,7 @@
 
 
 
-    <Border CornerRadius="20" Background="Transparent">
+    <Border CornerRadius="40" Background="Transparent">
         <Border.Effect>
             <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
         </Border.Effect>
@@ -78,7 +78,13 @@
                 </Button>
 
 
-                <Button Content="Salir"  Background="Transparent" Foreground="Gray" Margin="0,15,0,0" BorderThickness="1" Click="CloseApp_Click"/>
+                <Button Content="Salir" Background="Transparent" Foreground="Gray" Height="25" Margin="0,10,0,0" BorderThickness="1" Click="CloseApp_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>    
+                    </Button.Resources>
+                </Button>
             </StackPanel>
         </Grid>
     </Border>
